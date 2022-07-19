@@ -9,11 +9,13 @@ public class WCST_Practice : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI text;
-    
+    [SerializeField] private List<Button> button;
+    [SerializeField] private List<GameObject> keyUI;
+
     // Start is called before the first frame update
     void Start()
     {
-        text.gameObject.SetActive(true);
+        
     }
 
     // Update is called once per frame
@@ -22,8 +24,29 @@ public class WCST_Practice : MonoBehaviour
         
     }
 
+    public void DisableUI()
+    {
+        text.gameObject.SetActive(false);
+        foreach(Button i in button){
+            i.gameObject.SetActive(false);
+        }
+        EnabelKeyUI();
+    }
+
+    private void EnabelKeyUI()
+    {
+        foreach (GameObject obj in keyUI)
+        {
+            obj.gameObject.SetActive(true);
+        }
+    }
     public void BackToIntro()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1 );
+    }
+
+    public void TestClick(GameObject clickedObject)
+    {
+       Debug.Log(clickedObject.GetComponent<CardDisplay>().card.color.ToString()); 
     }
 }
