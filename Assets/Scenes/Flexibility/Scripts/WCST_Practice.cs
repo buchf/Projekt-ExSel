@@ -21,4 +21,9 @@ public class WCST_Practice : MonoBehaviour
     {
         
     }
+
+    public void BackToIntro()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1 );
+    }
 }
