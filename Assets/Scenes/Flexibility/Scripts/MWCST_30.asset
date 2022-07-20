@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04f150e47963c4a44b3cae0224c8f49d, type: 3}
-  m_Name: MCWST_07
+  m_Name: MWCST_30
   m_EditorClassIdentifier: 
-  name: MCWST_07
+  name: MWCST_30
   color: blue
-  number: 2
-  shape: cross
-  artwork: {fileID: 21300000, guid: 5df71537c1810994380195c4df59f1bc, type: 3}
+  number: 1
+  shape: star
+  artwork: {fileID: 21300000, guid: 1548b2cfe9598064badc1d7be518bf47, type: 3}
