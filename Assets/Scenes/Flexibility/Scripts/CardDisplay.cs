@@ -11,7 +11,6 @@ public class CardDisplay : MonoBehaviour
        void Start()
     {
         image.sprite = card.artwork;
-        card.print();
     }
 
 }

@@ -14,6 +14,6 @@ public class Card : ScriptableObject
 
     public void print()
     {
-        Debug.Log(name + ": " + color + ", " + number + ", " + shape);
+       // Debug.Log(name + ": " + color + ", " + number + ", " + shape);
     }
 }

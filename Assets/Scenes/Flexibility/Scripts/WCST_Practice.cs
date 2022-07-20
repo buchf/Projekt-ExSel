@@ -14,7 +14,7 @@ public class WCST_Practice : MonoBehaviour
 
     public List<GameObject> cardList = new List<GameObject>();
 
-    public GameObject MCWST_06;
+    //public GameObject MCWST_06;
 
     private GameObject current;
     private string currentColor;
@@ -26,10 +26,16 @@ public class WCST_Practice : MonoBehaviour
     private int clickedNum;
     private string clickedShape;
 
+    private int position = 0;
+
+    private int sortCategory = 0;
+    public int correctChain = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        SetCurrent(cardList[0]);
+        SetCurrent(cardList[position]);
+        
     }
 
     // Update is called once per frame
@@ -62,6 +68,7 @@ public class WCST_Practice : MonoBehaviour
     private void SetCurrent(GameObject currentObj)
     {
         current = currentObj;
+        current.SetActive(true);
         currentColor = current.GetComponent<CardDisplay>().card.color;
         currentNum = current.GetComponent<CardDisplay>().card.number;
         currentShape = current.GetComponent<CardDisplay>().card.shape;
@@ -78,18 +85,114 @@ public class WCST_Practice : MonoBehaviour
 
         //eventuell compare cards abfangen mit firstcompare und dann auf color, shape, number
         // switch case mit variable -> die dann das gesuchte attribut prüft bis zahl 6 erreicht is wenn nicht dann auf 0 
-        FirstCompareCards();
+
+
+        //schwierig, chain = 0 first automatisch ausloest und chain > 0 weitergeht, wenn chain gebreakt wird dann wird automatisch correctchain 0 ausgeloest
+        if (correctChain == 0)
+        {
+            FirstCompareCards();
+        }
+        else if (correctChain > 0)
+        {
+            CompareCards();
+        }
+        
+        
+        
+    }
+
+    private void CompareCards()
+    {
+        switch (sortCategory)
+        {
+            case 1:
+                Debug.Log("CASE COLOR");
+                CompareColor();
+                break;
+            case 2:
+                Debug.Log("CASE sha");
+                CompareShape();
+                break;
+            case 3:
+                Debug.Log("CASE num");
+                CompareNum();
+                break;
+        }
+        
+    }
+
+    private void CompareColor()
+    {
+        
+        if(clickedColor == currentColor)
+        {
+            correctChain++;
+        }
+        else
+        {
+            Debug.Log("CHAINBReAK");
+            correctChain = 0;
+        }
+        current.SetActive(false);
+        position++;
+        SetCurrent(cardList[position]);
+    }
+
+    private void CompareShape()
+    {
+        
+        if (clickedShape == currentShape)
+        {
+            correctChain++;
+        }
+        else
+        {
+            Debug.Log("CHAINBReAK");
+            correctChain = 0;
+        }
+        current.SetActive(false);
+        position++;
+        SetCurrent(cardList[position]);
+    }
+
+    private void CompareNum()
+    {
+        
+        if (clickedNum == currentNum)
+        {
+            correctChain++;
+        }
+        else
+        {
+            Debug.Log("CHAINBReAK");
+            correctChain = 0;
+        }
+        current.SetActive(false);
+        position++;
+        SetCurrent(cardList[position]);
     }
 
     private void FirstCompareCards()
     {
-        if(clickedColor == currentColor || clickedNum == currentNum || clickedShape == currentShape)
+        
+        if (clickedColor == currentColor || clickedNum == currentNum || clickedShape == currentShape)
         {
-            Debug.Log("TRUE");
+            
+            if (clickedColor == currentColor) sortCategory = 1;
+            if (clickedShape == currentShape) sortCategory = 2;
+            if (clickedNum == currentNum) sortCategory = 3;
+            correctChain++;
+            Debug.Log("TRUE sort= " + sortCategory);
+            
         }
         else
         {
             Debug.Log("FALSE");
         }
+        current.SetActive(false);
+        position++;
+        SetCurrent(cardList[position]);
     }
+
+
 }
