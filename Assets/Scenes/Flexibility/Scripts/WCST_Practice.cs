@@ -139,8 +139,7 @@ public class WCST_Practice : MonoBehaviour
     }
 
     private void CompareShape()
-    {
-        
+    { 
         if (clickedShape == currentShape)
         {
             correctChain++;
