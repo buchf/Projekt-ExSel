@@ -968,7 +968,7 @@ GameObject:
   - component: {fileID: 597780769}
   - component: {fileID: 597780768}
   m_Layer: 5
-  m_Name: key1border (1)
+  m_Name: CardBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1840,6 +1840,7 @@ MonoBehaviour:
   - {fileID: 1660492302}
   - {fileID: 562413940}
   - {fileID: 1208690844}
+  cardBoder: {fileID: 597780766}
   correctChain: 0
 --- !u!1 &1585647772
 GameObject:

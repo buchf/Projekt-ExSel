@@ -13,7 +13,7 @@ public class WCST_Practice : MonoBehaviour
     [SerializeField] private List<GameObject> keyUI;
 
     public List<GameObject> cardList = new List<GameObject>();
-
+    public GameObject cardBoder;
     //public GameObject MCWST_06;
 
     private GameObject current;
@@ -34,7 +34,7 @@ public class WCST_Practice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetCurrent(cardList[position]);
+        
         
     }
 
@@ -59,6 +59,7 @@ public class WCST_Practice : MonoBehaviour
         {
             obj.gameObject.SetActive(true);
         }
+        SetCurrent(cardList[position]);
     }
     public void BackToIntro()
     {
@@ -67,6 +68,7 @@ public class WCST_Practice : MonoBehaviour
 
     private void SetCurrent(GameObject currentObj)
     {
+        cardBoder.SetActive(true);
         current = currentObj;
         current.SetActive(true);
         currentColor = current.GetComponent<CardDisplay>().card.color;
