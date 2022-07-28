@@ -10,7 +10,14 @@ public class WCST_Practice : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private List<Button> button;
-    [SerializeField] private List<GameObject> keyUI;
+    [SerializeField] private List<GameObject> keyUI; 
+    [SerializeField] private GameObject fixCross;
+    [SerializeField] private GameObject wizard;
+    public AudioSource newRuleSound;
+
+
+    [SerializeField] private GameObject correctStar;
+    [SerializeField] private GameObject incorrectStar;
 
     public List<GameObject> cardList = new List<GameObject>();
     public GameObject cardBoder;
@@ -41,7 +48,10 @@ public class WCST_Practice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(correctChain == 6)
+        {
+            
+        }
     }
 
     public void DisableUI()
@@ -58,8 +68,15 @@ public class WCST_Practice : MonoBehaviour
         foreach (GameObject obj in keyUI)
         {
             obj.gameObject.SetActive(true);
+            if (obj.gameObject.GetComponent<Button>())
+            {
+                obj.GetComponent<Button>().transition = Selectable.Transition.None;
+                obj.GetComponent<Button>().interactable = false;
+            }
         }
-        SetCurrent(cardList[position]);
+        fixCross.SetActive(true);
+        StartCoroutine(Wait());
+        
     }
     public void BackToIntro()
     {
@@ -128,32 +145,30 @@ public class WCST_Practice : MonoBehaviour
         
         if(clickedColor == currentColor)
         {
+            StartCoroutine(CorrectAnimation());
             correctChain++;
         }
         else
         {
             Debug.Log("CHAINBReAK");
+            StartCoroutine(IncorrectAnimation());
             correctChain = 0;
         }
-        current.SetActive(false);
-        position++;
-        SetCurrent(cardList[position]);
     }
 
     private void CompareShape()
     { 
         if (clickedShape == currentShape)
         {
+            StartCoroutine(CorrectAnimation());
             correctChain++;
         }
         else
         {
             Debug.Log("CHAINBReAK");
+            StartCoroutine(IncorrectAnimation());
             correctChain = 0;
-        }
-        current.SetActive(false);
-        position++;
-        SetCurrent(cardList[position]);
+        }   
     }
 
     private void CompareNum()
@@ -161,16 +176,15 @@ public class WCST_Practice : MonoBehaviour
         
         if (clickedNum == currentNum)
         {
+            StartCoroutine(CorrectAnimation());
             correctChain++;
         }
         else
         {
             Debug.Log("CHAINBReAK");
+            StartCoroutine(IncorrectAnimation());
             correctChain = 0;
-        }
-        current.SetActive(false);
-        position++;
-        SetCurrent(cardList[position]);
+        } 
     }
 
     private void FirstCompareCards()
@@ -184,16 +198,80 @@ public class WCST_Practice : MonoBehaviour
             if (clickedNum == currentNum) sortCategory = 3;
             correctChain++;
             Debug.Log("TRUE sort= " + sortCategory);
-            
+            StartCoroutine(CorrectAnimation());
         }
         else
         {
             Debug.Log("FALSE");
+            StartCoroutine(IncorrectAnimation());
         }
+        
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.5f);
+        fixCross.SetActive(false);
+        foreach (GameObject obj in keyUI)
+        {
+            if (obj.gameObject.GetComponent<Button>())
+            {
+                obj.GetComponent<Button>().transition = Selectable.Transition.ColorTint;
+                obj.GetComponent<Button>().interactable = true;
+            }
+        }
+        SetCurrent(cardList[position]);
+    }
+
+    private void NextCard()
+    {
         current.SetActive(false);
         position++;
         SetCurrent(cardList[position]);
     }
 
+    IEnumerator CorrectAnimation()
+    {
+        correctStar.SetActive(true);
+        DisableKeys();
+        yield return new WaitForSeconds(1f);
+        correctStar.SetActive(false);
+        EnableKeys();
+        NextCard();
+    }
 
+    IEnumerator IncorrectAnimation()
+    {
+        incorrectStar.SetActive(true);
+        DisableKeys();
+        yield return new WaitForSeconds(1f);
+        incorrectStar.SetActive(false);
+        EnableKeys();
+        NextCard();
+    }
+
+    private void EnableKeys()
+    {
+        foreach (GameObject obj in keyUI)
+        {
+            if (obj.gameObject.GetComponent<Button>())
+            {
+                obj.GetComponent<Button>().transition = Selectable.Transition.ColorTint;
+                obj.GetComponent<Button>().interactable = true;
+            }
+        }
+    }
+
+    private void DisableKeys()
+    {
+        foreach (GameObject obj in keyUI)
+        {
+            if (obj.gameObject.GetComponent<Button>())
+            {
+                obj.GetComponent<Button>().transition = Selectable.Transition.None;
+                obj.GetComponent<Button>().interactable = false;
+            }
+        }
+    }
 }
+
