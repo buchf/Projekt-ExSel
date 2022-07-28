@@ -2032,7 +2032,8 @@ MonoBehaviour:
   - {fileID: 557011949}
   fixCross: {fileID: 1665220373}
   wizard: {fileID: 1703621332}
-  newRuleSound: {fileID: 2041869215}
+  MCST_09mp3: {fileID: 556671611}
+  MCST_10mp3: {fileID: 2041869215}
   correctStar: {fileID: 257015689}
   incorrectStar: {fileID: 1961725470}
   cardList:
@@ -3182,7 +3183,7 @@ GameObject:
   - component: {fileID: 2041869216}
   - component: {fileID: 2041869215}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: MCST_10_mp3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

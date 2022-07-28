@@ -13,7 +13,8 @@ public class WCST_Practice : MonoBehaviour
     [SerializeField] private List<GameObject> keyUI; 
     [SerializeField] private GameObject fixCross;
     [SerializeField] private GameObject wizard;
-    public AudioSource newRuleSound;
+    public AudioSource MCST_09mp3;
+    public AudioSource MCST_10mp3;
 
 
     [SerializeField] private GameObject correctStar;
@@ -48,12 +49,38 @@ public class WCST_Practice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(correctChain == 6)
+        if (!MCST_09mp3.isPlaying && correctChain == 7)
         {
             
+            wizard.SetActive(false);
+            correctChain = 0;
         }
+        if (!MCST_09mp3.isPlaying && correctChain == 6)
+        {
+            correctChain++;
+            WizardAnimation();
+            Debug.Log("test"); 
+        }
+        if(position == 12)
+        {   
+            DisablePractice();
+            MCST_10mp3.Play();
+            position++;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        
     }
 
+    public void DisablePractice()
+    {
+        foreach (GameObject obj in keyUI)
+        {
+            obj.gameObject.SetActive(false);
+            
+        }
+        fixCross.SetActive(true);
+        StartCoroutine(Wait());
+    }
     public void DisableUI()
     {
         text.gameObject.SetActive(false);
@@ -125,15 +152,12 @@ public class WCST_Practice : MonoBehaviour
         switch (sortCategory)
         {
             case 1:
-                Debug.Log("CASE COLOR");
                 CompareColor();
                 break;
             case 2:
-                Debug.Log("CASE sha");
                 CompareShape();
                 break;
             case 3:
-                Debug.Log("CASE num");
                 CompareNum();
                 break;
         }
@@ -150,7 +174,6 @@ public class WCST_Practice : MonoBehaviour
         }
         else
         {
-            Debug.Log("CHAINBReAK");
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
         }
@@ -165,7 +188,6 @@ public class WCST_Practice : MonoBehaviour
         }
         else
         {
-            Debug.Log("CHAINBReAK");
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
         }   
@@ -181,7 +203,6 @@ public class WCST_Practice : MonoBehaviour
         }
         else
         {
-            Debug.Log("CHAINBReAK");
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
         } 
@@ -225,9 +246,25 @@ public class WCST_Practice : MonoBehaviour
 
     private void NextCard()
     {
+        Debug.Log("position:" + position);
+       
         current.SetActive(false);
-        position++;
-        SetCurrent(cardList[position]);
+        
+        if(position == 11)
+        {
+            Debug.Log("finsih");
+        }
+        else
+        {
+            position++;
+            Debug.Log("CARD");
+            SetCurrent(cardList[position]);
+        }   
+    }
+    public void WizardAnimation()
+    {
+        MCST_09mp3.Play();
+        wizard.SetActive(true);   
     }
 
     IEnumerator CorrectAnimation()
