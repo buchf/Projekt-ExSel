@@ -25,7 +25,7 @@ public class WCST_Intro : MonoBehaviour
         if (!audioFiles[current].isPlaying)
         {
             current++;
-            if (current == 7)
+            if (current == 8)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
