@@ -29,6 +29,8 @@ public class WCST_Practice : MonoBehaviour
     private int currentNum;
     private string currentShape;
 
+    private List<string> usedRules = new List<string>();
+
     private GameObject clicked;
     private string clickedColor;
     private int clickedNum;
@@ -36,31 +38,27 @@ public class WCST_Practice : MonoBehaviour
 
     private int position = 0;
 
-    private int sortCategory = 0;
+    private string sortCategory = "default";
     public int correctChain = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!MCST_09mp3.isPlaying && correctChain == 7)
-        {
-            
-            wizard.SetActive(false);
-            correctChain = 0;
-        }
         if (!MCST_09mp3.isPlaying && correctChain == 6)
         {
-            correctChain++;
-            WizardAnimation();
-            Debug.Log("test"); 
+            wizard.SetActive(false);
+            //Hier dann next card machen mit 
+            // rule switch nicht vergessen. momentaner wert wird in eine liste abgespeichert.
+            // Funktion schreiben welche die geklickte variable mit der kompletten liste zu vergleichen damit eine regel nicht zweimal vorkommt -> perservation error.
         }
+
         if(position == 12)
         {   
             DisablePractice();
@@ -134,39 +132,45 @@ public class WCST_Practice : MonoBehaviour
 
 
         //schwierig, chain = 0 first automatisch ausloest und chain > 0 weitergeht, wenn chain gebreakt wird dann wird automatisch correctchain 0 ausgeloest
-        if (correctChain == 0)
+        if (correctChain == 0 && sortCategory == "default")
         {
             FirstCompareCards();
-        }
-        else if (correctChain > 0)
+        }              
+        else
         {
             CompareCards();
-        }
-        
-        
-        
+        }   
     }
 
     private void CompareCards()
     {
         switch (sortCategory)
         {
-            case 1:
+            case "color":
                 CompareColor();
                 break;
-            case 2:
+            case "shape":
                 CompareShape();
                 break;
-            case 3:
+            case "number":
                 CompareNum();
                 break;
         }
         
+        if(correctChain == 6)
+        {
+            //6er chain NextCard stop
+        }
+        else
+        {
+            NextCard();
+        }
+           
+        
     }
 
     private void CompareColor()
-    {
-        
+    {  
         if(clickedColor == currentColor)
         {
             StartCoroutine(CorrectAnimation());
@@ -190,7 +194,7 @@ public class WCST_Practice : MonoBehaviour
         {
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
-        }   
+        }
     }
 
     private void CompareNum()
@@ -205,18 +209,17 @@ public class WCST_Practice : MonoBehaviour
         {
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
-        } 
+        }
     }
 
     private void FirstCompareCards()
     {
-        
         if (clickedColor == currentColor || clickedNum == currentNum || clickedShape == currentShape)
         {
             
-            if (clickedColor == currentColor) sortCategory = 1;
-            if (clickedShape == currentShape) sortCategory = 2;
-            if (clickedNum == currentNum) sortCategory = 3;
+            if (clickedColor == currentColor) sortCategory = "color";
+            if (clickedShape == currentShape) sortCategory = "shape";
+            if (clickedNum == currentNum) sortCategory = "number";
             correctChain++;
             Debug.Log("TRUE sort= " + sortCategory);
             StartCoroutine(CorrectAnimation());
@@ -226,7 +229,7 @@ public class WCST_Practice : MonoBehaviour
             Debug.Log("FALSE");
             StartCoroutine(IncorrectAnimation());
         }
-        
+        NextCard();
     }
 
     IEnumerator Wait()
@@ -247,9 +250,7 @@ public class WCST_Practice : MonoBehaviour
     private void NextCard()
     {
         Debug.Log("position:" + position);
-       
         current.SetActive(false);
-        
         if(position == 11)
         {
             Debug.Log("finsih");
@@ -263,8 +264,16 @@ public class WCST_Practice : MonoBehaviour
     }
     public void WizardAnimation()
     {
+        
         MCST_09mp3.Play();
-        wizard.SetActive(true);   
+
+        wizard.SetActive(true);
+
+        usedRules.Add(sortCategory);
+        sortCategory = "default";
+        //correctChain = 0;
+        Debug.Log(usedRules[0]);
+
     }
 
     IEnumerator CorrectAnimation()
@@ -274,7 +283,12 @@ public class WCST_Practice : MonoBehaviour
         yield return new WaitForSeconds(1f);
         correctStar.SetActive(false);
         EnableKeys();
-        NextCard();
+        if (correctChain == 6)
+        {
+            Debug.Log("Chain of 6");
+            WizardAnimation();
+            DisableKeys();
+        }
     }
 
     IEnumerator IncorrectAnimation()
@@ -284,7 +298,7 @@ public class WCST_Practice : MonoBehaviour
         yield return new WaitForSeconds(1f);
         incorrectStar.SetActive(false);
         EnableKeys();
-        NextCard();
+
     }
 
     private void EnableKeys()
