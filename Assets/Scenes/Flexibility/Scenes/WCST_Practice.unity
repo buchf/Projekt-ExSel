@@ -2050,7 +2050,7 @@ MonoBehaviour:
   - {fileID: 1660492302}
   - {fileID: 562413940}
   - {fileID: 1208690844}
-  cardBoder: {fileID: 597780766}
+  cardBorder: {fileID: 597780766}
   correctChain: 0
 --- !u!1 &1585647772
 GameObject:

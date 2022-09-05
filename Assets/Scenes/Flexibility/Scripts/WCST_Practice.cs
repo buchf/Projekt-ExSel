@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 
 public class WCST_Practice : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class WCST_Practice : MonoBehaviour
     [SerializeField] private GameObject incorrectStar;
 
     public List<GameObject> cardList = new List<GameObject>();
-    public GameObject cardBoder;
+    public GameObject cardBorder;
     //public GameObject MCWST_06;
 
     private GameObject current;
@@ -38,7 +38,11 @@ public class WCST_Practice : MonoBehaviour
 
     private int position = 0;
 
-    private string sortCategory = "default";
+    public int secondTry = 0;
+    int buff = 0;
+    bool preservationError;
+
+    public string sortCategory = "default";
     public int correctChain = 0;
 
     // Start is called before the first frame update
@@ -50,23 +54,25 @@ public class WCST_Practice : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
+        /*
         if (!MCST_09mp3.isPlaying && correctChain == 6)
         {
             wizard.SetActive(false);
+            EnabelKeyUI();
             //Hier dann next card machen mit 
             // rule switch nicht vergessen. momentaner wert wird in eine liste abgespeichert.
             // Funktion schreiben welche die geklickte variable mit der kompletten liste zu vergleichen damit eine regel nicht zweimal vorkommt -> perservation error.
         }
-
-        if(position == 12)
-        {   
-            DisablePractice();
-            MCST_10mp3.Play();
-            position++;
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+            
+        */
         
+        if(!MCST_10mp3.isPlaying && buff == 1)
+        {
+            buff++;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
     }
 
     public void DisablePractice()
@@ -76,8 +82,10 @@ public class WCST_Practice : MonoBehaviour
             obj.gameObject.SetActive(false);
             
         }
+        current.SetActive(false);   
         fixCross.SetActive(true);
-        StartCoroutine(Wait());
+        cardBorder.SetActive(false);
+        //StartCoroutine(Wait());
     }
     public void DisableUI()
     {
@@ -110,7 +118,7 @@ public class WCST_Practice : MonoBehaviour
 
     private void SetCurrent(GameObject currentObj)
     {
-        cardBoder.SetActive(true);
+        cardBorder.SetActive(true);
         current = currentObj;
         current.SetActive(true);
         currentColor = current.GetComponent<CardDisplay>().card.color;
@@ -126,24 +134,22 @@ public class WCST_Practice : MonoBehaviour
         clickedNum = clicked.GetComponent<CardDisplay>().card.number;
         clickedShape = clicked.GetComponent<CardDisplay>().card.shape;
 
-
-        //eventuell compare cards abfangen mit firstcompare und dann auf color, shape, number
-        // switch case mit variable -> die dann das gesuchte attribut prüft bis zahl 6 erreicht is wenn nicht dann auf 0 
-
-
-        //schwierig, chain = 0 first automatisch ausloest und chain > 0 weitergeht, wenn chain gebreakt wird dann wird automatisch correctchain 0 ausgeloest
         if (correctChain == 0 && sortCategory == "default")
         {
-            FirstCompareCards();
-        }              
+           Debug.Log("first compare");
+           FirstCompareCards();
+        }
         else
         {
             CompareCards();
-        }   
+        }
+
+        //schwierig, chain = 0 first automatisch ausloest und chain > 0 weitergeht, wenn chain gebreakt wird dann wird automatisch correctchain 0 ausgeloest
+        
     }
 
     private void CompareCards()
-    {
+    { 
         switch (sortCategory)
         {
             case "color":
@@ -156,17 +162,6 @@ public class WCST_Practice : MonoBehaviour
                 CompareNum();
                 break;
         }
-        
-        if(correctChain == 6)
-        {
-            //6er chain NextCard stop
-        }
-        else
-        {
-            NextCard();
-        }
-           
-        
     }
 
     private void CompareColor()
@@ -199,7 +194,6 @@ public class WCST_Practice : MonoBehaviour
 
     private void CompareNum()
     {
-        
         if (clickedNum == currentNum)
         {
             StartCoroutine(CorrectAnimation());
@@ -214,22 +208,30 @@ public class WCST_Practice : MonoBehaviour
 
     private void FirstCompareCards()
     {
-        if (clickedColor == currentColor || clickedNum == currentNum || clickedShape == currentShape)
+        preservationError = false;
+        for (int i = 0; i< usedRules.Count; i++)
+        {
+            Debug.Log("usedRule[i] == " + usedRules[i]);
+            if (usedRules[i] == "color" || usedRules[i] == "shape" || usedRules[i] == "number")
+            {
+                Debug.Log("PRESERVATION ERROR"); 
+                preservationError = true;
+            }            
+        }
+        if (preservationError == false  && (clickedColor == currentColor || clickedNum == currentNum || clickedShape == currentShape))
         {
             
             if (clickedColor == currentColor) sortCategory = "color";
             if (clickedShape == currentShape) sortCategory = "shape";
             if (clickedNum == currentNum) sortCategory = "number";
             correctChain++;
-            Debug.Log("TRUE sort= " + sortCategory);
+            
             StartCoroutine(CorrectAnimation());
         }
         else
         {
-            Debug.Log("FALSE");
             StartCoroutine(IncorrectAnimation());
         }
-        NextCard();
     }
 
     IEnumerator Wait()
@@ -249,31 +251,26 @@ public class WCST_Practice : MonoBehaviour
 
     private void NextCard()
     {
-        Debug.Log("position:" + position);
         current.SetActive(false);
-        if(position == 11)
+        if(position < 12)
         {
-            Debug.Log("finsih");
-        }
-        else
-        {
-            position++;
-            Debug.Log("CARD");
             SetCurrent(cardList[position]);
-        }   
-    }
-    public void WizardAnimation()
-    {
+        }
         
+    }
+
+    IEnumerator WizardAnimation()
+    {
+        DisableKeys();
+        correctChain = 0;
         MCST_09mp3.Play();
-
         wizard.SetActive(true);
-
         usedRules.Add(sortCategory);
+        yield return new WaitForSeconds(6f);
         sortCategory = "default";
-        //correctChain = 0;
-        Debug.Log(usedRules[0]);
-
+        wizard.SetActive(false);
+        EnableKeys();
+        NextCard();
     }
 
     IEnumerator CorrectAnimation()
@@ -282,12 +279,23 @@ public class WCST_Practice : MonoBehaviour
         DisableKeys();
         yield return new WaitForSeconds(1f);
         correctStar.SetActive(false);
-        EnableKeys();
-        if (correctChain == 6)
+        position++;
+        secondTry = 0;
+        if (correctChain == 6 && position  < 12)
         {
-            Debug.Log("Chain of 6");
-            WizardAnimation();
+            StartCoroutine(WizardAnimation());
+        }
+        else
+        {
+            NextCard();
+            EnableKeys();
+        }
+        if (position == 12)
+        {
+            DisablePractice();
             DisableKeys();
+            MCST_10mp3.Play();
+            buff = 1;
         }
     }
 
@@ -297,7 +305,28 @@ public class WCST_Practice : MonoBehaviour
         DisableKeys();
         yield return new WaitForSeconds(1f);
         incorrectStar.SetActive(false);
-        EnableKeys();
+        
+        
+        if (position == 12)
+        {
+            DisablePractice();
+            DisableKeys();
+            MCST_10mp3.Play();
+            buff = 1;
+        }
+        if (secondTry == 0)
+        {
+            EnableKeys();
+            secondTry++;
+        }
+        else if (position < 12 && secondTry != 0)
+        {
+            secondTry = 0;
+            position++;
+            EnableKeys();
+            NextCard();
+        }
+
 
     }
 
