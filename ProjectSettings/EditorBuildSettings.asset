@@ -501,6 +501,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Flexibility/Scenes/WCST_Practice.unity
     guid: e8770db519ad1994cab223128c45b8c6
   - enabled: 1
-    path: Assets/Scenes/Flexibility/Scenes/New Scene.unity
+    path: Assets/Scenes/Flexibility/Scenes/WCST_Play.unity
     guid: 517ecf7debcfac247948f91c6bb6192f
   m_configObjects: {}

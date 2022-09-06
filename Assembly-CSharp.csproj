@@ -64,6 +64,7 @@
     <Compile Include="Assets\Backend\UI\Auswahlzahnrad.cs" />
     <Compile Include="Assets\Backend\Helper\MultiSelector.cs" />
     <Compile Include="Assets\Backend\UI\BauklotzZielgebiet.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\Scripts\CardDisplay.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\CSPracticeTwo.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\CSPlay.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\CSPractice.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\GoNoGo\GoNoGo.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\CSDataSaver.cs" />
     <Compile Include="Assets\Backend\Helper\Selector.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\Scripts\Card.cs" />
     <Compile Include="Assets\Backend\UI\RichtungsstickerInstancer.cs" />
     <Compile Include="Assets\Backend\ControlFlow\Block.cs" />
     <Compile Include="Assets\Backend\IO\Measurement.cs" />
@@ -96,8 +98,7 @@
     <Compile Include="Assets\Backend\ControlFlow\Implementations\StabilityTrials.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\Randomizer.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\corsiTextSelect.cs" />
-    <Compile Include="Assets\Scenes\Flexibility\Scripts\Card.cs" />
-    <Compile Include="Assets\Scenes\Flexibility\Scripts\CardDisplay.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\Scripts\WCST_Play.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scenes\ExekutiveFunktionen\TextMesh Pro\Shaders\TMPro.cginc" />
