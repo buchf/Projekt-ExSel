@@ -15,5 +15,5 @@ MonoBehaviour:
   name: MWCST_12
   color: red
   number: 4
-  shape: cross
+  shape: star
   artwork: {fileID: 21300000, guid: 46a5b453b9a6f0144bb6b6e2862b0ccc, type: 3}

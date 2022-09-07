@@ -503,4 +503,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Flexibility/Scenes/WCST_Play.unity
     guid: 517ecf7debcfac247948f91c6bb6192f
+  - enabled: 1
+    path: Assets/Scenes/Flexibility/Scenes/WCST_Outro.unity
+    guid: 3492583a981a7aa4cbc38d26e76886e8
   m_configObjects: {}
