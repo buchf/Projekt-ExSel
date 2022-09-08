@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class WCST_Play : MonoBehaviour
 {
@@ -27,7 +29,8 @@ public class WCST_Play : MonoBehaviour
 
 
     //var for the testPhase
-    public List<string> usedRules = new List<string>();
+    public List<int> usedRules = new List<int>();
+    public List<int> usedRulesTwo = new List<int>();
     public int position = 0;
 
     private GameObject current;
@@ -42,13 +45,24 @@ public class WCST_Play : MonoBehaviour
 
 
     bool preservationError;
-    int blockNumber = 1;
+    public int blockNumber = 1;
     int block2Buff = 0;
-    public string sortCategory = "default";
+
+    public int sortCategory = 0;
     public int correctChain = 0;
+
+    public List<Card> keys = new List<Card>();
+    public List<int> correctResponse = new List<int>();
+    public int clickedResponse;
+    int trialType = 0;
+    int accuracy = 0;
+    int buff = 0;
+
+    public static Stopwatch timer = new Stopwatch();
 
     void Start()
     {
+        buff = 0;
         blockNumber = 1;
         block2Buff = 0;
         position = 0;
@@ -56,20 +70,32 @@ public class WCST_Play : MonoBehaviour
         //StartCoroutine(IntroSequenz());
     }
 
+    private void Update()
+    {
+        if (timer.Elapsed.TotalSeconds >= 8.0)
+        {
+            timer.Stop();
+            clickedResponse = 0;
+
+            StartCoroutine(IncorrectAnimation());
+            timer.Reset();
+        }
+    }
+    
     public void CardClick(GameObject clickedObject)
     {
-
-        if (blockNumber == 2 && usedRules.Count > block2Buff)
-        {
-            sortCategory = usedRules[block2Buff];
-        }
+        timer.Stop();
+        GetClickedCard(clickedObject);
+        
 
         clicked = clickedObject;
         clickedColor = clicked.GetComponent<CardDisplay>().card.color;
         clickedNum = clicked.GetComponent<CardDisplay>().card.number;
         clickedShape = clicked.GetComponent<CardDisplay>().card.shape;
 
-        if (correctChain == 0 && sortCategory == "default")
+       
+
+        if (correctChain == 0 && sortCategory == 0)
         {
             Debug.Log("first compare");
             FirstCompareCards();
@@ -79,20 +105,24 @@ public class WCST_Play : MonoBehaviour
             CompareCards();
         }
 
+
+        
+
         //schwierig, chain = 0 first automatisch ausloest und chain > 0 weitergeht, wenn chain gebreakt wird dann wird automatisch correctchain 0 ausgeloest
 
     }
     private void CompareCards()
     {
+        trialType = 1;
         switch (sortCategory)
         {
-            case "color":
+            case 1:
                 CompareColor();
                 break;
-            case "shape":
+            case 2:
                 CompareShape();
                 break;
-            case "number":
+            case 3:
                 CompareNum();
                 break;
         }
@@ -102,11 +132,13 @@ public class WCST_Play : MonoBehaviour
     {
         if (clickedColor == currentColor)
         {
+            accuracy = 1;
             StartCoroutine(CorrectAnimation());
             correctChain++;
         }
         else
         {
+            accuracy = 0;
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
         }
@@ -116,11 +148,13 @@ public class WCST_Play : MonoBehaviour
     {
         if (clickedShape == currentShape)
         {
+            accuracy = 1;
             StartCoroutine(CorrectAnimation());
             correctChain++;
         }
         else
         {
+            accuracy = 0;
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
         }
@@ -130,16 +164,18 @@ public class WCST_Play : MonoBehaviour
     {
         if (clickedNum == currentNum)
         {
+            accuracy = 1;
             StartCoroutine(CorrectAnimation());
             correctChain++;
         }
         else
         {
+            accuracy = 0;
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
         }
     }
-    private bool CheckIfUsed(string sortCategory)
+    private bool CheckIfUsed(int sortCategory)
     {
         preservationError = false;
         for (int i = 0; i < usedRules.Count; i++)
@@ -155,33 +191,99 @@ public class WCST_Play : MonoBehaviour
     }
     private void FirstCompareCards()
     {
-
+        
+        
         //for schleife unten in die if abfrage da erst unten die sort category festgelegt wird
-
-
-        if (clickedColor == currentColor || clickedNum == currentNum || clickedShape == currentShape)
+        if (blockNumber == 2)
         {
-            if (clickedColor == currentColor) sortCategory = "color";
-            if (clickedShape == currentShape) sortCategory = "shape";
-            if (clickedNum == currentNum) sortCategory = "number";
+            bool checkList = false;
+            Debug.Log("Block2");
+            trialType = 2;
 
-            Debug.Log("checkIfUsed: " + CheckIfUsed(sortCategory));
-            if (preservationError == true)
+            //sortCat festlegen anhand der rules liste
+
+            if (usedRules.Count == buff)
             {
-                sortCategory = "default";
-                StartCoroutine(IncorrectAnimation());
+                if (clickedColor == currentColor) sortCategory = 1;
+                if (clickedShape == currentShape) sortCategory = 2;
+                if (clickedNum == currentNum) sortCategory = 3;
+                
+                for(int i = 0; i < usedRules.Count; i++)
+                {
+                    if (sortCategory == usedRules[i]) checkList = true;
+                }
+                for (int i = 0; i < usedRulesTwo.Count; i++)
+                {
+                    if (sortCategory == usedRules[i]) checkList = true;
+                }
+
+                if (checkList == true)
+                {
+                    accuracy = 2;
+                    sortCategory = 0;
+                    StartCoroutine(IncorrectAnimation());
+                }
+                else
+                {
+                    accuracy = 1;
+                    StartCoroutine(CorrectAnimation());
+                }
 
             }
             else
             {
-                StartCoroutine(CorrectAnimation());
-                correctChain++;
+                sortCategory = usedRules[buff];
+                buff++;
+                if (clickedColor == currentColor || clickedNum == currentNum || clickedShape == currentShape)
+                {
+
+                    if (sortCategory == 1) CompareColor();
+                    if (sortCategory == 2) CompareShape();
+                    if (sortCategory == 3) CompareNum();
+
+                }
+                else
+                {
+                    StartCoroutine(IncorrectAnimation());
+                }
             }
+
+            
+
+
         }
         else
         {
-            StartCoroutine(IncorrectAnimation());
+            if (clickedColor == currentColor || clickedNum == currentNum || clickedShape == currentShape)
+            {
+                if (clickedColor == currentColor) sortCategory = 1;
+                if (clickedShape == currentShape) sortCategory = 2;
+                if (clickedNum == currentNum) sortCategory = 3;
+
+                Debug.Log("checkIfUsed: " + CheckIfUsed(sortCategory));
+                if (preservationError == true)
+                {
+                    sortCategory = 0;
+                    accuracy = 2;
+                    StartCoroutine(IncorrectAnimation());
+
+                }
+                else
+                {
+                    trialType = 2;
+                    if (usedRules.Count == 0) trialType = 0;
+                    accuracy = 1;
+                    StartCoroutine(CorrectAnimation());
+                    correctChain++;
+                }
+            }
+            else
+            {
+                StartCoroutine(IncorrectAnimation());
+            }
         }
+
+        
     }
     IEnumerator IntroSequenz()
     {
@@ -213,7 +315,7 @@ public class WCST_Play : MonoBehaviour
         MCST_09.Play();
         wizard.SetActive(true);
         yield return new WaitForSeconds(6f);
-        sortCategory = "default";
+        sortCategory = 0;
         wizard.SetActive(false);
         EnableKeys();
         NextCard();
@@ -221,19 +323,22 @@ public class WCST_Play : MonoBehaviour
 
     IEnumerator CorrectAnimation()
     {
+        WriteInDataSaver(blockNumber, trialType, sortCategory, current.name, correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, timer.ElapsedMilliseconds, accuracy);
         correctStar.SetActive(true);
         DisableKeys();
         yield return new WaitForSeconds(0.5f);
         correctStar.SetActive(false);
         current.SetActive(false);
         cardBorder.SetActive(false);
-        yield return new WaitForSeconds(1f);
         position++;
+        yield return new WaitForSeconds(1f);
+       
 
         if (blockNumber == 2 && correctChain == 6)
         {
+            usedRulesTwo.Add(sortCategory);
             block2Buff++;
-            if ((blockNumber == 2 && position == 48) || blockNumber == 2 && block2Buff == 3)
+            if ((blockNumber == 2 && position == 47) || blockNumber == 2 && block2Buff == 3)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
@@ -242,9 +347,14 @@ public class WCST_Play : MonoBehaviour
                 StartCoroutine(WizardAnimation());
             }
         }
+
         else
         {
-            if (correctChain == 6 && blockNumber == 1)
+            if ((blockNumber == 2 && position == 48) || blockNumber == 2 && block2Buff == 3)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            if (correctChain == 6 && blockNumber == 1 && position != 24 && usedRules.Count != 3)
             {
                 usedRules.Add(sortCategory);
                 if (usedRules.Count < 3)
@@ -258,25 +368,26 @@ public class WCST_Play : MonoBehaviour
                 EnableKeys();
             }
         }
-
+        
         if (position == 24 || (usedRules.Count == 3 && blockNumber == 1))
         {
             StartCoroutine(BlockSwitch());
         }
-
     }
 
 
     IEnumerator IncorrectAnimation()
     {
+        WriteInDataSaver(blockNumber, trialType, sortCategory, current.name, correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, timer.ElapsedMilliseconds, accuracy);
         incorrectStar.SetActive(true);
         DisableKeys();
         yield return new WaitForSeconds(0.5f);
         incorrectStar.SetActive(false);
         current.SetActive(false);
         cardBorder.SetActive(false);
-        yield return new WaitForSeconds(1f);
         position++;
+        yield return new WaitForSeconds(1f);
+        
         if (blockNumber == 2 && position == 48)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -298,15 +409,19 @@ public class WCST_Play : MonoBehaviour
 
     IEnumerator BlockSwitch()
     {
+        timer.Stop();
+        timer.Reset();
         blockNumber = 2;
+        block2Buff = 0;
         correctChain = 0;
-        sortCategory = "default";
+        sortCategory = 0;
         MCST_12.Play();
         DisableKeys();
         DisableKeyUI();
         MCST_12.Play();
-        yield return new WaitForSeconds(3f);
         position = 24;
+        yield return new WaitForSeconds(3f);
+        
         EnableKeyUI();
         StartCoroutine(Wait());
     }
@@ -315,9 +430,14 @@ public class WCST_Play : MonoBehaviour
         cardBorder.SetActive(true);
         current = currentObj;
         current.SetActive(true);
+
         currentColor = current.GetComponent<CardDisplay>().card.color;
         currentNum = current.GetComponent<CardDisplay>().card.number;
         currentShape = current.GetComponent<CardDisplay>().card.shape;
+        GetCorrectResponse();
+        timer.Reset();
+        timer.Start();
+
     }
 
     private void NextCard()
@@ -384,5 +504,38 @@ public class WCST_Play : MonoBehaviour
                 obj.GetComponent<Button>().interactable = false;
             }
         }
+    }
+    public void GetClickedCard(GameObject key)
+    {
+        clickedResponse = int.Parse((key.ToString().Substring(3, 1)));
+        Debug.Log(clickedResponse);
+
+    }
+    void GetCorrectResponse()
+    {
+        correctResponse.Clear();
+        if (keys[0].color == currentColor || keys[0].number == currentNum || keys[0].shape == currentShape)
+        {
+            correctResponse.Add(1);
+        }
+        if (keys[1].color == currentColor || keys[1].number == currentNum || keys[1].shape == currentShape)
+        {
+            correctResponse.Add(2);
+        }
+        if (keys[2].color == currentColor || keys[2].number == currentNum || keys[2].shape == currentShape)
+        {
+            correctResponse.Add(3);
+        }
+        if (keys[3].color == currentColor || keys[3].number == currentNum || keys[3].shape == currentShape)
+        {
+            correctResponse.Add(4);
+        }
+
+        Debug.Log(correctResponse[0] + "," + correctResponse[1] + "," + correctResponse[2]);
+    }
+    void WriteInDataSaver(int blockNum, int trialType, int sortCat, string WCST, int respOne, int respTwo, int respThree, int CRESP, float timer, int acc)
+    {
+        //WCST_Data.MeasurePractice(0,1,position+1,trialType, sortCategory,current.name,correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, 123,trialType);
+        WCST_Data.MeasureTest(1, blockNumber, position + 1, trialType, sortCat, WCST, respOne, respTwo, respThree, CRESP, timer, acc);
     }
 }

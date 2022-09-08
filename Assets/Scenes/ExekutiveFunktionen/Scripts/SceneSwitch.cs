@@ -87,4 +87,13 @@ public class SceneSwitch : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 159);
     }
 
+    public void StartWCST()
+    {
+        WCST_Data.header.Clear();
+        WCST_Data.practice.Clear();
+        WCST_Data.results.Clear();
+        WCST_Data.VPN = inputVPN;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 16);
+    }
+
 }

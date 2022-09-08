@@ -59,6 +59,7 @@
     <Compile Include="Assets\Backend\UI\Richtungssticker.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\GoNoGo\GoNoGoPractice.cs" />
     <Compile Include="Assets\Backend\UI\Zahnrad.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\Scripts\WCST_Outro.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\BlockClick.cs" />
     <Compile Include="Assets\Backend\Helper\DragNDrop.cs" />
     <Compile Include="Assets\Backend\UI\Auswahlzahnrad.cs" />
@@ -99,7 +100,7 @@
     <Compile Include="Assets\Backend\ControlFlow\Implementations\StabilityTrials.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\Randomizer.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\corsiTextSelect.cs" />
-    <Compile Include="Assets\Scenes\Flexibility\Scripts\WCST_Outro.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\Scripts\WCST_Data.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scenes\ExekutiveFunktionen\TextMesh Pro\Shaders\TMPro.cginc" />

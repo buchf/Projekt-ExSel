@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Flexibility/Scenes/WCST_Outro.unity
+- path: Assets/Scenes/Flexibility/Scenes/WCST_Play.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
