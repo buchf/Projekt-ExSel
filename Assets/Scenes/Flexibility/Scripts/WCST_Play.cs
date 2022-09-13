@@ -58,10 +58,13 @@ public class WCST_Play : MonoBehaviour
     int accuracy = 0;
     int buff = 0;
 
+    public static int gesamtpunktzahl = 0;
+
     public static Stopwatch timer = new Stopwatch();
 
     void Start()
     {
+        gesamtpunktzahl = 0;
         buff = 0;
         blockNumber = 1;
         block2Buff = 0;
@@ -332,10 +335,12 @@ public class WCST_Play : MonoBehaviour
         cardBorder.SetActive(false);
         position++;
         yield return new WaitForSeconds(1f);
-       
+
+        if (correctChain == 6) gesamtpunktzahl++;
 
         if (blockNumber == 2 && correctChain == 6)
         {
+            
             usedRulesTwo.Add(sortCategory);
             block2Buff++;
             if ((blockNumber == 2 && position == 47) || blockNumber == 2 && block2Buff == 3)
@@ -356,6 +361,7 @@ public class WCST_Play : MonoBehaviour
             }
             if (correctChain == 6 && blockNumber == 1 && position != 24 && usedRules.Count != 3)
             {
+                
                 usedRules.Add(sortCategory);
                 if (usedRules.Count < 3)
                 {
@@ -371,6 +377,7 @@ public class WCST_Play : MonoBehaviour
         
         if (position == 24 || (usedRules.Count == 3 && blockNumber == 1))
         {
+            
             StartCoroutine(BlockSwitch());
         }
     }

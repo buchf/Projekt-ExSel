@@ -14,6 +14,8 @@ public class WCST_Data : MonoBehaviour
     static string fileName;
     public static string filePath;
 
+    int gesamtpunktzahl = 0;
+
     public static StringBuilder header = new StringBuilder();
     public static StringBuilder practice = new StringBuilder();
     public static StringBuilder test = new StringBuilder();
@@ -21,6 +23,7 @@ public class WCST_Data : MonoBehaviour
 
     private void Start()
     {
+        gesamtpunktzahl = WCST_Play.gesamtpunktzahl;
         fileName = "VPN" + VPN + "_WCST.csv";
         fileName = checkFilename(fileName);
         filePath = Path.Combine(Application.persistentDataPath, fileName);
@@ -28,6 +31,8 @@ public class WCST_Data : MonoBehaviour
         header.Append("Experimental Phase,Block Number,Trial Number,Trial Type,Sorting Catergory,Stimulus presented,Correct Response1,Correct Response2,Correct Response3,Subject Response,Reaction Time,Reaction Accuracy\n");
         results.Add(header);
         results.Add(practice);
+        test.Append("\n\nNumber of categories completed: " + gesamtpunktzahl);
+        results.Add(test);
 
         File.WriteAllText(filePath, ListToString(results));
     }
@@ -58,6 +63,6 @@ public class WCST_Data : MonoBehaviour
     }
     public static void MeasureTest(int phase, int blockNum, int trialNum, int trialType, int sortingCategory, string stimulus, int corrResOne, int corrResTwo, int CorResThree, int subRes, float timer, int accuracy)
     {
-        practice.AppendFormat("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}\n", phase, blockNum, trialNum, trialType, sortingCategory, stimulus, corrResOne, corrResTwo, CorResThree, subRes, timer, accuracy);
+        test.AppendFormat("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}\n", phase, blockNum, trialNum, trialType, sortingCategory, stimulus, corrResOne, corrResTwo, CorResThree, subRes, timer, accuracy);
     }
 }

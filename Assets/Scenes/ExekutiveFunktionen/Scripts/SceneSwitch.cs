@@ -91,6 +91,7 @@ public class SceneSwitch : MonoBehaviour
     {
         WCST_Data.header.Clear();
         WCST_Data.practice.Clear();
+        WCST_Data.test.Clear();
         WCST_Data.results.Clear();
         WCST_Data.VPN = inputVPN;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 16);
