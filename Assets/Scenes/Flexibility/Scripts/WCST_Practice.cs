@@ -349,11 +349,12 @@ public class WCST_Practice : MonoBehaviour
     {
         WriteInDataSaver(trialType, sortCategory, current.name, correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, timer.ElapsedMilliseconds, accuracy);
         correctStar.SetActive(true);
+        cardBorder.SetActive(false);
         DisableKeys();
         yield return new WaitForSeconds(0.5f);
         correctStar.SetActive(false);
         current.SetActive(false);
-        cardBorder.SetActive(false);
+        
         yield return new WaitForSeconds(1f);
         position++;
         secondTry = 0;
@@ -380,11 +381,12 @@ public class WCST_Practice : MonoBehaviour
         //WCST_Data.MeasurePractice(0, 1, position + 1, trialType, sortCategory, current.name, correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, 123, trialType);
         WriteInDataSaver(trialType,sortCategory,current.name, correctResponse[0], correctResponse[1], correctResponse[2],clickedResponse, timer.ElapsedMilliseconds, accuracy);
         incorrectStar.SetActive(true);
+        cardBorder.SetActive(false);
         DisableKeys();
         yield return new WaitForSeconds(0.5f);
         incorrectStar.SetActive(false);
         current.SetActive(false);
-        cardBorder.SetActive(false);
+        
         yield return new WaitForSeconds(1f);
 
         if (position == 12)

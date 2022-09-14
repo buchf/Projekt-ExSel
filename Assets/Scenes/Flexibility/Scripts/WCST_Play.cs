@@ -79,6 +79,8 @@ public class WCST_Play : MonoBehaviour
         {
             timer.Stop();
             clickedResponse = 0;
+            accuracy = 0;
+            correctChain = 0;
 
             StartCoroutine(IncorrectAnimation());
             timer.Reset();
@@ -377,7 +379,6 @@ public class WCST_Play : MonoBehaviour
         
         if (position == 24 || (usedRules.Count == 3 && blockNumber == 1))
         {
-            
             StartCoroutine(BlockSwitch());
         }
     }
@@ -416,6 +417,8 @@ public class WCST_Play : MonoBehaviour
 
     IEnumerator BlockSwitch()
     {
+        current.SetActive(false);
+        cardBorder.SetActive(false);
         timer.Stop();
         timer.Reset();
         blockNumber = 2;
@@ -428,7 +431,6 @@ public class WCST_Play : MonoBehaviour
         MCST_12.Play();
         position = 24;
         yield return new WaitForSeconds(3f);
-        
         EnableKeyUI();
         StartCoroutine(Wait());
     }
@@ -543,6 +545,6 @@ public class WCST_Play : MonoBehaviour
     void WriteInDataSaver(int blockNum, int trialType, int sortCat, string WCST, int respOne, int respTwo, int respThree, int CRESP, float timer, int acc)
     {
         //WCST_Data.MeasurePractice(0,1,position+1,trialType, sortCategory,current.name,correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, 123,trialType);
-        WCST_Data.MeasureTest(1, blockNumber, position + 1, trialType, sortCat, WCST, respOne, respTwo, respThree, CRESP, timer, acc);
+        WCST_Data.MeasureTest(1, blockNumber +1, position + 1, trialType, sortCat, WCST, respOne, respTwo, respThree, CRESP, timer, acc);
     }
 }
