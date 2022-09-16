@@ -492,18 +492,24 @@ EditorBuildSettings:
     path: Assets/Scenes/ExekutiveFunktionen/Scenes/CSOutro.unity
     guid: aace6211eee0dfa479515643bc2ec92d
   - enabled: 1
-    path: Assets/Scenes/Flexibility/Scenes/WCST_Intro.unity
+    path: Assets/Scenes/Flexibility/WCST/Scenes/WCST_Intro.unity
     guid: 71934eaac5db5614b8706d56b87398db
   - enabled: 1
-    path: Assets/Scenes/Flexibility/Scenes/WCST_Practice.unity
+    path: Assets/Scenes/Flexibility/WCST/Scenes/WCST_Practice.unity
     guid: e8770db519ad1994cab223128c45b8c6
   - enabled: 1
-    path: Assets/Scenes/Flexibility/Scenes/WCST_Play.unity
+    path: Assets/Scenes/Flexibility/WCST/Scenes/WCST_Play.unity
     guid: 517ecf7debcfac247948f91c6bb6192f
   - enabled: 1
-    path: Assets/Scenes/Flexibility/Scenes/WCST_Outro.unity
+    path: Assets/Scenes/Flexibility/WCST/Scenes/WCST_Outro.unity
     guid: 3492583a981a7aa4cbc38d26e76886e8
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Flexibility/AX-CPT/Scenes/AX Intro.unity
+    guid: 41032ba49cb6c2443a6cd6fa36bdb4af
+  - enabled: 1
+    path: Assets/Scenes/Flexibility/AX-CPT/Scenes/AX Practice.unity
+    guid: 8a966affd6bed6e40a32cb175296033a
   m_configObjects: {}
