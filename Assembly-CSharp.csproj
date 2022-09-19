@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\CSDataSaver.cs" />
     <Compile Include="Assets\Backend\Helper\Selector.cs" />
     <Compile Include="Assets\Scenes\Flexibility\WCST\Scripts\Card.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Intro.cs" />
     <Compile Include="Assets\Backend\UI\RichtungsstickerInstancer.cs" />
     <Compile Include="Assets\Backend\ControlFlow\Block.cs" />
     <Compile Include="Assets\Scenes\Flexibility\WCST\Scripts\WCST_Play.cs" />
@@ -101,7 +102,7 @@
     <Compile Include="Assets\Backend\ControlFlow\Implementations\StabilityTrials.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\Randomizer.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\corsiTextSelect.cs" />
-    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Intro.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Practice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scenes\ExekutiveFunktionen\TextMesh Pro\Shaders\TMPro.cginc" />
