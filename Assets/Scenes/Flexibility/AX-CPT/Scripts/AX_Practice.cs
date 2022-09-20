@@ -29,20 +29,22 @@ public class AX_Practice : MonoBehaviour
     private GameObject currentSecond;
 
     public int trialNum;
-    int buff = 0;
+    public int trialType;
     public string cueProbe;
-
+    string cresp;
     bool enableTask;
+
+    public int wrongTask;
     private void Start()
     {
+        wrongTask = 0;
         enableTask = false;
         trialNum = 1;
-        buff = 0;
     }
     // Update is called once per frame
     void Update()
     {
-        if(timer.Elapsed.Seconds > 5)
+        if(timer.Elapsed.Seconds >= 5)
         {
             Compare("0");
         }
@@ -140,6 +142,20 @@ public class AX_Practice : MonoBehaviour
         {
             StartCoroutine(TaskAnimation(A, X));
         }
+        if(trial == 21)
+        {
+            if(wrongTask >=5 )
+            {
+                //clear practice Data and reload the practice scene
+                AX_Data.practice.Clear();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                Debug.Log("Next Scene");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+        }
     }
 
     private void NextTrial(int trial)
@@ -148,27 +164,30 @@ public class AX_Practice : MonoBehaviour
     }
     private void Compare(string s)
     {
+        if (cueProbe == "AX")
+        {
+            cresp = "L";
+        }
+        else
+        {
+            cresp = "D"; 
+        }
+
         timer.Stop();
         if((s == "L" && cueProbe == "AX") || (s == "D" && cueProbe != "AX"))
         {
             Debug.Log("True");
+            WriteInDataSaver(trialNum, currentFirst.name, currentSecond.name, cresp, s, trialType, timer.ElapsedMilliseconds, 1);
             StartCoroutine(CorrectAnimation());
-            buff = 0;
             trialNum++;
         }
         else
         {
             Debug.Log("False");
+            WriteInDataSaver(trialNum, currentFirst.name, currentSecond.name, cresp, s, trialType, timer.ElapsedMilliseconds, 0);
             StartCoroutine(InCorrectAnimation());
-            if(buff == 1)
-            {
-                trialNum++;
-                buff = 0;
-            }
-            else
-            {
-                buff++;
-            }
+            wrongTask++;
+            trialNum++;
         }
         enableTask = false;
         timer.Reset();
@@ -197,11 +216,19 @@ public class AX_Practice : MonoBehaviour
         incorrect.SetActive(false);
         NextTrial(trialNum);
     }
+    private void SetTrialType()
+    {
+        if (cueProbe == "AX") trialType = 1;
+        if (cueProbe == "AY") trialType = 2;
+        if (cueProbe == "BX") trialType = 3;
+        if (cueProbe == "BY") trialType = 4;
+    }
     IEnumerator TaskAnimation(GameObject first, GameObject second)
     {
         cueProbe = first.name + second.name;
         currentFirst = first;
         currentSecond = second;
+        SetTrialType();
         yield return new WaitForSeconds(0.5f);
         fixCross.SetActive(true);
         yield return new WaitForSeconds(0.5f);
@@ -227,5 +254,9 @@ public class AX_Practice : MonoBehaviour
     public void BackToIntro()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+    void WriteInDataSaver(int trial, string cue, string probe, string cresp, string subResp, int trialType, float time, int accuracy)
+    {
+        AX_Data.MeasurePractice(0,1,trial,cue,probe,cresp,subResp,trialType, time, accuracy);
     }
 }
