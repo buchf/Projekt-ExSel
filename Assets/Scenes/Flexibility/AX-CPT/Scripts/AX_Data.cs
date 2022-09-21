@@ -29,6 +29,7 @@ public class AX_Data : MonoBehaviour
 
         results.Add(header);
         results.Add(practice);
+        results.Add(test);
 
         File.WriteAllText(filePath, ListToString(results));
     }
@@ -57,5 +58,9 @@ public class AX_Data : MonoBehaviour
     public static void MeasurePractice(int phase, int blockNum, int trialNum, string cue, string probe, string correctResonse, string response, int trialType, float time, int accuracy)
     {
         practice.AppendFormat("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}\n", phase, blockNum, trialNum, cue, probe, correctResonse, response, trialType, time, accuracy);
+    }
+    public static void MeasureTest(int phase, int blockNum, int trialNum, string cue, string probe, string correctResonse, string response, int trialType, float time, int accuracy)
+    {
+        test.AppendFormat("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}\n", phase, blockNum, trialNum, cue, probe, correctResonse, response, trialType, time, accuracy);
     }
 }

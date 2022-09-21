@@ -97,4 +97,14 @@ public class SceneSwitch : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 16);
     }
 
+    public void StartAX_CPT()
+    {
+        AX_Data.header.Clear();
+        AX_Data.practice.Clear();
+        AX_Data.test.Clear();
+        AX_Data.results.Clear();
+        AX_Data.VPN = inputVPN;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 20);
+    }
+
 }

@@ -96,6 +96,7 @@
     <Compile Include="Assets\Backend\UI\Auswahlsymbol.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\PracticeBlock.cs" />
     <Compile Include="Assets\Backend\UI\Propeller.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Data.cs" />
     <Compile Include="Assets\Backend\ControlFlow\ReplayInput.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\GoNoGo\DataGoNoGO.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\GoNoGo\AnimalSelector.cs" />
@@ -103,7 +104,7 @@
     <Compile Include="Assets\Backend\ControlFlow\Implementations\StabilityTrials.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\Randomizer.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\corsiTextSelect.cs" />
-    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Data.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scenes\ExekutiveFunktionen\TextMesh Pro\Shaders\TMPro.cginc" />
