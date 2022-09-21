@@ -105,6 +105,7 @@
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\Randomizer.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\corsiTextSelect.cs" />
     <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Test.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Outro.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scenes\ExekutiveFunktionen\TextMesh Pro\Shaders\TMPro.cginc" />
