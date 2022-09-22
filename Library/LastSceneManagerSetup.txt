@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/begin.unity
+- path: Assets/Scenes/Flexibility/Verbal Span/Scenes/VS Intro.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
