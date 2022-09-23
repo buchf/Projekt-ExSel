@@ -518,4 +518,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Flexibility/AX-CPT/Scenes/Ax Outro.unity
     guid: 9b826a77798821b489440e9c1962e996
+  - enabled: 1
+    path: Assets/Scenes/Verbal Span/Scenes/VS Intro.unity
+    guid: a6b4629c67d76d84e96910beda8ac48c
+  - enabled: 1
+    path: Assets/Scenes/Verbal Span/Scenes/VS Practice.unity
+    guid: 8e79d84fc507ccc47a9e3136d39c9a21
   m_configObjects: {}

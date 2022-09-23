@@ -80,7 +80,9 @@
     <Compile Include="Assets\Backend\UI\RichtungsstickerInstancer.cs" />
     <Compile Include="Assets\Backend\ControlFlow\Block.cs" />
     <Compile Include="Assets\Scenes\Flexibility\WCST\Scripts\WCST_Play.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Test.cs" />
     <Compile Include="Assets\Backend\IO\Measurement.cs" />
+    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Outro.cs" />
     <Compile Include="Assets\Scenes\Flexibility\WCST\Scripts\WCST_Intro.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\SceneSwitch.cs" />
     <Compile Include="Assets\Backend\ControlFlow\InstructionBase.cs" />
@@ -104,8 +106,7 @@
     <Compile Include="Assets\Backend\ControlFlow\Implementations\StabilityTrials.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\Randomizer.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\corsiTextSelect.cs" />
-    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Test.cs" />
-    <Compile Include="Assets\Scenes\Flexibility\AX-CPT\Scripts\AX_Outro.cs" />
+    <Compile Include="Assets\Scenes\Verbal Span\Scripts\VSIntro.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scenes\ExekutiveFunktionen\TextMesh Pro\Shaders\TMPro.cginc" />
