@@ -13,6 +13,7 @@ public class AX_Intro : MonoBehaviour
     public GameObject glasses;
     public GameObject greenDot;
     public GameObject redDot;
+    public GameObject fixCross;
 
     public int current = 0;
     void Start()
@@ -56,12 +57,19 @@ public class AX_Intro : MonoBehaviour
         audioFiles[current].Play();
         backgrounds[current - 1].SetActive(false);
         backgrounds[current].SetActive(true);
+        fixCross.SetActive(true);
         yield return new WaitForSeconds(5f);
+        fixCross.SetActive(false);
         glasses.SetActive(true);
-        yield return new WaitForSeconds(6f);
-        book.SetActive(true);
+        yield return new WaitForSeconds(1f);
         glasses.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        book.SetActive(true);
         greenDot.SetActive(true);
         redDot.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        book.SetActive(false);
+        greenDot.SetActive(false);
+        redDot.SetActive(false);
     }
 }

@@ -330,6 +330,7 @@ public class WCST_Play : MonoBehaviour
     {
         WriteInDataSaver(blockNumber, trialType, sortCategory, current.name, correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, timer.ElapsedMilliseconds, accuracy);
         correctStar.SetActive(true);
+        cardBorder.SetActive(false);
         DisableKeys();
         yield return new WaitForSeconds(0.5f);
         correctStar.SetActive(false);
@@ -388,6 +389,7 @@ public class WCST_Play : MonoBehaviour
     {
         WriteInDataSaver(blockNumber, trialType, sortCategory, current.name, correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, timer.ElapsedMilliseconds, accuracy);
         incorrectStar.SetActive(true);
+        cardBorder.SetActive(false);
         DisableKeys();
         yield return new WaitForSeconds(0.5f);
         incorrectStar.SetActive(false);
