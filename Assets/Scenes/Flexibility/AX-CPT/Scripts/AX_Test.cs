@@ -575,6 +575,10 @@ public class AX_Test : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
+    public void GoToOutro()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     void WriteInDataSaver(int blockNumber,int trial, string cue, string probe, string cresp, string subResp, int trialType, float time, int accuracy)
     {
         AX_Data.MeasureTest(1, blockNumber, trial, cue, probe, cresp, subResp, trialType, time, accuracy);
