@@ -23,8 +23,8 @@ public class VSIntro : MonoBehaviour
     private void Start()
     {
         
-        buff = 5;
-        //VS_01mp3.Play();
+        buff = 0;
+        VS_01mp3.Play();
     }
     private void Update()
     {

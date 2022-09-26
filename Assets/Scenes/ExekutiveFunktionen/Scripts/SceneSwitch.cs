@@ -108,4 +108,9 @@ public class SceneSwitch : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 20);
     }
 
+    public void StartVS()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 24);
+    }
+
 }

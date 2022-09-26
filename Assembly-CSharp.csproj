@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scenes\Flexibility\WCST\Scripts\WCST_Outro.cs" />
     <Compile Include="Assets\Scenes\Flexibility\WCST\Scripts\WCST_Data.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\BlockClick.cs" />
+    <Compile Include="Assets\Scenes\Verbal Span\Scripts\VSIntro.cs" />
     <Compile Include="Assets\Backend\Helper\DragNDrop.cs" />
     <Compile Include="Assets\Backend\UI\Auswahlzahnrad.cs" />
     <Compile Include="Assets\Backend\Helper\MultiSelector.cs" />
@@ -106,7 +107,8 @@
     <Compile Include="Assets\Backend\ControlFlow\Implementations\StabilityTrials.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\Randomizer.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\corsiTextSelect.cs" />
-    <Compile Include="Assets\Scenes\Verbal Span\Scripts\VSIntro.cs" />
+    <Compile Include="Assets\Scenes\Verbal Span\Scripts\VSPractice.cs" />
+    <Compile Include="Assets\Scenes\Verbal Span\Scripts\VSBackend.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scenes\ExekutiveFunktionen\TextMesh Pro\Shaders\TMPro.cginc" />

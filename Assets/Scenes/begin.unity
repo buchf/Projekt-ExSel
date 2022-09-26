@@ -2733,7 +2733,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9614992}
         m_TargetAssemblyTypeName: SceneSwitch, Assembly-CSharp
-        m_MethodName: StartAX_CPT
+        m_MethodName: StartVS
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
