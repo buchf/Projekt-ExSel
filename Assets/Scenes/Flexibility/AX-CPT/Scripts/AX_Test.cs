@@ -41,8 +41,16 @@ public class AX_Test : MonoBehaviour
     public AudioSource Ax_CPT_05mp3;
     public int wrongTask;
 
+    public string response;
+    public static int hits;
+    public static int misses;
+    public static int errors;
+
     private void Start()
     {
+        hits = 0;
+        errors = 0;
+        misses = 0;
         blockNum = 1;
         wrongTask = 0;
         enableTask = false;
@@ -465,6 +473,7 @@ public class AX_Test : MonoBehaviour
     }
     private void Compare(string s)
     {
+        response = s;
         if (cueProbe == "AX")
         {
             cresp = "L";
@@ -503,6 +512,7 @@ public class AX_Test : MonoBehaviour
     }
     IEnumerator CorrectAnimation()
     {
+        hits++;
         DespawnOld();
         correct.SetActive(true);
         yield return new WaitForSeconds(.5f);
@@ -511,6 +521,14 @@ public class AX_Test : MonoBehaviour
     }
     IEnumerator InCorrectAnimation()
     {
+        if(response == "0")
+        {
+            misses++;
+        }
+        else
+        {
+            errors++;
+        }
         DespawnOld();
         incorrect.SetActive(true);
         yield return new WaitForSeconds(.5f);

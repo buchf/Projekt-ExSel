@@ -102,6 +102,7 @@ public class SceneSwitch : MonoBehaviour
         AX_Data.header.Clear();
         AX_Data.practice.Clear();
         AX_Data.test.Clear();
+        AX_Data.overall.Clear();
         AX_Data.results.Clear();
         AX_Data.VPN = inputVPN;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 20);

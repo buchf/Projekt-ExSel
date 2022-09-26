@@ -16,11 +16,20 @@ public class AX_Data : MonoBehaviour
     public static StringBuilder header = new StringBuilder();
     public static StringBuilder practice = new StringBuilder();
     public static StringBuilder test = new StringBuilder();
+    public static StringBuilder overall = new StringBuilder();
     public static List<StringBuilder> results = new List<StringBuilder>();
 
+    private float hits;
+    private float misses;
+    private float errors;
+    public float accuracyPercentage = 0.0f;
 
     void Start()
     {
+        hits = AX_Test.hits;
+        misses = AX_Test.misses;
+        errors = AX_Test.errors;
+
         fileName = "VPN" + VPN + "_AX-CPT.csv";
         fileName = checkFilename(fileName);
         filePath = Path.Combine(Application.persistentDataPath, fileName);
@@ -30,7 +39,9 @@ public class AX_Data : MonoBehaviour
         results.Add(header);
         results.Add(practice);
         results.Add(test);
-
+        accuracyPercentage = hits / (hits + misses + errors) * 100;
+        overall.Append("\n,Hits: " + hits + "\n,Misses: " + misses + "\n,Errors: " + errors + "\n,Correct: " + accuracyPercentage.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture) + "%");
+        results.Add(overall);
         File.WriteAllText(filePath, ListToString(results));
     }
 
