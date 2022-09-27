@@ -18,4 +18,10 @@ public class VSBackend : MonoBehaviour
     {
         
     }
+
+    public void ClearLists()
+    {
+        sequenzList.Clear();
+        clickedList.Clear();
+    }
 }
