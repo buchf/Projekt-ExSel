@@ -16,12 +16,13 @@ public class VSPractice : MonoBehaviour
     public GameObject border;
     public GameObject fixCross;
     public GameObject correct;
-    public GameObject inCorrect;
+    public GameObject incorrect;
 
     public int currentTrial = 1;
     public int sequenzLength = 1;
     public int clickedLength = 0;
 
+    public GameObject defaultObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,31 +43,63 @@ public class VSPractice : MonoBehaviour
         if(sequenzLength == clickedLength)
         {
             
-            foreach (var i in backend.clickedList)
+            foreach (var i in backend.sequenzList)
             {
                 i.SetActive(false);
             }
-            currentTrial++;
+            
             backend.ClearLists();
             clickedLength = 0;
-            StartTrial(currentTrial);
+            if(backend.listCompareVar == 1)
+            {
+                StartCoroutine(CorrectSequenz());
+            }
+            else
+            {
+                StartCoroutine(IncorrectSequenz());
+            }
+            //StartTrial(currentTrial);
         }
     }
     private void StartTrial(int current)
     {
-        if(current == 1)
+        if(sequenzLength == 1)
         {
-            StartCoroutine(SequenzOne(Wolf));
+            if (current == 1)
+            {
+                StartCoroutine(Sequenz(Wolf));
+            }
+            if (current == 2)
+            {
+                StartCoroutine(Sequenz(Besen));
+                
+            }
+            if(current == 3)
+            {
+                sequenzLength = 2;
+            }
+            
         }
-        if (current == 2)
+        if(sequenzLength == 2)
         {
-            StartCoroutine(SequenzOne(Besen));
+            if(current == 3)
+            {
+                Debug.Log("test");
+                StartCoroutine(Sequenz(Haus,Kobold));
+            }
+            if (current == 4)
+            {
+                StartCoroutine(Sequenz(Fisch, Schwein));
+            }
         }
+        
     }
 
     private void SpawnObject(GameObject gameObject)
     {
+        gameObject.transform.position = defaultObject.transform.position;
         gameObject.SetActive(true);
+        gameObject.GetComponent<Button>().interactable = false;
         backend.sequenzList.Add(gameObject);
     }
 
@@ -84,7 +117,7 @@ public class VSPractice : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
-    IEnumerator SequenzOne(GameObject a)
+    IEnumerator Sequenz(GameObject a)
     {
         fixCross.SetActive(true);
         yield return new WaitForSeconds(1f);
@@ -93,11 +126,28 @@ public class VSPractice : MonoBehaviour
         yield return new WaitForSeconds(1f);
         a.SetActive(false);
         yield return new WaitForSeconds(1f);
-        SpawnOne(a);
+        SpawnOnField(a);
+    }
+    IEnumerator Sequenz(GameObject a, GameObject b)
+    {
+        fixCross.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        fixCross.SetActive(false);
+        SpawnObject(a);
+        yield return new WaitForSeconds(1f);
+        a.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        SpawnObject(b);
+        yield return new WaitForSeconds(1f);
+        b.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        SpawnOnField(a, b);
     }
 
-    void SpawnOne(GameObject a)
+
+    void SpawnOnField(GameObject a)
     {
+        a.GetComponent<Button>().interactable = true;
         if (currentTrial == 1)
         {
             SpawnObjectInBlock(a, 5);
@@ -107,7 +157,23 @@ public class VSPractice : MonoBehaviour
             SpawnObjectInBlock(a, 5);
         }
     }
-    
+    void SpawnOnField(GameObject a, GameObject b)
+    {
+        a.GetComponent<Button>().interactable = true;
+        b.GetComponent<Button>().interactable = true;
+        if (currentTrial == 3)
+        {
+            SpawnObjectInBlock(a, 5);
+            SpawnObjectInBlock(b, 8);
+        }
+        if (currentTrial == 4)
+        {
+            SpawnObjectInBlock(a, 5);
+            SpawnObjectInBlock(b, 8);
+        }
+    }
+
+
     void SpawnObjectInBlock(GameObject gameObject, int blockNumber)
     {
         switch (blockNumber)
@@ -148,8 +214,6 @@ public class VSPractice : MonoBehaviour
         border.transform.position = gameObject.transform.position;
         Debug.Log(gameObject.name.ToString());
         StartCoroutine(ClickAnimation(gameObject));
-        backend.clickedList.Add(gameObject);
-        clickedLength++;
     }
 
     IEnumerator ClickAnimation(GameObject gameObject)
@@ -159,5 +223,29 @@ public class VSPractice : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         border.SetActive(false);
         gameObject.GetComponent<Button>().interactable = true;
+        backend.clickedList.Add(gameObject);
+        clickedLength++;
+    }
+
+    IEnumerator CorrectSequenz()
+    {
+        yield return new WaitForSeconds(.2f);
+        correct.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        correct.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        currentTrial++;
+        StartTrial(currentTrial);
+    }
+
+    IEnumerator IncorrectSequenz()
+    {
+        yield return new WaitForSeconds(.2f);
+        incorrect.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        incorrect.SetActive(false);
+        yield return new WaitForSeconds(1f);
+       // currentTrial++;
+        StartTrial(currentTrial);
     }
 }
