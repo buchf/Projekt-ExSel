@@ -63,18 +63,19 @@ public class AX_Test : MonoBehaviour
         {
             Compare("0");
         }
+    }
 
-        if (Input.GetKeyDown("d") && enableTask)
-        {
-            Compare("D");
-        }
-
-        if (Input.GetKeyDown("l") && enableTask)
+    public void PressButton(GameObject button)
+    {
+        if (button.name == "greenDot")
         {
             Compare("L");
         }
+        if (button.name == "redDot")
+        {
+            Compare("D");
+        }
     }
-
     private void CurrentTrial(int trial)
     {
         if (trial == 1)

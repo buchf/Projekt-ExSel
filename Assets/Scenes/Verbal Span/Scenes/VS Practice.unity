@@ -2496,6 +2496,9 @@ MonoBehaviour:
   fixCross: {fileID: 1443279560}
   correct: {fileID: 1943588349}
   inCorrect: {fileID: 248387704}
+  currentTrial: 1
+  sequenzLength: 1
+  clickedLength: 0
 --- !u!4 &1984318274
 Transform:
   m_ObjectHideFlags: 0
