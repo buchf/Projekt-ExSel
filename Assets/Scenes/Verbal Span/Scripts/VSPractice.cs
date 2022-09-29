@@ -22,10 +22,12 @@ public class VSPractice : MonoBehaviour
     public int sequenzLength = 1;
     public int clickedLength = 0;
 
+    int buff = 0;
     public GameObject defaultObject;
     // Start is called before the first frame update
     void Start()
     {
+        buff = 0;
         clickedLength = 0;
         currentTrial = 1;
         sequenzLength = 1;
@@ -246,6 +248,17 @@ public class VSPractice : MonoBehaviour
         incorrect.SetActive(false);
         yield return new WaitForSeconds(1f);
        // currentTrial++;
-        StartTrial(currentTrial);
+       if(buff == 0)
+        {
+            buff = 1;
+            StartTrial(currentTrial);
+        }
+        else
+        {
+            buff = 0;
+            currentTrial++;
+            StartTrial(currentTrial);
+        }
+        
     }
 }

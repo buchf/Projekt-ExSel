@@ -109,6 +109,7 @@
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\Randomizer.cs" />
     <Compile Include="Assets\Scenes\ExekutiveFunktionen\Scripts\Corsi\corsiTextSelect.cs" />
     <Compile Include="Assets\Scenes\Verbal Span\Scripts\VSPractice.cs" />
+    <Compile Include="Assets\Scenes\Verbal Span\Scripts\VSTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scenes\ExekutiveFunktionen\TextMesh Pro\Shaders\TMPro.cginc" />
