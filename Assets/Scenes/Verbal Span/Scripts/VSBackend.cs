@@ -27,6 +27,7 @@ public class VSBackend : MonoBehaviour
     public void ClearLists()
     {
         CompareLists();
+        Debug.Log("Compare: " + listCompareVar);
         sequenzList.Clear();
         clickedList.Clear();
     }
@@ -35,7 +36,7 @@ public class VSBackend : MonoBehaviour
     {
         int x = clickedList.Count;
         int y = sequenzList.Count;
-        int[] clicks = {-1, -1};
+        int[] clicks = {-1, -1, -1, -1, -1 , -1 , -1, -1};
         listCompareVar = 1;
 
         if (x != y)

@@ -12,7 +12,7 @@ public class VSTest : MonoBehaviour
     public VSBackend backend;
     [SerializeField]
     GameObject Wolf, Besen, Haus, Kobold, Fisch, Schwein, Baum, Zauberhut, Buch, Bild, Pilz, Schuh, Vogel, Drachen, Hase, Schluessel, Brille, Ring, Zwerg,
-        Truhe, Blume, Apfel, Baer, Gras, Huhn, Kleid, Boot, Gans, Hexe, Stern, Elfe, Gnom, Frosch, Mond, Krone, Blatt;
+        Truhe, Blume, Apfel, Baer, Gras, Huhn, Kleid, Boot, Gans, Hexe, Stern, Elfe, Frosch, Mond, Krone, Blatt, Hund;
 
     public GameObject border;
     public GameObject fixCross;
@@ -28,8 +28,8 @@ public class VSTest : MonoBehaviour
     {
         buff = 0;
         clickedLength = 0;
-        currentTrial = 6;
-        sequenzLength = 1;
+        currentTrial = 48;
+        sequenzLength = 8;
         backend = FindObjectOfType<VSBackend>();
 
         foreach (GameObject i in startUI)
@@ -43,7 +43,6 @@ public class VSTest : MonoBehaviour
         //listen vergleichen dann correct / incorrect animation -> in animation am ende naechsten trial aufrufen
         if (sequenzLength == clickedLength)
         {
-
             foreach (var i in backend.sequenzList)
             {
                 i.SetActive(false);
@@ -121,14 +120,14 @@ public class VSTest : MonoBehaviour
             {
                 StartCoroutine(Sequenz(Ring, Zwerg));
             }
-            if(current == 13)
+            if (current == 13)
             {
                 sequenzLength++;
             }
         }
-        if(sequenzLength == 3)
+        if (sequenzLength == 3)
         {
-            if(current == 13)
+            if (current == 13)
             {
                 StartCoroutine(Sequenz(Zauberhut, Buch, Truhe));
             }
@@ -142,23 +141,179 @@ public class VSTest : MonoBehaviour
             }
             if (current == 16)
             {
-                StartCoroutine(Sequenz(Apfel, Baer, Gras));
+                StartCoroutine(Sequenz(Baum, Huhn, Hase));
             }
             if (current == 17)
             {
-                StartCoroutine(Sequenz(Apfel, Baer, Gras));
+                StartCoroutine(Sequenz(Kobold, Kleid, Boot));
             }
             if (current == 18)
             {
-                StartCoroutine(Sequenz(Apfel, Baer, Gras));
+                StartCoroutine(Sequenz(Gans, Hexe, Schluessel));
             }
             if (current == 19)
             {
                 sequenzLength++;
             }
-
         }
+        if (sequenzLength == 4)
+        {
+            if (current == 19)
+            {
+                StartCoroutine(Sequenz(Ring, Huhn, Blume, Vogel));
+            }
+            if (current == 20)
+            {
+                StartCoroutine(Sequenz(Baum, Baer, Zwerg, Schwein));
+            }
+            if (current == 21)
+            {
+                StartCoroutine(Sequenz(Wolf, Drachen, Kobold, Zauberhut));
+            }
+            if (current == 22)
+            {
+                StartCoroutine(Sequenz(Apfel, Kleid, Stern, Boot));
+            }
+            if (current == 23)
+            {
+                StartCoroutine(Sequenz(Hund, Buch, Schuh, Fisch));
+            }
+            if (current == 24)
+            {
+                StartCoroutine(Sequenz(Hexe, Bild, Besen, Hase));
+            }
+            if (current == 25)
+            {
+                sequenzLength++;
+            }
+        }
+        if (sequenzLength == 5)
+        {
+            if (current == 25)
+            {
+                StartCoroutine(Sequenz(Mond, Apfel, Stern, Blatt, Hase));
+            }
+            if (current == 26)
+            {
+                StartCoroutine(Sequenz(Brille, Kleid, Wolf, Huhn, Fisch));
+            }
+            if (current == 27)
+            {
+                StartCoroutine(Sequenz(Buch, Blume, Gras, Schuh, Elfe));
+            }
+            if (current == 28)
+            {
+                StartCoroutine(Sequenz(Krone, Gans, Drachen, Zauberhut, Bild));
+            }
+            if (current == 29)
+            {
+                StartCoroutine(Sequenz(Truhe, Ring, Boot, Frosch, Kobold));
+            }
+            if (current == 30)
+            {
+                StartCoroutine(Sequenz(Vogel, Baum, Hexe, Besen, Zwerg));
+            }
+            if (current == 31)
+            {
+                sequenzLength++;
+            }
+        }
+        if (sequenzLength == 6)
+        {
+            if (current == 31)
+            {
+                StartCoroutine(Sequenz(Stern, Elfe, Hexe, Huhn, Schluessel, Truhe));
+            }
+            if (current == 32)
+            {
+                StartCoroutine(Sequenz(Blume, Zwerg, Buch, Zauberhut, Blatt, Boot));
+            }
+            if (current == 33)
+            {
+                StartCoroutine(Sequenz(Gras, Besen, Kleid, Schwein, Kobold, Bild));
+            }
+            if (current == 34)
+            {
+                StartCoroutine(Sequenz(Frosch, Gans, Pilz, Haus, Baum, Brille));
+            }
+            if (current == 35)
+            {
+                StartCoroutine(Sequenz(Drachen, Krone, Wolf, Hund, Apfel, Schuh));
+            }
+            if (current == 36)
+            {
+                StartCoroutine(Sequenz(Mond, Fisch, Baer, Vogel, Ring, Hase));
+            }
+            if (current == 37)
+            {
+                sequenzLength++;
+            }
+        }
+        if (sequenzLength == 7)
+        {
+            if (current == 37)
+            {
+                StartCoroutine(Sequenz(Brille, Hund, Gans, Hase, Buch, Zwerg, Frosch));
+            }
+            if (current == 38)
+            {
+                StartCoroutine(Sequenz(Gras, Hase, Brille, Blatt, Krone, Truhe, Zauberhut));
+            }
+            if (current == 39)
+            {
+                StartCoroutine(Sequenz(Blume, Kobold, Schwein, Besen, Truhe, Baer, Pilz));
+            }
+            if (current == 40)
+            {
+                StartCoroutine(Sequenz(Elfe, Baum, Haus, Ring, Stern, Drachen, Hase));
+            }
+            if (current == 41)
+            {
+                StartCoroutine(Sequenz(Haus, Hase, Brille, Schuh, Kobold, Blume, Vogel));
+            }
+            if (current == 42)
+            {
+                StartCoroutine(Sequenz(Gans, Bild, Boot, Ring, Zwerg, Blatt, Hase));
+            }
+            if (current == 43)
+            {
+                sequenzLength++;
+            }
+        }
+        if (sequenzLength == 8)
+        {
+            if (current == 43)
+            {
+                StartCoroutine(Sequenz(Vogel, Haus, Buch, Zauberhut, Besen, Brille, Ring, Gans));
+            }
+            if (current == 44)
+            {
+                StartCoroutine(Sequenz(Fisch, Kleid, Hase, Apfel, Schluessel, Zwerg, Elfe, Besen));
+            }
+            if (current == 45)
+            {
+                StartCoroutine(Sequenz(Kleid, Baer, Zwerg, Hase, Baum, Mond, Kobold, Hund));
+            }
+            if (current == 46)
+            {
+                StartCoroutine(Sequenz(Gras, Wolf, Schwein, Apfel, Truhe, Bild, Haus, Zauberhut
+));
+            }
+            if (current == 47)
+            {
+                StartCoroutine(Sequenz(Apfel, Besen, Zwerg, Krone, Truhe, Vogel, Mond, Blume));
+            }
+            if (current == 48)
+            {
+                StartCoroutine(Sequenz(Besen, Krone, Truhe, Gans, Baum, Hund, Vogel, Drachen));
+            }
+            if (current == 49)
+            {
+                //ENDE nexxt scene
 
+                sequenzLength++;
+            }
+        }
     }
 
     private void SpawnObject(GameObject gameObject)
@@ -388,16 +543,16 @@ public class VSTest : MonoBehaviour
     void SpawnOnField(GameObject a)
     {
         a.GetComponent<Button>().interactable = true;
-        SpawnObjectInBlock(a,5);
+        SpawnObjectInBlock(a, 5);
     }
     void SpawnOnField(GameObject a, GameObject b)
     {
         a.GetComponent<Button>().interactable = true;
         b.GetComponent<Button>().interactable = true;
 
-        if(currentTrial == 7)
+        if (currentTrial == 7)
         {
-            SpawnObjectInBlock(a,4);
+            SpawnObjectInBlock(a, 4);
             SpawnObjectInBlock(b, 5);
         }
         if (currentTrial == 8)
@@ -425,7 +580,6 @@ public class VSTest : MonoBehaviour
             SpawnObjectInBlock(a, 4);
             SpawnObjectInBlock(b, 5);
         }
-
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c)
     {
@@ -436,14 +590,14 @@ public class VSTest : MonoBehaviour
         if (currentTrial == 13)
         {
             SpawnObjectInBlock(a, 4);
-            SpawnObjectInBlock(b, 5);
-            SpawnObjectInBlock(c, 6);
+            SpawnObjectInBlock(c, 5);
+            SpawnObjectInBlock(b, 6);
         }
         if (currentTrial == 14)
         {
-            SpawnObjectInBlock(a, 4);
-            SpawnObjectInBlock(b, 5);
-            SpawnObjectInBlock(c, 6);
+            SpawnObjectInBlock(b, 4);
+            SpawnObjectInBlock(c, 5);
+            SpawnObjectInBlock(a, 6);
         }
         if (currentTrial == 15)
         {
@@ -453,20 +607,20 @@ public class VSTest : MonoBehaviour
         }
         if (currentTrial == 16)
         {
-            SpawnObjectInBlock(a, 4);
+            SpawnObjectInBlock(c, 4);
             SpawnObjectInBlock(b, 5);
-            SpawnObjectInBlock(c, 6);
+            SpawnObjectInBlock(a, 6);
         }
         if (currentTrial == 17)
         {
             SpawnObjectInBlock(a, 4);
-            SpawnObjectInBlock(b, 5);
-            SpawnObjectInBlock(c, 6);
+            SpawnObjectInBlock(c, 5);
+            SpawnObjectInBlock(b, 6);
         }
         if (currentTrial == 18)
         {
-            SpawnObjectInBlock(a, 4);
-            SpawnObjectInBlock(b, 5);
+            SpawnObjectInBlock(b, 4);
+            SpawnObjectInBlock(a, 5);
             SpawnObjectInBlock(c, 6);
         }
 
@@ -477,7 +631,49 @@ public class VSTest : MonoBehaviour
         b.GetComponent<Button>().interactable = true;
         c.GetComponent<Button>().interactable = true;
         d.GetComponent<Button>().interactable = true;
-        
+
+        if (currentTrial == 19)
+        {
+            SpawnObjectInBlock(a, 2);
+            SpawnObjectInBlock(b, 1);
+            SpawnObjectInBlock(c, 5);
+            SpawnObjectInBlock(d, 9);
+        }
+        if (currentTrial == 20)
+        {
+            SpawnObjectInBlock(a, 1);
+            SpawnObjectInBlock(b, 2);
+            SpawnObjectInBlock(c, 5);
+            SpawnObjectInBlock(d, 9);
+        }
+        if (currentTrial == 21)
+        {
+            SpawnObjectInBlock(a, 3);
+            SpawnObjectInBlock(b, 6);
+            SpawnObjectInBlock(c, 8);
+            SpawnObjectInBlock(d, 1);
+        }
+        if (currentTrial == 22)
+        {
+            SpawnObjectInBlock(a, 6);
+            SpawnObjectInBlock(b, 4);
+            SpawnObjectInBlock(c, 7);
+            SpawnObjectInBlock(d, 2);
+        }
+        if (currentTrial == 23)
+        {
+            SpawnObjectInBlock(a, 8);
+            SpawnObjectInBlock(b, 9);
+            SpawnObjectInBlock(c, 4);
+            SpawnObjectInBlock(d, 3);
+        }
+        if (currentTrial == 24)
+        {
+            SpawnObjectInBlock(a, 4);
+            SpawnObjectInBlock(b, 6);
+            SpawnObjectInBlock(c, 2);
+            SpawnObjectInBlock(d, 8);
+        }
     }
 
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e)
@@ -487,6 +683,55 @@ public class VSTest : MonoBehaviour
         c.GetComponent<Button>().interactable = true;
         d.GetComponent<Button>().interactable = true;
         e.GetComponent<Button>().interactable = true;
+
+        if (currentTrial == 25)
+        {
+            SpawnObjectInBlock(a, 1);
+            SpawnObjectInBlock(b, 3);
+            SpawnObjectInBlock(c, 5);
+            SpawnObjectInBlock(d, 7);
+            SpawnObjectInBlock(e, 9);
+        }
+        if (currentTrial == 26)
+        {
+            SpawnObjectInBlock(a, 6);
+            SpawnObjectInBlock(b, 7);
+            SpawnObjectInBlock(c, 8);
+            SpawnObjectInBlock(d, 5);
+            SpawnObjectInBlock(e, 3);
+        }
+        if (currentTrial == 27)
+        {
+            SpawnObjectInBlock(a, 2);
+            SpawnObjectInBlock(b, 3);
+            SpawnObjectInBlock(c, 6);
+            SpawnObjectInBlock(d, 7);
+            SpawnObjectInBlock(e, 9);
+        }
+        if (currentTrial == 28)
+        {
+            SpawnObjectInBlock(a, 7);
+            SpawnObjectInBlock(b, 3);
+            SpawnObjectInBlock(c, 9);
+            SpawnObjectInBlock(d, 2);
+            SpawnObjectInBlock(e, 6);
+        }
+        if (currentTrial == 29)
+        {
+            SpawnObjectInBlock(a, 6);
+            SpawnObjectInBlock(b, 1);
+            SpawnObjectInBlock(c, 2);
+            SpawnObjectInBlock(d, 8);
+            SpawnObjectInBlock(e, 5);
+        }
+        if (currentTrial == 30)
+        {
+            SpawnObjectInBlock(a, 2);
+            SpawnObjectInBlock(b, 7);
+            SpawnObjectInBlock(c, 8);
+            SpawnObjectInBlock(d, 5);
+            SpawnObjectInBlock(e, 4);
+        }
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e, GameObject f)
     {
@@ -496,6 +741,61 @@ public class VSTest : MonoBehaviour
         d.GetComponent<Button>().interactable = true;
         e.GetComponent<Button>().interactable = true;
         f.GetComponent<Button>().interactable = true;
+
+        if (currentTrial == 31)
+        {
+            SpawnObjectInBlock(a, 2);
+            SpawnObjectInBlock(b, 7);
+            SpawnObjectInBlock(c, 8);
+            SpawnObjectInBlock(d, 5);
+            SpawnObjectInBlock(e, 4);
+            SpawnObjectInBlock(f, 6);
+        }
+        if (currentTrial == 32)
+        {
+            SpawnObjectInBlock(a, 7);
+            SpawnObjectInBlock(b, 6);
+            SpawnObjectInBlock(c, 3);
+            SpawnObjectInBlock(d, 4);
+            SpawnObjectInBlock(e, 9);
+            SpawnObjectInBlock(f, 2);
+        }
+        if (currentTrial == 33)
+        {
+            SpawnObjectInBlock(a, 1);
+            SpawnObjectInBlock(b, 3);
+            SpawnObjectInBlock(c, 6);
+            SpawnObjectInBlock(d, 4);
+            SpawnObjectInBlock(e, 7);
+            SpawnObjectInBlock(f, 5);
+        }
+        if (currentTrial == 34)
+        {
+            SpawnObjectInBlock(a, 8);
+            SpawnObjectInBlock(b, 7);
+            SpawnObjectInBlock(c, 4);
+            SpawnObjectInBlock(d, 6);
+            SpawnObjectInBlock(e, 3);
+            SpawnObjectInBlock(f, 2);
+        }
+        if (currentTrial == 35)
+        {
+            SpawnObjectInBlock(a, 2);
+            SpawnObjectInBlock(b, 6);
+            SpawnObjectInBlock(c, 7);
+            SpawnObjectInBlock(d, 9);
+            SpawnObjectInBlock(e, 5);
+            SpawnObjectInBlock(f, 4);
+        }
+        if (currentTrial == 36)
+        {
+            SpawnObjectInBlock(a, 8);
+            SpawnObjectInBlock(b, 7);
+            SpawnObjectInBlock(c, 9);
+            SpawnObjectInBlock(d, 1);
+            SpawnObjectInBlock(e, 3);
+            SpawnObjectInBlock(f, 5);
+        }
     }
 
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e, GameObject f, GameObject g)
@@ -507,6 +807,68 @@ public class VSTest : MonoBehaviour
         e.GetComponent<Button>().interactable = true;
         f.GetComponent<Button>().interactable = true;
         g.GetComponent<Button>().interactable = true;
+
+        if (currentTrial == 37)
+        {
+            SpawnObjectInBlock(a, 5);
+            SpawnObjectInBlock(b, 1);
+            SpawnObjectInBlock(c, 2);
+            SpawnObjectInBlock(d, 3);
+            SpawnObjectInBlock(e, 7);
+            SpawnObjectInBlock(f, 9);
+            SpawnObjectInBlock(g, 6);
+        }
+        if (currentTrial == 38)
+        {
+            SpawnObjectInBlock(a, 9);
+            SpawnObjectInBlock(b, 3);
+            SpawnObjectInBlock(c, 6);
+            SpawnObjectInBlock(d, 7);
+            SpawnObjectInBlock(e, 2);
+            SpawnObjectInBlock(f, 8);
+            SpawnObjectInBlock(g, 1);
+        }
+        if (currentTrial == 39)
+        {
+            SpawnObjectInBlock(a, 1);
+            SpawnObjectInBlock(b, 3);
+            SpawnObjectInBlock(c, 4);
+            SpawnObjectInBlock(d, 9);
+            SpawnObjectInBlock(e, 7);
+            SpawnObjectInBlock(f, 5);
+            SpawnObjectInBlock(g, 6);
+        }
+        if (currentTrial == 40)
+        {
+            SpawnObjectInBlock(a, 4);
+            SpawnObjectInBlock(b, 6);
+            SpawnObjectInBlock(c, 5);
+            SpawnObjectInBlock(d, 8);
+            SpawnObjectInBlock(e, 7);
+            SpawnObjectInBlock(f, 2);
+            SpawnObjectInBlock(g, 1);
+        }
+        if (currentTrial == 41)
+        {
+            SpawnObjectInBlock(a, 8);
+            SpawnObjectInBlock(b, 4);
+            SpawnObjectInBlock(c, 1);
+            SpawnObjectInBlock(d, 5);
+            SpawnObjectInBlock(e, 6);
+            SpawnObjectInBlock(f, 3);
+            SpawnObjectInBlock(g, 9);
+        }
+        if (currentTrial == 42)
+        {
+            SpawnObjectInBlock(a, 6);
+            SpawnObjectInBlock(b, 7);
+            SpawnObjectInBlock(c, 8);
+            SpawnObjectInBlock(d, 9);
+            SpawnObjectInBlock(e, 3);
+            SpawnObjectInBlock(f, 2);
+            SpawnObjectInBlock(g, 1);
+        }
+
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e, GameObject f, GameObject g, GameObject h)
     {
@@ -518,6 +880,73 @@ public class VSTest : MonoBehaviour
         f.GetComponent<Button>().interactable = true;
         g.GetComponent<Button>().interactable = true;
         h.GetComponent<Button>().interactable = true;
+
+        if (currentTrial == 43)
+        {
+            SpawnObjectInBlock(a, 1);
+            SpawnObjectInBlock(b, 3);
+            SpawnObjectInBlock(c, 4);
+            SpawnObjectInBlock(d, 9);
+            SpawnObjectInBlock(e, 7);
+            SpawnObjectInBlock(f, 8);
+            SpawnObjectInBlock(g, 6);
+            SpawnObjectInBlock(h, 2);
+        }
+        if (currentTrial == 44)
+        {
+            SpawnObjectInBlock(a, 5);
+            SpawnObjectInBlock(b, 6);
+            SpawnObjectInBlock(c, 1);
+            SpawnObjectInBlock(d, 3);
+            SpawnObjectInBlock(e, 8);
+            SpawnObjectInBlock(f, 9);
+            SpawnObjectInBlock(g, 7);
+            SpawnObjectInBlock(h, 2);
+        }
+        if (currentTrial == 45)
+        {
+            SpawnObjectInBlock(a, 6);
+            SpawnObjectInBlock(b, 7);
+            SpawnObjectInBlock(c, 8);
+            SpawnObjectInBlock(d, 1);
+            SpawnObjectInBlock(e, 3);
+            SpawnObjectInBlock(f, 2);
+            SpawnObjectInBlock(g, 9);
+            SpawnObjectInBlock(h, 4);
+        }
+        if (currentTrial == 46)
+        {
+            SpawnObjectInBlock(a, 6);
+            SpawnObjectInBlock(b, 5);
+            SpawnObjectInBlock(c, 2);
+            SpawnObjectInBlock(d, 3);
+            SpawnObjectInBlock(e, 8);
+            SpawnObjectInBlock(f, 1);
+            SpawnObjectInBlock(g, 7);
+            SpawnObjectInBlock(h, 9);
+        }
+        if (currentTrial == 47)
+        {
+            SpawnObjectInBlock(a, 5);
+            SpawnObjectInBlock(b, 2);
+            SpawnObjectInBlock(c, 3);
+            SpawnObjectInBlock(d, 6);
+            SpawnObjectInBlock(e, 7);
+            SpawnObjectInBlock(f, 8);
+            SpawnObjectInBlock(g, 1);
+            SpawnObjectInBlock(h, 9);
+        }
+        if (currentTrial == 48)
+        {
+            SpawnObjectInBlock(a, 6);
+            SpawnObjectInBlock(b, 1);
+            SpawnObjectInBlock(c, 8);
+            SpawnObjectInBlock(d, 9);
+            SpawnObjectInBlock(e, 7);
+            SpawnObjectInBlock(f, 5);
+            SpawnObjectInBlock(g, 4);
+            SpawnObjectInBlock(h, 3);
+        }
     }
 
 
