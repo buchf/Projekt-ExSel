@@ -22,7 +22,7 @@ public class VSIntro : MonoBehaviour
     int buff = 0;
     private void Start()
     {
-        
+        Debug.Log(SceneSwitch.reverseVS);
         buff = 0;
         VS_01mp3.Play();
     }

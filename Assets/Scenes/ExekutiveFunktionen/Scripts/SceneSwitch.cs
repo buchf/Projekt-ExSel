@@ -13,6 +13,12 @@ public class SceneSwitch : MonoBehaviour
 
     private string inputVPN = "";
     public static bool reverse = false;
+    public static bool reverseVS = false;
+
+    private void Start()
+    {
+        reverseVS = false;
+    }
     public void StartGame()
     {
         DataSaver.z0.Clear();
@@ -108,6 +114,10 @@ public class SceneSwitch : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 20);
     }
 
+    public void SetVSbackwards()
+    {
+        reverseVS = true;
+    }
     public void StartVS()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 24);
