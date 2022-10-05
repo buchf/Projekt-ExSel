@@ -17,27 +17,49 @@ public class VSTest : MonoBehaviour
     public GameObject border;
     public GameObject fixCross;
 
-    public int currentTrial = 1;
+    public Button button;
+    public AudioSource backwards;
+    public AudioSource forward;
+
+    public static int currentTrial = 1;
     public int sequenzLength = 1;
     public int clickedLength = 0;
 
-    int buff = 0;
+    public static int wrongCounter = 0;
     public GameObject defaultObject;
+    public static int accuracy = 0;
     // Start is called before the first frame update
     void Start()
     {
-        buff = 0;
+        accuracy = 0;
+        VSBackend.expPhase = 1;
+        wrongCounter = 0;
         clickedLength = 0;
-        currentTrial = 48;
-        sequenzLength = 8;
+        currentTrial = 1;
+        sequenzLength = 1;
         backend = FindObjectOfType<VSBackend>();
 
+        StartCoroutine(IntroAudio());
         foreach (GameObject i in startUI)
         {
             i.SetActive(true);
         }
     }
 
+    IEnumerator IntroAudio()
+    {
+        button.interactable = false;
+        if(SceneSwitch.reverseVS == true)
+        {
+            backwards.Play();
+        }
+        else
+        {
+            forward.Play();
+        }
+        yield return new WaitForSeconds(8f);
+        button.interactable = true;
+    }
     private void Update()
     {
         //listen vergleichen dann correct / incorrect animation -> in animation am ende naechsten trial aufrufen
@@ -89,9 +111,17 @@ public class VSTest : MonoBehaviour
             }
             if (current == 7)
             {
+                if (wrongCounter >= 3)
+                { 
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+                }
+                else
+                {
+                    wrongCounter = 0;
+                }
                 sequenzLength = 2;
             }
-
+            
         }
         if (sequenzLength == 2)
         {
@@ -122,6 +152,14 @@ public class VSTest : MonoBehaviour
             }
             if (current == 13)
             {
+                if (wrongCounter >= 3)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else
+                {
+                    wrongCounter = 0;
+                }
                 sequenzLength++;
             }
         }
@@ -153,6 +191,14 @@ public class VSTest : MonoBehaviour
             }
             if (current == 19)
             {
+                if (wrongCounter >= 3)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else
+                {
+                    wrongCounter = 0;
+                }
                 sequenzLength++;
             }
         }
@@ -184,6 +230,14 @@ public class VSTest : MonoBehaviour
             }
             if (current == 25)
             {
+                if (wrongCounter >= 3)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else
+                {
+                    wrongCounter = 0;
+                }
                 sequenzLength++;
             }
         }
@@ -215,6 +269,14 @@ public class VSTest : MonoBehaviour
             }
             if (current == 31)
             {
+                if (wrongCounter >= 3)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else
+                {
+                    wrongCounter = 0;
+                }
                 sequenzLength++;
             }
         }
@@ -246,6 +308,14 @@ public class VSTest : MonoBehaviour
             }
             if (current == 37)
             {
+                if (wrongCounter >= 3)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else
+                {
+                    wrongCounter = 0;
+                }
                 sequenzLength++;
             }
         }
@@ -277,6 +347,14 @@ public class VSTest : MonoBehaviour
             }
             if (current == 43)
             {
+                if (wrongCounter >= 3)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+                else
+                {
+                    wrongCounter = 0;
+                }
                 sequenzLength++;
             }
         }
@@ -310,9 +388,9 @@ public class VSTest : MonoBehaviour
             if (current == 49)
             {
                 //ENDE nexxt scene
-
-                sequenzLength++;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
+                
         }
     }
 

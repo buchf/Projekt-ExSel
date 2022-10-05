@@ -18,15 +18,18 @@ public class VSPractice : MonoBehaviour
     public GameObject correct;
     public GameObject incorrect;
 
-    public int currentTrial = 1;
+    public static int currentTrial = 1;
     public int sequenzLength = 1;
     public int clickedLength = 0;
+
+    public AudioSource VerbalSP_08;
 
     int buff = 0;
     public GameObject defaultObject;
     // Start is called before the first frame update
     void Start()
     {
+        VSBackend.expPhase = 0;
         buff = 0;
         clickedLength = 0;
         currentTrial = 1;
@@ -93,10 +96,20 @@ public class VSPractice : MonoBehaviour
             {
                 StartCoroutine(Sequenz(Fisch, Schwein));
             }
+            if(current == 5)
+            {
+                StartCoroutine(EndOfPractice());
+            }
         }
         
     }
 
+    IEnumerator EndOfPractice()
+    {
+        VerbalSP_08.Play();
+        yield return new WaitForSeconds(4.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     private void SpawnObject(GameObject gameObject)
     {
         gameObject.transform.position = defaultObject.transform.position;

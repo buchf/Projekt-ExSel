@@ -13,7 +13,7 @@ public class SceneSwitch : MonoBehaviour
 
     private string inputVPN = "";
     public static bool reverse = false;
-    public static bool reverseVS = false;
+    public static bool reverseVS = true;
 
     private void Start()
     {
@@ -120,6 +120,20 @@ public class SceneSwitch : MonoBehaviour
     }
     public void StartVS()
     {
+        VSData.header.Clear();
+        VSData.practiceOne.Clear();
+        VSData.practiceTwo.Clear();
+        VSData.testOne.Clear();
+        VSData.testTwo.Clear();
+        VSData.testThree.Clear();
+        VSData.testFour.Clear();
+        VSData.testFive.Clear();
+        VSData.testSix.Clear();
+        VSData.testSeven.Clear();
+        VSData.testEigth.Clear();
+        VSData.results.Clear();
+        VSData.totalTask.Clear();
+        VSData.VPN = inputVPN;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 24);
     }
 

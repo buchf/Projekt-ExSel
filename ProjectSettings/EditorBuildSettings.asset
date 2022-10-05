@@ -524,4 +524,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Verbal Span/Scenes/VS Practice.unity
     guid: 8e79d84fc507ccc47a9e3136d39c9a21
+  - enabled: 1
+    path: Assets/Scenes/Verbal Span/Scenes/VS Test.unity
+    guid: a7086e9ae161fe04bb9cbb9100401bff
+  - enabled: 1
+    path: Assets/Scenes/Verbal Span/Scenes/VS Outro.unity
+    guid: 4259cb85e3f92dd4c87343a12ef916fd
   m_configObjects: {}
