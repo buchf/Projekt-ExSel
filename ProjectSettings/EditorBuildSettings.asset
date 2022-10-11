@@ -9,38 +9,56 @@ EditorBuildSettings:
     path: Assets/Scenes/begin.unity
     guid: 2fe686b2af86fb94fbea554c22f94959
   - enabled: 0
-    path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/GoNoGo/GoNoGoPractice.unity
-    guid: c2aee0eef3685bf46af8d5bb51a45a58
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/GoNoGo/GoNoGoIntro.unity
-    guid: a59aa638f5bc4ae40aff9cdd4e57db9b
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/GoNoGo/GoNoGoPlay.unity
-    guid: d64a985872964c84681c8a57e4efbe0e
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/GoNoGo/GoNoGoAnimal.unity
-    guid: e97980f3ccee9db4493d40d2898b1c2d
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/GoNoGo/GoNoGoOutro.unity
-    guid: 26483ac93fc3a1943bac1b9d46f4a0c0
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/CSIntro.unity
     guid: 3a002aa31a9f8b84490196eea3776c2b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/CSIntroduction.unity
     guid: 58e9c9dc37175a343a87eff2d9266588
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/CSPractice.unity
     guid: da8f81f5e1f2ed04dbcf2bef74a1b3d2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/CSPlay.unity
     guid: c63d46602c669b34e9f1699981ce6f0f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/CSPracticeTwo.unity
     guid: 5e34c3d1f8bef2d4e95e663302750e69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Arbeitsgedaechtnis/Scenes/CSOutro.unity
     guid: aace6211eee0dfa479515643bc2ec92d
+  - enabled: 1
+    path: Assets/Scenes/Flexibility/STS/Scenes/CSIntro.unity
+    guid: 3b5ec073f80655947b5555e662f77ace
+  - enabled: 1
+    path: Assets/Scenes/Flexibility/STS/Scenes/CSIntroduction.unity
+    guid: e82683f9777be064fbb833df7606e960
+  - enabled: 1
+    path: Assets/Scenes/Flexibility/STS/Scenes/CSPractice.unity
+    guid: fc184a1044d8aed46aa964b7cedd352e
+  - enabled: 1
+    path: Assets/Scenes/Flexibility/STS/Scenes/CSPlay.unity
+    guid: ab1d150a8863fdd438beb39d66992d47
+  - enabled: 1
+    path: Assets/Scenes/Flexibility/STS/Scenes/CSPracticeTwo.unity
+    guid: e8d17838eccfd774b9bcf11deb85d480
+  - enabled: 1
+    path: Assets/Scenes/Flexibility/STS/Scenes/CSOutro.unity
+    guid: b569c024477aa624a8b2565573d7446b
   - enabled: 1
     path: Assets/Scenes/Flexibility/WCST/Scenes/WCST_Intro.unity
     guid: 71934eaac5db5614b8706d56b87398db

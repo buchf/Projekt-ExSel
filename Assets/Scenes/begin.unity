@@ -1441,7 +1441,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Inhibition
+  m_Text: "Flexibilit\xE4t"
 --- !u!222 &478305394
 CanvasRenderer:
   m_ObjectHideFlags: 0
