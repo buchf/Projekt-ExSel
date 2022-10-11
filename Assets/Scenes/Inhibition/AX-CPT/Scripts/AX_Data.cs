@@ -34,6 +34,7 @@ public class AX_Data : MonoBehaviour
         fileName = checkFilename(fileName);
         filePath = Path.Combine(Application.persistentDataPath, fileName);
 
+        header.Append("Participant's ID," + "Date," + "Time" + "\n" + VPN + "," + System.DateTime.Now.ToString("dd/MM/yyyy") + "," + System.DateTime.Now.ToString("HH:mm:ss") + "\n\n");
         header.Append("Experimental Phase,Block Number,Trial number,Cue Stimulus, Probe stimulus, Correct response, Subject response, Trial type, Reaction time (ms), Reaction Accuracy\n");
 
         results.Add(header);

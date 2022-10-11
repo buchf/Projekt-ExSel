@@ -14,6 +14,7 @@ public class CSIntro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        current = 0;
         audioFiles[current].Play();
         backgrounds[current].SetActive(true);
     }

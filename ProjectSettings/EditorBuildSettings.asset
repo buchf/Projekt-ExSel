@@ -60,6 +60,33 @@ EditorBuildSettings:
     path: Assets/Scenes/Flexibility/STS/Scenes/CSOutro.unity
     guid: b569c024477aa624a8b2565573d7446b
   - enabled: 1
+    path: Assets/Scenes/Arbeitsgedaechtnis/Corsi/Scenes/CorsiIntroduction.unity
+    guid: 8a59ea1eb164ef34f9249a063631260a
+  - enabled: 1
+    path: Assets/Scenes/Arbeitsgedaechtnis/Corsi/Scenes/CorsiPractice.unity
+    guid: c07c872accb2f7945a59abd143e0757c
+  - enabled: 1
+    path: Assets/Scenes/Arbeitsgedaechtnis/Corsi/Scenes/CorsiPlay.unity
+    guid: bb4a50c42aa3bdb4c8c88bda2cb01acd
+  - enabled: 1
+    path: Assets/Scenes/Arbeitsgedaechtnis/Corsi/Scenes/Outro.unity
+    guid: e0831edead14b644ab257a849008e64c
+  - enabled: 1
+    path: Assets/Scenes/Inhibition/GoNoGo/Scenes/GoNoGoIntro.unity
+    guid: 4e910ea3bdbc87145a50b75b56b563a2
+  - enabled: 1
+    path: Assets/Scenes/Inhibition/GoNoGo/Scenes/GoNoGoPractice.unity
+    guid: e354f4de8dd0b0748a4e30e0138795a1
+  - enabled: 1
+    path: Assets/Scenes/Inhibition/GoNoGo/Scenes/GoNoGoPlay.unity
+    guid: 7111054b7a11e13459bfe5f348b1af4a
+  - enabled: 1
+    path: Assets/Scenes/Inhibition/GoNoGo/Scenes/GoNoGoAnimal.unity
+    guid: 00d8e70b54bf3bb4b81ca01113d2c1c1
+  - enabled: 1
+    path: Assets/Scenes/Inhibition/GoNoGo/Scenes/GoNoGoOutro.unity
+    guid: 85f926db0263c9b45899ccc6579b5a7d
+  - enabled: 1
     path: Assets/Scenes/Flexibility/WCST/Scenes/WCST_Intro.unity
     guid: 71934eaac5db5614b8706d56b87398db
   - enabled: 1
@@ -96,30 +123,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Arbeitsgedaechtnis/Verbal Span/Scenes/VS Outro.unity
     guid: 4259cb85e3f92dd4c87343a12ef916fd
   - enabled: 1
-    path: Assets/Scenes/Arbeitsgedaechtnis/Corsi/Scenes/CorsiIntroduction.unity
-    guid: 8a59ea1eb164ef34f9249a063631260a
+    path: Assets/Scenes/CoverStory/Intro/CoverStoryIntro.unity
+    guid: c73ced9a59619814396d83a48c42308d
   - enabled: 1
-    path: Assets/Scenes/Arbeitsgedaechtnis/Corsi/Scenes/CorsiPractice.unity
-    guid: c07c872accb2f7945a59abd143e0757c
+    path: Assets/Scenes/CoverStory/Outro/CoverStoryOutro.unity
+    guid: 1488d9e96e1c1964b8aa078b98201de7
   - enabled: 1
-    path: Assets/Scenes/Arbeitsgedaechtnis/Corsi/Scenes/CorsiPlay.unity
-    guid: bb4a50c42aa3bdb4c8c88bda2cb01acd
-  - enabled: 1
-    path: Assets/Scenes/Arbeitsgedaechtnis/Corsi/Scenes/Outro.unity
-    guid: e0831edead14b644ab257a849008e64c
-  - enabled: 1
-    path: Assets/Scenes/Inhibition/GoNoGo/Scenes/GoNoGoIntro.unity
-    guid: 4e910ea3bdbc87145a50b75b56b563a2
-  - enabled: 1
-    path: Assets/Scenes/Inhibition/GoNoGo/Scenes/GoNoGoPractice.unity
-    guid: e354f4de8dd0b0748a4e30e0138795a1
-  - enabled: 1
-    path: Assets/Scenes/Inhibition/GoNoGo/Scenes/GoNoGoPlay.unity
-    guid: 7111054b7a11e13459bfe5f348b1af4a
-  - enabled: 1
-    path: Assets/Scenes/Inhibition/GoNoGo/Scenes/GoNoGoAnimal.unity
-    guid: 00d8e70b54bf3bb4b81ca01113d2c1c1
-  - enabled: 1
-    path: Assets/Scenes/Inhibition/GoNoGo/Scenes/GoNoGoOutro.unity
-    guid: 85f926db0263c9b45899ccc6579b5a7d
+    path: Assets/Scenes/CoverStory/Final/CoverStoryfinal.unity
+    guid: 580d25828ab8e384d89c020b3262d431
   m_configObjects: {}

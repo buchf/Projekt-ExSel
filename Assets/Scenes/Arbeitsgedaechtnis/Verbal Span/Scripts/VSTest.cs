@@ -17,6 +17,8 @@ public class VSTest : MonoBehaviour
     public GameObject border;
     public GameObject fixCross;
 
+    public GameObject lines;
+
     public Button button;
     public AudioSource backwards;
     public AudioSource forward;
@@ -31,6 +33,7 @@ public class VSTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lines.SetActive(false);
         accuracy = 0;
         VSBackend.expPhase = 1;
         wrongCounter = 0;
@@ -408,6 +411,7 @@ public class VSTest : MonoBehaviour
         {
             i.SetActive(false);
         }
+        lines.SetActive(true);
         StartTrial(currentTrial);
     }
 

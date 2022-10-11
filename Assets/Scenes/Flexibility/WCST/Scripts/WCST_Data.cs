@@ -28,6 +28,7 @@ public class WCST_Data : MonoBehaviour
         fileName = checkFilename(fileName);
         filePath = Path.Combine(Application.persistentDataPath, fileName);
 
+        header.Append("Participant's ID," + "Date," + "Time" + "\n" + VPN + "," + System.DateTime.Now.ToString("dd/MM/yyyy") + "," + System.DateTime.Now.ToString("HH:mm:ss") + "\n\n");
         header.Append("Experimental Phase,Block Number,Trial Number,Trial Type,Sorting Catergory,Stimulus presented,Correct Response1,Correct Response2,Correct Response3,Subject Response,Reaction Time,Reaction Accuracy\n");
         results.Add(header);
         results.Add(practice);

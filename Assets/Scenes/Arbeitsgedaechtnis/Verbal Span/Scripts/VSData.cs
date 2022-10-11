@@ -47,6 +47,7 @@ public class VSData : MonoBehaviour
 
         filePath = Path.Combine(Application.persistentDataPath, fileName);
 
+        header.Append("Participant's ID," + "Date," + "Time" + "\n" + VPN + "," + System.DateTime.Now.ToString("dd/MM/yyyy") + "," + System.DateTime.Now.ToString("HH:mm:ss") + "\n\n");
         header.Append("Experimental Phase, Trial Number, Span Length, CRESP1,CRESP2,CRESP3,CRESP4,CRESP5,CRESP6,CRESP7,CRESP8,RESP1,RESP2,RESP3,RESP4,RESP5,RESP6,RESP7,RESP8,Reaction accuracy\n");
 
         results.Add(header);

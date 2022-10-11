@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 198831085}
   m_Layer: 5
   m_Name: FinalButton
-  m_TagString: Lockable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -400,7 +400,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9614992}
         m_TargetAssemblyTypeName: SceneSwitch, Assembly-CSharp
-        m_MethodName: StartGoNoGO
+        m_MethodName: StartCoverStoryFinal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1731,7 +1731,7 @@ GameObject:
   - component: {fileID: 663330428}
   m_Layer: 5
   m_Name: OutroButton
-  m_TagString: Lockable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1802,7 +1802,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9614992}
         m_TargetAssemblyTypeName: SceneSwitch, Assembly-CSharp
-        m_MethodName: StartAX_CPT
+        m_MethodName: StartCoverStoryOutro
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4306,7 +4306,7 @@ GameObject:
   - component: {fileID: 2130517570}
   m_Layer: 5
   m_Name: IntroButton
-  m_TagString: Lockable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4377,7 +4377,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9614992}
         m_TargetAssemblyTypeName: SceneSwitch, Assembly-CSharp
-        m_MethodName: StartWCST
+        m_MethodName: StartCoverStoryIntro
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

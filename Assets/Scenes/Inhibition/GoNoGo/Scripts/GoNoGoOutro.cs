@@ -12,7 +12,7 @@ public class GoNoGoOutro : MonoBehaviour
     {
         if (!GoNoGo_03.isPlaying)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 27);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 15);
         }
     }
 }

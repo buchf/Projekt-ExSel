@@ -34,7 +34,7 @@ public class SceneSwitch : MonoBehaviour
         DataSaver.VPN = inputVPN;
         Randomizer.reverse = reverse;
         
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 19);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 7);
     }
 
     public void PlayGame()
@@ -72,7 +72,7 @@ public class SceneSwitch : MonoBehaviour
         DataGoNoGO.z1.Clear();
         DataGoNoGO.VPN = inputVPN;
         
-         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 23);
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 11);
     }
     public void StartCardSorting()
     {
@@ -131,4 +131,16 @@ public class SceneSwitch : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 24);
     }
 
+    public void StartCoverStoryIntro()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 28);
+    }
+    public void StartCoverStoryOutro()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 29);
+    }
+    public void StartCoverStoryFinal()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 30);
+    }
 }

@@ -42,10 +42,8 @@ public class VSIntro : MonoBehaviour
             }
             if (!VS_02_backmp3.isPlaying && buff == 1)
             {
-                VS_03mp3.Play();
-                panel.SetActive(true);
-                key.SetActive(true);
-                buff = 2;
+                
+                StartCoroutine(WaitingBuffer(key));
             }
             if (!VS_03mp3.isPlaying && buff == 2)
             {
@@ -94,7 +92,7 @@ public class VSIntro : MonoBehaviour
                 VS_03mp3.Play();
                 panel.SetActive(true);
                 key.SetActive(true);
-                buff = 2;
+                StartCoroutine(WaitingBuffer(key));
             }
             if (!VS_03mp3.isPlaying && buff == 2)
             {
@@ -132,5 +130,13 @@ public class VSIntro : MonoBehaviour
             }
         }
         
+        IEnumerator WaitingBuffer( GameObject current)
+        {
+            VS_03mp3.Play();
+            panel.SetActive(true);
+            key.SetActive(true);
+            yield return new WaitForSeconds(3f);
+            buff = 2;
+        }
     }
 }

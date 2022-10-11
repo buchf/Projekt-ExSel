@@ -11,7 +11,7 @@ public class Outro : MonoBehaviour
     {
         if (!Corsi_03.isPlaying)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 22);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 10);
         }
     }
 }

@@ -64,7 +64,7 @@ public class DataSaver : MonoBehaviour
         filePath = Path.Combine(Application.persistentDataPath, fileName);
 
         accuracyPercentage = float.Parse(accuracy) / Randomizer.totlalAccuracyClicks * 100;
-       
+
         /*
          * z1 ist die Struktur fuer die "overall" - Results
          * z1 ist zustaendig fuer die gesamten richtigen Sequenzen, die Genauigkeit 
@@ -75,7 +75,7 @@ public class DataSaver : MonoBehaviour
          * 
          * 
          */
-
+        z1.Append("Participant's ID," + "Date," + "Time" + "\n" + VPN + "," + System.DateTime.Now.ToString("dd/MM/yyyy") + "," + System.DateTime.Now.ToString("HH:mm:ss") + "\n\n");
         z1.Append("Corsi" + ",Sequences correct:," + rightTask + " ,of, " + Randomizer.totalTasks + "\n");
         z1.Append(",Clicks Accuracy:," + accuracyPercentage.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture) + "%\n" + ",Total Time: ," + totalTime.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture) +"ms\n");
         z1.Append("\n,Trial no., Full sequence correct,Reaction Time,First click,Second click,Third click,Fourth click,Fifth click,Sixth click,Seventh click,Eighth click\n");
