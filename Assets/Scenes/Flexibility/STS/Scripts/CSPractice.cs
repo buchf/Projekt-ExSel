@@ -213,13 +213,19 @@ public class CSPractice : MonoBehaviour
         int cresp = 0;
         incorrect.SetActive(false);
         correct.SetActive(false);
+        
         if (targetItem == clicked)
         {
 
             cresp = 1;
 
             correct.SetActive(true);
-
+            left.gameObject.GetComponent<Button>().transition = Selectable.Transition.None;
+            left.gameObject.GetComponent<Button>().interactable = false;
+            middle.gameObject.GetComponent<Button>().transition = Selectable.Transition.None;
+            middle.gameObject.GetComponent<Button>().interactable = false;
+            
+            
         }
         else
 

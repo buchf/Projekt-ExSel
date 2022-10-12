@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/begin.unity
+- path: Assets/Scenes/Arbeitsgedaechtnis/Verbal Span/Scenes/VS Outro.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

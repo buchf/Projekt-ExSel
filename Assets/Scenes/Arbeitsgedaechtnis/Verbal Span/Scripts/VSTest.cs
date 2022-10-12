@@ -81,6 +81,7 @@ public class VSTest : MonoBehaviour
     }
     private void StartTrial(int current)
     {
+        lines.SetActive(false);
         if (sequenzLength == 1)
         {
             if (current == 1)
@@ -626,6 +627,7 @@ public class VSTest : MonoBehaviour
     {
         a.GetComponent<Button>().interactable = true;
         SpawnObjectInBlock(a, 5);
+        lines.SetActive(true);
     }
     void SpawnOnField(GameObject a, GameObject b)
     {
@@ -662,6 +664,7 @@ public class VSTest : MonoBehaviour
             SpawnObjectInBlock(a, 4);
             SpawnObjectInBlock(b, 5);
         }
+        lines.SetActive(true);
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c)
     {
@@ -705,7 +708,7 @@ public class VSTest : MonoBehaviour
             SpawnObjectInBlock(a, 5);
             SpawnObjectInBlock(c, 6);
         }
-
+        lines.SetActive(true);
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d)
     {
@@ -756,6 +759,7 @@ public class VSTest : MonoBehaviour
             SpawnObjectInBlock(c, 2);
             SpawnObjectInBlock(d, 8);
         }
+        lines.SetActive(true);
     }
 
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e)
@@ -814,6 +818,7 @@ public class VSTest : MonoBehaviour
             SpawnObjectInBlock(d, 5);
             SpawnObjectInBlock(e, 4);
         }
+        lines.SetActive(true);
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e, GameObject f)
     {
@@ -878,10 +883,12 @@ public class VSTest : MonoBehaviour
             SpawnObjectInBlock(e, 3);
             SpawnObjectInBlock(f, 5);
         }
+        lines.SetActive(true);
     }
 
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e, GameObject f, GameObject g)
     {
+        
         a.GetComponent<Button>().interactable = true;
         b.GetComponent<Button>().interactable = true;
         c.GetComponent<Button>().interactable = true;
@@ -950,7 +957,7 @@ public class VSTest : MonoBehaviour
             SpawnObjectInBlock(f, 2);
             SpawnObjectInBlock(g, 1);
         }
-
+        lines.SetActive(true);
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e, GameObject f, GameObject g, GameObject h)
     {
@@ -1029,6 +1036,7 @@ public class VSTest : MonoBehaviour
             SpawnObjectInBlock(g, 4);
             SpawnObjectInBlock(h, 3);
         }
+        lines.SetActive(true);
     }
 
 

@@ -69,7 +69,6 @@ public class CSPracticeTwo : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(timer.ElapsedMilliseconds);
         if (!STS_27.isPlaying && buff == 0)
         {
             STS_28.Play();
@@ -103,6 +102,12 @@ public class CSPracticeTwo : MonoBehaviour
         middle.GetComponent<Button>().interactable = true;
         left.GetComponent<Button>().interactable = true;
         timer.Start();
+    }
+    private void DisableField()
+    {
+        right.GetComponent<Button>().interactable = false;
+        middle.GetComponent<Button>().interactable = false;
+        left.GetComponent<Button>().interactable = false;
     }
     void PhaseTwoIntro()
     {
@@ -211,6 +216,8 @@ public class CSPracticeTwo : MonoBehaviour
 
     public void Compare(GameObject clicked)
     {
+        Debug.Log("CAJSDLKJASD");
+        DisableField();
         Debug.Log(targetItem.name);
         Debug.Log(clicked.name);
         int cresp = 0;
@@ -218,8 +225,10 @@ public class CSPracticeTwo : MonoBehaviour
         correct.SetActive(false);
         if (targetItem == clicked)
         {
+            
             cresp = 1;
             correct.SetActive(true);
+            
         }
         else
 

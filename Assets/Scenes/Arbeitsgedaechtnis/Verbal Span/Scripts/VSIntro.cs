@@ -27,116 +27,75 @@ public class VSIntro : MonoBehaviour
     int buff = 0;
     private void Start()
     {
-        Debug.Log(SceneSwitch.reverseVS);
-        buff = 0;
-        VS_01mp3.Play();
-    }
-    private void Update()
-    {
-        if(SceneSwitch.reverseVS == true)
+        if (SceneSwitch.reverseVS == true)
         {
-            if (!VS_01mp3.isPlaying && buff == 0)
-            {
-                VS_02_backmp3.Play();
-                buff = 1;
-            }
-            if (!VS_02_backmp3.isPlaying && buff == 1)
-            {
-                
-                StartCoroutine(WaitingBuffer(key));
-            }
-            if (!VS_03mp3.isPlaying && buff == 2)
-            {
-                VS_04mp3.Play();
-                key.SetActive(false);
-                pig.SetActive(true);
-                buff = 3;
-            }
-            if (!VS_04mp3.isPlaying && buff == 3)
-            {
-                key.SetActive(true);
-                pig.transform.position = new Vector2(750, 540);
-                key.transform.position = new Vector2(1170, 540);
-                VS_05_backmp3.Play();
-                buff = 4;
-            }
-            if (!VS_05_backmp3.isPlaying && buff == 4)
-            {
-                VS_06_backmp3.Play();
-                border1.transform.position = new Vector2(750, 540);
-                border1.SetActive(true);
-                buff = 5;
-            }
-            if (!VS_06_backmp3.isPlaying && buff == 5)
-            {
-                VS_07_backmp3.Play();
-                border2.transform.position = new Vector2(1170, 540);
-                border2.SetActive(true);
-                buff = 6;
-            }
-
-            if (!VS_07_backmp3.isPlaying && buff == 6)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
+            StartCoroutine(BackwardsIntro());
         }
         else
         {
-            if (!VS_01mp3.isPlaying && buff == 0)
-            {
-                VS_02mp3.Play();
-                buff = 1;
-            }
-            if (!VS_02mp3.isPlaying && buff == 1)
-            {
-                VS_03mp3.Play();
-                panel.SetActive(true);
-                key.SetActive(true);
-                StartCoroutine(WaitingBuffer(key));
-            }
-            if (!VS_03mp3.isPlaying && buff == 2)
-            {
-                VS_04mp3.Play();
-                key.SetActive(false);
-                pig.SetActive(true);
-                buff = 3;
-            }
-            if (!VS_04mp3.isPlaying && buff == 3)
-            {
-                key.SetActive(true);
-                key.transform.position = new Vector2(750, 540);
-                pig.transform.position = new Vector2(1170, 540);
-                VS_05mp3.Play();
-                buff = 4;
-            }
-            if (!VS_05mp3.isPlaying && buff == 4)
-            {
-                VS_06mp3.Play();
-                border1.transform.position = new Vector2(750, 540);
-                border1.SetActive(true);
-                buff = 5;
-            }
-            if (!VS_06mp3.isPlaying && buff == 5)
-            {
-                VS_07mp3.Play();
-                border2.transform.position = new Vector2(1170, 540);
-                border2.SetActive(true);
-                buff = 6;
-            }
+            StartCoroutine(ForwardIntro());
+        }
+    }
 
-            if (!VS_07mp3.isPlaying && buff == 6)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-        }
-        
-        IEnumerator WaitingBuffer( GameObject current)
-        {
-            VS_03mp3.Play();
-            panel.SetActive(true);
-            key.SetActive(true);
-            yield return new WaitForSeconds(3f);
-            buff = 2;
-        }
+    IEnumerator ForwardIntro()
+    {
+        VS_01mp3.Play();
+        yield return new WaitForSeconds(12f);
+        VS_02mp3.Play();
+        yield return new WaitForSeconds(24f);
+        panel.SetActive(true);
+        key.SetActive(true);
+        VS_03mp3.Play();
+        yield return new WaitForSeconds(3f);
+        key.SetActive(false);
+        pig.SetActive(true);
+        VS_04mp3.Play();
+        yield return new WaitForSeconds(3f);
+        key.SetActive(true);
+        key.transform.position = new Vector2(750, 800);
+        pig.transform.position = new Vector2(1170, 800);
+        VS_05mp3.Play();
+        yield return new WaitForSeconds(12f);
+        VS_06mp3.Play();
+        border1.transform.position = new Vector2(750, 800);
+        border1.SetActive(true);
+        yield return new WaitForSeconds(6f);
+        VS_07mp3.Play();
+        border2.transform.position = new Vector2(1170, 800);
+        border2.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+    }
+
+    IEnumerator BackwardsIntro()
+    {
+        VS_01mp3.Play();
+        yield return new WaitForSeconds(12f);
+
+        VS_02_backmp3.Play();
+        yield return new WaitForSeconds(33f);
+        panel.SetActive(true);
+        key.SetActive(true);
+        VS_03mp3.Play();
+        yield return new WaitForSeconds(3f);
+        key.SetActive(false);
+        pig.SetActive(true);
+        VS_04mp3.Play();
+        yield return new WaitForSeconds(3f);
+        key.SetActive(true);
+        pig.transform.position = new Vector2(750, 800);
+        key.transform.position = new Vector2(1170, 800);
+        VS_05_backmp3.Play();
+        yield return new WaitForSeconds(12f);
+        VS_06_backmp3.Play();
+        border1.transform.position = new Vector2(750, 800);
+        border1.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        VS_07_backmp3.Play();
+        border2.transform.position = new Vector2(1170, 800);
+        border2.SetActive(true);
+        yield return new WaitForSeconds(9f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

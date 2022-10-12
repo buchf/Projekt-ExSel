@@ -18,6 +18,7 @@ public class VSPractice : MonoBehaviour
     public GameObject correct;
     public GameObject incorrect;
 
+    public GameObject lines;
     public static int currentTrial = 1;
     public int sequenzLength = 1;
     public int clickedLength = 0;
@@ -171,6 +172,7 @@ public class VSPractice : MonoBehaviour
         {
             SpawnObjectInBlock(a, 5);
         }
+        lines.SetActive(true);
     }
     void SpawnOnField(GameObject a, GameObject b)
     {
@@ -186,6 +188,7 @@ public class VSPractice : MonoBehaviour
             SpawnObjectInBlock(a, 5);
             SpawnObjectInBlock(b, 8);
         }
+        lines.SetActive(true);
     }
 
 
@@ -244,6 +247,7 @@ public class VSPractice : MonoBehaviour
 
     IEnumerator CorrectSequenz()
     {
+        lines.SetActive(false);
         yield return new WaitForSeconds(.2f);
         correct.SetActive(true);
         yield return new WaitForSeconds(1f);
@@ -255,6 +259,7 @@ public class VSPractice : MonoBehaviour
 
     IEnumerator IncorrectSequenz()
     {
+        lines.SetActive(false);
         yield return new WaitForSeconds(.2f);
         incorrect.SetActive(true);
         yield return new WaitForSeconds(1f);
