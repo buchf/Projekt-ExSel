@@ -89,7 +89,7 @@ public class CSPracticeTwo : MonoBehaviour
 
             buff++;
         }
-        if (!STS_29.isPlaying && buff >= 2)
+        if (!STS_29.isPlaying && buff == 2)
         {
             EnableField();
             buff++;
@@ -98,16 +98,26 @@ public class CSPracticeTwo : MonoBehaviour
 
     void EnableField()
     {
+        
         right.GetComponent<Button>().interactable = true;
+        
         middle.GetComponent<Button>().interactable = true;
+       // middle.GetComponent<Button>().transition = Selectable.Transition.ColorTint;
         left.GetComponent<Button>().interactable = true;
+        //left.GetComponent<Button>().transition = Selectable.Transition.ColorTint;
         timer.Start();
     }
     private void DisableField()
     {
+        right.GetComponent<Button>().transition = Selectable.Transition.None;
+        left.GetComponent<Button>().transition = Selectable.Transition.None;
+        middle.GetComponent<Button>().transition = Selectable.Transition.None;
         right.GetComponent<Button>().interactable = false;
+        //right.GetComponent<Button>().transition = Selectable.Transition.None;
         middle.GetComponent<Button>().interactable = false;
+        //middle.GetComponent<Button>().transition = Selectable.Transition.None;
         left.GetComponent<Button>().interactable = false;
+        //left.GetComponent<Button>().transition = Selectable.Transition.None;
     }
     void PhaseTwoIntro()
     {
@@ -140,6 +150,7 @@ public class CSPracticeTwo : MonoBehaviour
             right = two_Fairy_Red;
             targetItem = middle;
             STS_29.Play();
+            
             SpawnFunction(left, middle, right);
             left.GetComponent<Button>().interactable = false;
             middle.GetComponent<Button>().interactable = false;
@@ -154,6 +165,7 @@ public class CSPracticeTwo : MonoBehaviour
             right = one_Hat_Red;
             targetItem = left;
             STS_29.Play();
+            buff = 2;
             SpawnFunction(left, middle, right);
             left.GetComponent<Button>().interactable = false;
             middle.GetComponent<Button>().interactable = false;
@@ -166,6 +178,7 @@ public class CSPracticeTwo : MonoBehaviour
             right = three_Hat_Yellow;
             targetItem = right;
             STS_29.Play();
+            buff = 2;
             SpawnFunction(left, middle, right);
             left.GetComponent<Button>().interactable = false;
             middle.GetComponent<Button>().interactable = false;
@@ -278,6 +291,7 @@ public class CSPracticeTwo : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         incorrect.SetActive(false);
+        EnableField();
     }
 
     void WriteInDataSaver(int currentTrial, string left, string middle, string right, string targetItem, double reaction, int CRESP)
