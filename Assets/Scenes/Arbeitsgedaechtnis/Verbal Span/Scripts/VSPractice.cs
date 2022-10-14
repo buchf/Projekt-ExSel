@@ -24,12 +24,13 @@ public class VSPractice : MonoBehaviour
     public int clickedLength = 0;
 
     public AudioSource VerbalSP_08;
-
+    private int exit = 0;
     int buff = 0;
     public GameObject defaultObject;
     // Start is called before the first frame update
     void Start()
     {
+        exit = 0;
         VSBackend.expPhase = 0;
         buff = 0;
         clickedLength = 0;
@@ -277,6 +278,14 @@ public class VSPractice : MonoBehaviour
             currentTrial++;
             StartTrial(currentTrial);
         }
-        
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 25);
+        }
     }
 }

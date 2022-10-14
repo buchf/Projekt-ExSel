@@ -27,12 +27,14 @@ public class VSTest : MonoBehaviour
     public int sequenzLength = 1;
     public int clickedLength = 0;
 
+    private int exit;
     public static int wrongCounter = 0;
     public GameObject defaultObject;
     public static int accuracy = 0;
     // Start is called before the first frame update
     void Start()
     {
+        exit = 0;
         lines.SetActive(false);
         accuracy = 0;
         VSBackend.expPhase = 1;
@@ -1091,5 +1093,14 @@ public class VSTest : MonoBehaviour
         gameObject.GetComponent<Button>().interactable = true;
         backend.clickedList.Add(gameObject);
         clickedLength++;
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

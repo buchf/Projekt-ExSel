@@ -48,12 +48,13 @@ public class CSPractice : MonoBehaviour
 
     int currentTrial = 0;
     int test = 0;
-
+    private int exit;
     public int buff = 0;
     public int buff2 = 0;
 
     void Start()
     {
+        exit = 0;
         buff2 = 0;
         buff = 0;
         test = 0;
@@ -303,4 +304,13 @@ public class CSPractice : MonoBehaviour
         timer.Start();
         timer.Reset();
     }
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
+        }
+    }
+
 }

@@ -35,9 +35,12 @@ public class GoNoGoPractice : MonoBehaviour
     public int trial;
     public int practiceerrors = 0;
     public int practicehits = 0;
+
+    private int exit;
     // Start is called before the first frame update
     void Start()
     {
+        exit = 0;
         timer.Reset();
         timer.Stop();
         introButton.interactable = false;
@@ -258,5 +261,14 @@ public class GoNoGoPractice : MonoBehaviour
         shownAnimal.SetActive(true);
         button.enabled = true;
         timer.Start();
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 12);
+        }
     }
 }

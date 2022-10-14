@@ -37,10 +37,12 @@ public class CorsiPractice : MonoBehaviour
     public GameObject incorrectStar;
     public Player player;
 
+    private int exit;
 
     // Start is called before the first frame update
     void Start()
     {
+        exit = 0;
         //showField();
         //button.gameObject.SetActive(true);
         disableField();
@@ -315,6 +317,15 @@ public class CorsiPractice : MonoBehaviour
         for (int i = 0; i < blocks.Count; i++)
         {
             blocks[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 8);
         }
     }
 }

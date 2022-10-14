@@ -46,8 +46,11 @@ public class AX_Test : MonoBehaviour
     public static int misses;
     public static int errors;
 
+    private int exit;
+
     private void Start()
     {
+        exit = 0;
         hits = 0;
         errors = 0;
         misses = 0;
@@ -578,7 +581,12 @@ public class AX_Test : MonoBehaviour
     }
     public void GoToOutro()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        
     }
     void WriteInDataSaver(int blockNumber,int trial, string cue, string probe, string cresp, string subResp, int trialType, float time, int accuracy)
     {

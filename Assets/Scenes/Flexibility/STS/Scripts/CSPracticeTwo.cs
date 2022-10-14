@@ -9,9 +9,6 @@ using UnityEngine.UI;
 public class CSPracticeTwo : MonoBehaviour
 {
 
-
-
-
     public Button continueButton;
     public TextMesh continueText;
 
@@ -54,10 +51,11 @@ public class CSPracticeTwo : MonoBehaviour
     int currentTrial = 0;
     int test = 0;
     int buff = 0;
-
+    private int exit;
 
     void Start()
     {
+        exit = 0;
         timer.Reset();
         timer.Stop();
         PhaseTwoIntro();
@@ -300,5 +298,14 @@ public class CSPracticeTwo : MonoBehaviour
         CSDataSaver.MeasurePracticeTwo(currentTrial, left, middle, right, targetItem, reaction, CRESP);
         timer.Stop();
         timer.Reset();
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

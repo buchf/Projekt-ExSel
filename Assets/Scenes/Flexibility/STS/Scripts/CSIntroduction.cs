@@ -32,10 +32,11 @@ public class CSIntroduction : MonoBehaviour
     private GameObject middle;
 
     private int zaehler;
-
+    private int exit;
     // Start is called before the first frame update
     void Start()
     {
+        exit = 0;
         left = one_fairy_blue;
         middle = one_fairy_yellow;
         right = one_fairy_red;
@@ -142,5 +143,14 @@ public class CSIntroduction : MonoBehaviour
         b.gameObject.SetActive(true);
         Debug.Log("test");
 
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        }
     }
 }

@@ -24,9 +24,11 @@ public class VSIntro : MonoBehaviour
     public GameObject border1;
     public GameObject border2;
 
+    private int exit;
     int buff = 0;
     private void Start()
     {
+        exit = 0;
         if (SceneSwitch.reverseVS == true)
         {
             StartCoroutine(BackwardsIntro());
@@ -97,5 +99,14 @@ public class VSIntro : MonoBehaviour
         border2.SetActive(true);
         yield return new WaitForSeconds(9f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 24);
+        }
     }
 }

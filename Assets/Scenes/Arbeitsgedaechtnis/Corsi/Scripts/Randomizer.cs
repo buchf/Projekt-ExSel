@@ -26,10 +26,12 @@ public class Randomizer : MonoBehaviour
     public static int clickedBlocks = 0;
     int sequenzBlocks = 1;
 
+    private int exit = 0;
 
 
     private void Start()
     {
+        exit = 0;
         buff = 0;
         Debug.Log(reverse);
         player = FindObjectOfType<Player>();
@@ -462,6 +464,15 @@ public class Randomizer : MonoBehaviour
         DataSaver.rightTask = player.rightTaskCounter.ToString();
         DataSaver.accuracy = player.accuracyCounter.ToString();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SkipToFinish();
+        }
     }
 }
 

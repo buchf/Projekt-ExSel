@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class CorsiIntro : MonoBehaviour
 {
     public AudioSource Corsi_01;
-
+    int exit;
     void Start()
     {
         Corsi_01.Play();
+        exit = 0; 
     }
 
     // Update is called once per frame
@@ -18,6 +19,14 @@ public class CorsiIntro : MonoBehaviour
         if (!Corsi_01.isPlaying)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+        }
+    }
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 7);
         }
     }
 }

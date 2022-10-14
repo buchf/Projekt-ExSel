@@ -40,6 +40,7 @@ public class WCST_Practice : MonoBehaviour
 
     private int position = 0;
 
+    private int exit;
     public int secondTry = 0;
     int buff = 0;
     bool preservationError;
@@ -58,7 +59,7 @@ public class WCST_Practice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        exit = 0;
         
     }
 
@@ -445,6 +446,15 @@ public class WCST_Practice : MonoBehaviour
     {
         //WCST_Data.MeasurePractice(0,1,position+1,trialType, sortCategory,current.name,correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, 123,trialType);
         WCST_Data.MeasurePractice(0, 1, position + 1, trialType, sortCat, WCST, respOne, respTwo, respThree, CRESP, timer, acc);
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 17);
+        }
     }
 }
 

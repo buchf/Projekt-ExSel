@@ -19,7 +19,7 @@ public class GoNoGo : MonoBehaviour
     GameObject shownAnimal;
     GameObject currentAnimal;
 
-    
+    private int exit = 0;
 
     public static Stopwatch timer = new Stopwatch();
 
@@ -219,5 +219,13 @@ public class GoNoGo : MonoBehaviour
         shownAnimal.SetActive(true);
         button.enabled = true;
         timer.Start();
+    }
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        }
     }
 }

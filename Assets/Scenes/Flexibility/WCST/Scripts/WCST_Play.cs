@@ -27,7 +27,7 @@ public class WCST_Play : MonoBehaviour
     public List<GameObject> cardList = new List<GameObject>();
     public GameObject cardBorder;
 
-
+    private int exit;
     //var for the testPhase
     public List<int> usedRules = new List<int>();
     public List<int> usedRulesTwo = new List<int>();
@@ -64,6 +64,7 @@ public class WCST_Play : MonoBehaviour
 
     void Start()
     {
+        exit = 0;
         gesamtpunktzahl = 0;
         buff = 0;
         blockNumber = 1;
@@ -548,5 +549,14 @@ public class WCST_Play : MonoBehaviour
     {
         //WCST_Data.MeasurePractice(0,1,position+1,trialType, sortCategory,current.name,correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, 123,trialType);
         WCST_Data.MeasureTest(1, blockNumber +1, position + 1, trialType, sortCat, WCST, respOne, respTwo, respThree, CRESP, timer, acc);
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

@@ -25,6 +25,8 @@ public class AX_Practice : MonoBehaviour
 
     public static Stopwatch timer = new Stopwatch();
 
+    private int exit;
+
     private GameObject currentFirst;
     private GameObject currentSecond;
 
@@ -37,6 +39,7 @@ public class AX_Practice : MonoBehaviour
     public int wrongTask;
     private void Start()
     {
+        exit = 0;
         wrongTask = 0;
         enableTask = false;
         trialNum = 1;
@@ -261,4 +264,14 @@ public class AX_Practice : MonoBehaviour
     {
         AX_Data.MeasurePractice(0,1,trial,cue,probe,cresp,subResp,trialType, time, accuracy);
     }
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 21);
+        }
+
+    }
+
 }

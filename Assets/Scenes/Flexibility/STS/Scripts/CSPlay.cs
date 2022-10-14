@@ -69,10 +69,12 @@ public class CSPlay : MonoBehaviour
     public static Stopwatch timer = new Stopwatch();
 
     private int buff = 0;
+    private int exit;
 
     // Start is called before the first frame update
     void Start()
     {
+        exit = 0;
         buff = 0;
         
         currentTask(currentTrial);
@@ -364,5 +366,13 @@ public class CSPlay : MonoBehaviour
     public void PracticePhaseTwo()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        }
     }
 }

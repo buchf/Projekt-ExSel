@@ -9,11 +9,12 @@ public class CSIntro : MonoBehaviour
 
     [SerializeField] List<AudioSource> audioFiles = new List<AudioSource>();
     [SerializeField] List<GameObject> backgrounds = new List<GameObject>();
-
+    private int exit;
     int current = 0;
     // Start is called before the first frame update
     void Start()
     {
+        exit = 0;
         current = 0;
         audioFiles[current].Play();
         backgrounds[current].SetActive(true);
@@ -37,6 +38,14 @@ public class CSIntro : MonoBehaviour
                 backgrounds[current].SetActive(true);
 
             }
+        }
+    }
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
 }

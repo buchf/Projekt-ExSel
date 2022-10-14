@@ -15,9 +15,12 @@ public class AX_Intro : MonoBehaviour
     public GameObject redDot;
     public GameObject fixCross;
 
+    private int exit;
+
     public int current = 0;
     void Start()
-    {        
+    {
+        exit = 0;
         current = 0;
         audioFiles[current].Play();
         backgrounds[current].SetActive(true); 
@@ -71,5 +74,14 @@ public class AX_Intro : MonoBehaviour
         book.SetActive(false);
         greenDot.SetActive(false);
         redDot.SetActive(false);
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 20);
+        }
     }
 }

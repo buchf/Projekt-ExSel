@@ -18,8 +18,10 @@ public class AnimalSelector : MonoBehaviour
     public Button button;
     public AudioSource GoNoGo_02;
 
+    private int exit;
     void Start()
     {
+        exit = 0;
         button.interactable = false;
         GoNoGo_02.Play();
         //GoNoGo.trial++;
@@ -79,6 +81,15 @@ public class AnimalSelector : MonoBehaviour
                 pigImage.gameObject.SetActive(false);
                 Outro.gameObject.SetActive(false);
                 break;
+        }
+    }
+
+    public void ExitButton()
+    {
+        exit++;
+        if (exit == 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
