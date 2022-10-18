@@ -628,7 +628,30 @@ public class VSTest : MonoBehaviour
     void SpawnOnField(GameObject a)
     {
         a.GetComponent<Button>().interactable = true;
-        SpawnObjectInBlock(a, 5);
+        if(currentTrial == 1)
+        {
+            SpawnObjectInBlock(a, 2);
+        }
+        if (currentTrial == 2)
+        {
+            SpawnObjectInBlock(a, 4);
+        }
+        if (currentTrial == 3)
+        {
+            SpawnObjectInBlock(a, 5);
+        }
+        if (currentTrial == 4)
+        {
+            SpawnObjectInBlock(a, 9);
+        }
+        if (currentTrial == 5)
+        {
+            SpawnObjectInBlock(a, 6);
+        }
+        if (currentTrial == 6)
+        {
+            SpawnObjectInBlock(a, 3);
+        }
         lines.SetActive(true);
     }
     void SpawnOnField(GameObject a, GameObject b)
@@ -643,28 +666,28 @@ public class VSTest : MonoBehaviour
         }
         if (currentTrial == 8)
         {
-            SpawnObjectInBlock(a, 4);
-            SpawnObjectInBlock(b, 5);
+            SpawnObjectInBlock(a, 6);
+            SpawnObjectInBlock(b, 1);
         }
         if (currentTrial == 9)
         {
-            SpawnObjectInBlock(a, 4);
-            SpawnObjectInBlock(b, 5);
+            SpawnObjectInBlock(a, 2);
+            SpawnObjectInBlock(b, 6);
         }
         if (currentTrial == 10)
         {
-            SpawnObjectInBlock(a, 4);
-            SpawnObjectInBlock(b, 5);
+            SpawnObjectInBlock(a, 9);
+            SpawnObjectInBlock(b, 7);
         }
         if (currentTrial == 11)
         {
-            SpawnObjectInBlock(a, 4);
-            SpawnObjectInBlock(b, 5);
+            SpawnObjectInBlock(a, 6);
+            SpawnObjectInBlock(b, 4);
         }
         if (currentTrial == 12)
         {
             SpawnObjectInBlock(a, 4);
-            SpawnObjectInBlock(b, 5);
+            SpawnObjectInBlock(b, 2);
         }
         lines.SetActive(true);
     }
@@ -676,39 +699,39 @@ public class VSTest : MonoBehaviour
 
         if (currentTrial == 13)
         {
-            SpawnObjectInBlock(a, 4);
+            SpawnObjectInBlock(a, 1);
             SpawnObjectInBlock(c, 5);
-            SpawnObjectInBlock(b, 6);
+            SpawnObjectInBlock(b, 7);
         }
         if (currentTrial == 14)
         {
             SpawnObjectInBlock(b, 4);
-            SpawnObjectInBlock(c, 5);
+            SpawnObjectInBlock(c, 2);
             SpawnObjectInBlock(a, 6);
         }
         if (currentTrial == 15)
         {
-            SpawnObjectInBlock(a, 4);
+            SpawnObjectInBlock(a, 8);
             SpawnObjectInBlock(b, 5);
-            SpawnObjectInBlock(c, 6);
+            SpawnObjectInBlock(c, 3);
         }
         if (currentTrial == 16)
         {
             SpawnObjectInBlock(c, 4);
-            SpawnObjectInBlock(b, 5);
-            SpawnObjectInBlock(a, 6);
+            SpawnObjectInBlock(b, 6);
+            SpawnObjectInBlock(a, 9);
         }
         if (currentTrial == 17)
         {
-            SpawnObjectInBlock(a, 4);
-            SpawnObjectInBlock(c, 5);
+            SpawnObjectInBlock(a, 1);
+            SpawnObjectInBlock(c, 2);
             SpawnObjectInBlock(b, 6);
         }
         if (currentTrial == 18)
         {
-            SpawnObjectInBlock(b, 4);
+            SpawnObjectInBlock(b, 7);
             SpawnObjectInBlock(a, 5);
-            SpawnObjectInBlock(c, 6);
+            SpawnObjectInBlock(c, 2);
         }
         lines.SetActive(true);
     }
@@ -728,9 +751,9 @@ public class VSTest : MonoBehaviour
         }
         if (currentTrial == 20)
         {
-            SpawnObjectInBlock(a, 1);
-            SpawnObjectInBlock(b, 2);
-            SpawnObjectInBlock(c, 5);
+            SpawnObjectInBlock(a, 2);
+            SpawnObjectInBlock(b, 3);
+            SpawnObjectInBlock(c, 7);
             SpawnObjectInBlock(d, 9);
         }
         if (currentTrial == 21)

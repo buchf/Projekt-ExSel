@@ -11,7 +11,6 @@ using Debug = UnityEngine.Debug;
 public class AX_Test : MonoBehaviour
 {
     [SerializeField] List<GameObject> introUI = new List<GameObject>();
-    public GameObject continueText;
     public GameObject continueButton;
     public GameObject correct;
     public GameObject incorrect;
@@ -205,7 +204,6 @@ public class AX_Test : MonoBehaviour
         {
             Ax_CPT_05mp3.Play();
             continueButton.SetActive(true);
-            continueText.SetActive(true);
             DespawnOld();
             // hier block num erhoehen und audio abspielen + continue button einfuegen
             // buff variable in der if abfrage! bzw block als buff var nehmen
@@ -335,7 +333,6 @@ public class AX_Test : MonoBehaviour
         {
             Ax_CPT_05mp3.Play();
             continueButton.SetActive(true);
-            continueText.SetActive(true);
             DespawnOld();
             // hier block num erhoehen und audio abspielen + continue button einfuegen
             // buff variable in der if abfrage! bzw block als buff var nehmen

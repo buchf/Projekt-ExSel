@@ -167,11 +167,11 @@ public class VSPractice : MonoBehaviour
         a.GetComponent<Button>().interactable = true;
         if (currentTrial == 1)
         {
-            SpawnObjectInBlock(a, 5);
+            SpawnObjectInBlock(a, 2);
         }
         if (currentTrial == 2)
         {
-            SpawnObjectInBlock(a, 5);
+            SpawnObjectInBlock(a, 7);
         }
         lines.SetActive(true);
     }
@@ -181,13 +181,13 @@ public class VSPractice : MonoBehaviour
         b.GetComponent<Button>().interactable = true;
         if (currentTrial == 3)
         {
-            SpawnObjectInBlock(a, 5);
-            SpawnObjectInBlock(b, 8);
+            SpawnObjectInBlock(a, 3);
+            SpawnObjectInBlock(b, 4);
         }
         if (currentTrial == 4)
         {
-            SpawnObjectInBlock(a, 5);
-            SpawnObjectInBlock(b, 8);
+            SpawnObjectInBlock(a, 7);
+            SpawnObjectInBlock(b, 6);
         }
         lines.SetActive(true);
     }

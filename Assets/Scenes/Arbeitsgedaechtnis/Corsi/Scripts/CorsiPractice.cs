@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CorsiPractice : MonoBehaviour
 {
-    
+
     public GameObject fairy;
     public int count1, count2 = 0;
     public TextMesh increaseText;
@@ -37,12 +37,10 @@ public class CorsiPractice : MonoBehaviour
     public GameObject incorrectStar;
     public Player player;
 
-    private int exit;
 
     // Start is called before the first frame update
     void Start()
     {
-        exit = 0;
         //showField();
         //button.gameObject.SetActive(true);
         disableField();
@@ -64,57 +62,57 @@ public class CorsiPractice : MonoBehaviour
     void Update()
     {
 
-        if(!introAudio.isPlaying && buff == 0)
+        if (!introAudio.isPlaying && buff == 0)
         {
             button.interactable = true;
             buff = 1;
         }
-        if(!corsiIncrease.isPlaying && buff == 2)
+        if (!corsiIncrease.isPlaying && buff == 2)
         {
             button2.interactable = true;
             buff = 3;
         }
-        if(!introAudio.isPlaying && buff == 4)
+        if (!introAudio.isPlaying && buff == 4)
         {
             continueButton.interactable = true;
             buff = 5;
         }
 
         //wenn clickedblocks length = sequenztlengt -> startsequenz
-       if(clickedBlocks == sequenzBlocks)
-       {
-            
+        if (clickedBlocks == sequenzBlocks)
+        {
+
             player.CleanListsPractice();
             clickedBlocks = 0;
             if (player.listCompareVar == 1)
             {
-               StartCoroutine(CorrectSequence());
+                StartCoroutine(CorrectSequence());
             }
             else
             {
                 StartCoroutine(IncorrectSequence());
             }
-            
+
         }
     }
 
     public void StartFirstSequenz()
     {
-        
+
         //count1++;
         StartSequenz();
     }
 
     public void StartSequenz()
     {
-        
+
         //Debug.Log(DataSaver.filePath.ToString());
         fairy.SetActive(true);
         fairy.transform.position = new Vector3(-6f, 3f, -1);
 
-        
 
-        
+
+
         if (count1 == 2 && count2 == 1)
         {
             HideField();
@@ -317,15 +315,6 @@ public class CorsiPractice : MonoBehaviour
         for (int i = 0; i < blocks.Count; i++)
         {
             blocks[i].gameObject.SetActive(false);
-        }
-    }
-
-    public void ExitButton()
-    {
-        exit++;
-        if (exit == 3)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 8);
         }
     }
 }

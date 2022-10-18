@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Flexibility/WCST/Scenes/WCST_Practice.unity
+- path: Assets/Scenes/Inhibition/AX-CPT/Scenes/AX Test.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
