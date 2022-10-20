@@ -37,6 +37,7 @@ public class GoNoGoPractice : MonoBehaviour
     public int practicehits = 0;
 
     private int exit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +53,6 @@ public class GoNoGoPractice : MonoBehaviour
         buff = 0;
         buff2 = 0;
         trial = 0;
-        
     }
 
     private void Update()
@@ -78,17 +78,35 @@ public class GoNoGoPractice : MonoBehaviour
             buff++;
             introButton.interactable = true;
         }
-       
+
 
         if (counter == 11 && trial == 2 && buff2 == 0)
         {
+
             if (practiceerrors >= 2 || practicehits < 5)
             {
                 timer.Reset();
-                RepeatPractice();
+                if(SceneSwitch.repeatGoNoGo == 1)
+                {
+                    audiobuff.Play();
+                    buff2 = 1;
+                    timer.Stop();
+                    shownAnimal.gameObject.SetActive(false);
+                    chicken.gameObject.SetActive(false);
+                    button.gameObject.SetActive(false);
+                    continueText.gameObject.SetActive(true);
+                    continueButton.gameObject.SetActive(true);
+                    continueButton.interactable = false;
+                }
+                else
+                {
+                    RepeatPractice();
+                }
+                
             }
             else
             {
+
                 audiobuff.Play();
                 buff2 = 1;
                 timer.Stop();
@@ -98,11 +116,10 @@ public class GoNoGoPractice : MonoBehaviour
                 continueText.gameObject.SetActive(true);
                 continueButton.gameObject.SetActive(true);
                 continueButton.interactable = false;
-                //redoButton.gameObject.SetActive(true);
             }
         }
 
-       
+
 
         if (counter == 11 && trial != 2 && !GoNoGo_02.isPlaying && buff == 1)
         {
@@ -179,6 +196,7 @@ public class GoNoGoPractice : MonoBehaviour
 
     public void RepeatPractice()
     {
+        SceneSwitch.repeatGoNoGo = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0);
     }
 
@@ -204,23 +222,19 @@ public class GoNoGoPractice : MonoBehaviour
     public void clickButton()
     {
         if (shownAnimal == cow)
-            practiceerrors++;
+             practiceerrors++;
         else
-            practicehits++;
-        timer.Reset();
+        practicehits++;
+             timer.Reset();
         SelectNextAnimal();
 
     }
 
     private void SelectNextAnimal()
     {
-
-
         selectAnimal(counter);
         button.enabled = false;
         counter++;
-
-
     }
 
     IEnumerator showDonkey()

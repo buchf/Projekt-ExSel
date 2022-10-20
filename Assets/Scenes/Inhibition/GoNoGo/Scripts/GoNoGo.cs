@@ -54,8 +54,9 @@ public class GoNoGo : MonoBehaviour
 
     private void Update()
     {
-        if (timer.Elapsed.TotalSeconds >= 0.5)
+        if (timer.ElapsedMilliseconds >= 500)
         {
+            timer.Stop();
             if (shownAnimal == currentAnimal)
             {
                 checkAnimal = 1;

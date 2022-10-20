@@ -11,9 +11,11 @@ public class SceneSwitch : MonoBehaviour
      * 
      */
 
-    private string inputVPN = "";
+    public static string inputVPN = "";
     public static bool reverse = false;
     public static bool reverseVS = true;
+
+    public static int repeatGoNoGo;
 
     private void Start()
     {
@@ -71,8 +73,8 @@ public class SceneSwitch : MonoBehaviour
         DataGoNoGO.header.Clear();
         DataGoNoGO.z1.Clear();
         DataGoNoGO.VPN = inputVPN;
-        
-         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 11);
+        repeatGoNoGo = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 11);
     }
     public void StartCardSorting()
     {

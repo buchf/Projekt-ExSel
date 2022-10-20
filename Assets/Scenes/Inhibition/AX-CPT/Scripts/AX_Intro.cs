@@ -71,9 +71,9 @@ public class AX_Intro : MonoBehaviour
         greenDot.SetActive(true);
         redDot.SetActive(true);
         yield return new WaitForSeconds(5f);
-        book.SetActive(false);
-        greenDot.SetActive(false);
-        redDot.SetActive(false);
+       // book.SetActive(false);
+       // greenDot.SetActive(false);
+        //redDot.SetActive(false);
     }
 
     public void ExitButton()

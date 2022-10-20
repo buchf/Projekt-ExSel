@@ -978,6 +978,8 @@ MonoBehaviour:
   cow: {fileID: 213032195}
   donkey: {fileID: 2027839527}
   button: {fileID: 39042792}
+  shownAnimal: {fileID: 0}
+  currentAnimal: {fileID: 0}
   introText: {fileID: 1898569467}
   introText2: {fileID: 1619922438}
   introAnimal: {fileID: 872191286}
