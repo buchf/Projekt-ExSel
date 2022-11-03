@@ -161,12 +161,12 @@ MonoBehaviour:
   fixCross: {fileID: 1312288054}
   redDot: {fileID: 1762480113}
   greenDot: {fileID: 1627031952}
-  A: {fileID: 1254921109}
-  B: {fileID: 1799548263}
-  X: {fileID: 1698439028}
-  Y: {fileID: 729192446}
+  Brille: {fileID: 1254921109}
+  Hut: {fileID: 1799548263}
+  Buch: {fileID: 1698439028}
+  Besen: {fileID: 729192446}
   trialNum: 0
-  trialType: 0
+  trialType: 
   cueProbe: 
   blockNum: 0
   Ax_CPT_04mp3: {fileID: 1820311499}
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 729192449}
   - component: {fileID: 729192448}
   m_Layer: 5
-  m_Name: Y
+  m_Name: Besen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 1254921112}
   - component: {fileID: 1254921111}
   m_Layer: 5
-  m_Name: A
+  m_Name: Brille
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1568,7 +1568,7 @@ GameObject:
   - component: {fileID: 1698439031}
   - component: {fileID: 1698439030}
   m_Layer: 5
-  m_Name: X
+  m_Name: Buch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1775,7 +1775,7 @@ GameObject:
   - component: {fileID: 1799548266}
   - component: {fileID: 1799548265}
   m_Layer: 5
-  m_Name: B
+  m_Name: Hut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

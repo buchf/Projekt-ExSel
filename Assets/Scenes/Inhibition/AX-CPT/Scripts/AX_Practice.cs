@@ -47,7 +47,7 @@ public class AX_Practice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer.Elapsed.Seconds >= 5)
+        if(timer.ElapsedMilliseconds >= 1500)
         {
             Compare("0");
         }
@@ -152,7 +152,6 @@ public class AX_Practice : MonoBehaviour
             if(wrongTask >=5 )
             {
                 //clear practice Data and reload the practice scene
-                AX_Data.practice.Clear();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             else
@@ -182,14 +181,12 @@ public class AX_Practice : MonoBehaviour
         if((s == "L" && cueProbe == "AX") || (s == "D" && cueProbe != "AX"))
         {
             Debug.Log("True");
-            WriteInDataSaver(trialNum, currentFirst.name, currentSecond.name, cresp, s, trialType, timer.ElapsedMilliseconds, 1);
             StartCoroutine(CorrectAnimation());
             trialNum++;
         }
         else
         {
             Debug.Log("False");
-            WriteInDataSaver(trialNum, currentFirst.name, currentSecond.name, cresp, s, trialType, timer.ElapsedMilliseconds, 0);
             StartCoroutine(InCorrectAnimation());
             wrongTask++;
             trialNum++;
@@ -260,10 +257,7 @@ public class AX_Practice : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
-    void WriteInDataSaver(int trial, string cue, string probe, string cresp, string subResp, int trialType, float time, int accuracy)
-    {
-        AX_Data.MeasurePractice(0,1,trial,cue,probe,cresp,subResp,trialType, time, accuracy);
-    }
+    
     public void ExitButton()
     {
         exit++;

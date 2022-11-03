@@ -105,8 +105,8 @@ public class SceneSwitch : MonoBehaviour
 
     public void StartAX_CPT()
     {
+        AX_Data.timePointsts.Clear();
         AX_Data.header.Clear();
-        AX_Data.practice.Clear();
         AX_Data.test.Clear();
         AX_Data.overall.Clear();
         AX_Data.results.Clear();

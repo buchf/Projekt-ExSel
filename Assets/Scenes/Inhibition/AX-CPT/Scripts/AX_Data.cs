@@ -13,8 +13,9 @@ public class AX_Data : MonoBehaviour
     static string fileName;
     public static string filePath;
 
+
+    public static StringBuilder timePointsts = new StringBuilder();
     public static StringBuilder header = new StringBuilder();
-    public static StringBuilder practice = new StringBuilder();
     public static StringBuilder test = new StringBuilder();
     public static StringBuilder overall = new StringBuilder();
     public static List<StringBuilder> results = new List<StringBuilder>();
@@ -30,19 +31,27 @@ public class AX_Data : MonoBehaviour
         misses = AX_Test.misses;
         errors = AX_Test.errors;
 
+
+        accuracyPercentage = hits / (hits + misses + errors) * 100;
+
         fileName = "VPN" + VPN + "_AX-CPT.csv";
         fileName = checkFilename(fileName);
         filePath = Path.Combine(Application.persistentDataPath, fileName);
 
-        header.Append("Participant's ID," + "Date," + "Time" + "\n" + VPN + "," + System.DateTime.Now.ToString("dd/MM/yyyy") + "," + System.DateTime.Now.ToString("HH:mm:ss") + "\n\n");
-        header.Append("Experimental Phase,Block Number,Trial number,Cue Stimulus, Probe stimulus, Correct response, Subject response, Trial type, Reaction time (ms), Reaction Accuracy\n");
+        timePointsts.Append(VPN + ",Total score:," + hits.ToString() + ",Date:," + System.DateTime.Now.ToString("dd/MM/yyyy") + ",Time:," + System.DateTime.Now.ToString("HH:mm:ss") + "\n\n");
 
-        results.Add(header);
-        results.Add(practice);
-        results.Add(test);
-        accuracyPercentage = hits / (hits + misses + errors) * 100;
-        overall.Append("\n,Hits: " + hits + "\n,Misses: " + misses + "\n,Errors: " + errors + "\n,Correct: " + accuracyPercentage.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture) + "%");
+        overall.Append("Task:,AX-CPT\nHits: " + hits + "\nMisses:," + misses + "\nErrors:," + errors + "\nPercent correct:," + accuracyPercentage.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture) + "%\n\n");
+
+        header.Append("VP_ID,Correct Response,RT (in ms),Block,Trial,Cue Stimulus,Probe Stimulus,Correct Click,Subject response,Trial Type\n");
+
+        results.Add(timePointsts);
         results.Add(overall);
+        results.Add(header);
+        
+        results.Add(test);
+        
+        
+        
         File.WriteAllText(filePath, ListToString(results));
     }
 
@@ -71,12 +80,9 @@ public class AX_Data : MonoBehaviour
         return fileName;
     }
 
-    public static void MeasurePractice(int phase, int blockNum, int trialNum, string cue, string probe, string correctResonse, string response, int trialType, float time, int accuracy)
+    
+    public static void MeasureTest( int blockNum, int trialNum, string cue, string probe, string correctResponse, string response, string trialType, float time, int accuracy)
     {
-        practice.AppendFormat("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}\n", phase, blockNum, trialNum, cue, probe, correctResonse, response, trialType, time, accuracy);
-    }
-    public static void MeasureTest(int phase, int blockNum, int trialNum, string cue, string probe, string correctResonse, string response, int trialType, float time, int accuracy)
-    {
-        test.AppendFormat("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}\n", phase, blockNum, trialNum, cue, probe, correctResonse, response, trialType, time, accuracy);
+        test.AppendFormat(VPN + ",{0},{1},{2},{3},{4},{5},{6},{7},{8}\n", accuracy, time, blockNum - 1, trialNum,cue,probe, correctResponse, response, trialType);
     }
 }

@@ -19,10 +19,10 @@ public class AX_Test : MonoBehaviour
     public GameObject redDot;
     public GameObject greenDot;
 
-    public GameObject A;
-    public GameObject B;
-    public GameObject X;
-    public GameObject Y;
+    public GameObject Brille;
+    public GameObject Hut;
+    public GameObject Buch;
+    public GameObject Besen;
 
     public static Stopwatch timer = new Stopwatch();
 
@@ -30,7 +30,7 @@ public class AX_Test : MonoBehaviour
     private GameObject currentSecond;
 
     public int trialNum;
-    public int trialType;
+    public string trialType;
     public string cueProbe;
     string cresp;
     bool enableTask;
@@ -61,7 +61,7 @@ public class AX_Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer.ElapsedMilliseconds >= 3500)
+        if (timer.ElapsedMilliseconds >= 1500)
         {
             Compare("0");
         }
@@ -71,134 +71,134 @@ public class AX_Test : MonoBehaviour
     {
         if (button.name == "greenDot")
         {
-            Compare("L");
+            Compare("Gruen");
         }
         if (button.name == "redDot")
         {
-            Compare("D");
+            Compare("Rot");
         }
     }
     private void CurrentTrial(int trial)
     {
         if (trial == 1)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 2)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 3)
         {
-            StartCoroutine(TaskAnimation(B,Y));
+            StartCoroutine(TaskAnimation(Hut,Besen));
         }
         if (trial == 4)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 5)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 6)
         {
-            StartCoroutine(TaskAnimation(B, X));
+            StartCoroutine(TaskAnimation(Hut, Buch));
         }
         if (trial == 7)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 8)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 9)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 10)
         {
-            StartCoroutine(TaskAnimation(B, X));
+            StartCoroutine(TaskAnimation(Hut, Buch));
         }
         if (trial == 11)
         {
-            StartCoroutine(TaskAnimation(A, Y));
+            StartCoroutine(TaskAnimation(Brille, Besen));
         }
         if (trial == 12)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 13)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 14)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 15)
         {
-            StartCoroutine(TaskAnimation(A, Y));
+            StartCoroutine(TaskAnimation(Brille, Besen));
         }
         if (trial == 16)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 17)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 18)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 19)
         {
-            StartCoroutine(TaskAnimation(B, Y));
+            StartCoroutine(TaskAnimation(Hut, Besen));
         }
         if (trial == 20)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 21)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 22)
         {
-            StartCoroutine(TaskAnimation(B, Y));
+            StartCoroutine(TaskAnimation(Hut, Besen));
         }
         if (trial == 23)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 24)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 25)
         {
-            StartCoroutine(TaskAnimation(A, Y));
+            StartCoroutine(TaskAnimation(Brille, Besen));
         }
         if (trial == 26)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 27)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 28)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 29)
         {
-            StartCoroutine(TaskAnimation(B, X));
+            StartCoroutine(TaskAnimation(Hut, Buch));
         }
         if (trial == 30)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 31 && blockNum == 2)
         {
@@ -211,123 +211,123 @@ public class AX_Test : MonoBehaviour
         // Block 2
         if (trial == 31 && blockNum == 3)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 32)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 33)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 34)
         {
-            StartCoroutine(TaskAnimation(A, Y));
+            StartCoroutine(TaskAnimation(Brille, Besen));
         }
         if (trial == 35)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 36)
         {
-            StartCoroutine(TaskAnimation(B, X));
+            StartCoroutine(TaskAnimation(Hut, Buch));
         }
         if (trial == 37)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 38)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 39)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 40)
         {
-            StartCoroutine(TaskAnimation(B, X));
+            StartCoroutine(TaskAnimation(Hut, Buch));
         }
         if (trial == 41)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 42)
         {
-            StartCoroutine(TaskAnimation(A, Y));
+            StartCoroutine(TaskAnimation(Brille, Besen));
         }
         if (trial == 43)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 44)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 45)
         {
-            StartCoroutine(TaskAnimation(B, Y));
+            StartCoroutine(TaskAnimation(Hut, Besen));
         }
         if (trial == 46)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 47)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 48)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 49)
         {
-            StartCoroutine(TaskAnimation(B, Y));
+            StartCoroutine(TaskAnimation(Hut, Besen));
         }
         if (trial == 50)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 51)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 52)
         {
-            StartCoroutine(TaskAnimation(B, X));
+            StartCoroutine(TaskAnimation(Hut, Buch));
         }
         if (trial == 53)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 54)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 55)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 56)
         {
-            StartCoroutine(TaskAnimation(A, Y));
+            StartCoroutine(TaskAnimation(Brille, Besen));
         }
         if (trial == 57)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 58)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 59)
         {
-            StartCoroutine(TaskAnimation(B, Y));
+            StartCoroutine(TaskAnimation(Hut, Besen));
         }
         if (trial == 60)
         {
-            StartCoroutine(TaskAnimation(A, X));
+            StartCoroutine(TaskAnimation(Brille, Buch));
         }
         if (trial == 61 && blockNum == 3)
         {
@@ -346,15 +346,15 @@ public class AX_Test : MonoBehaviour
         response = s;
         if (cueProbe == "AX")
         {
-            cresp = "L";
+            cresp = "Gruen";
         }
         else
         {
-            cresp = "D";
+            cresp = "Rot";
         }
 
         timer.Stop();
-        if ((s == "L" && cueProbe == "AX") || (s == "D" && cueProbe != "AX"))
+        if ((s == "Gruen" && cueProbe == "AX") || (s == "Rot" && cueProbe != "AX"))
         {
             Debug.Log("True");
             WriteInDataSaver(blockNum, trialNum, currentFirst.name, currentSecond.name, cresp, s, trialType, timer.ElapsedMilliseconds, 1);
@@ -407,14 +407,19 @@ public class AX_Test : MonoBehaviour
     }
     private void SetTrialType()
     {
-        if (cueProbe == "AX") trialType = 1;
-        if (cueProbe == "AY") trialType = 2;
-        if (cueProbe == "BX") trialType = 3;
-        if (cueProbe == "BY") trialType = 4;
+        if (cueProbe == "AX") trialType = "AX";
+        if (cueProbe == "AY") trialType = "AY";
+        if (cueProbe == "BX") trialType = "BX";
+        if (cueProbe == "BY") trialType = "BY";
     }
     IEnumerator TaskAnimation(GameObject first, GameObject second)
     {
-        cueProbe = first.name + second.name;
+
+        if (first.name == "Brille" && second.name == "Buch") cueProbe = "AX";
+        if (first.name == "Brille" && second.name == "Besen") cueProbe = "AY";
+        if (first.name == "Hut" && second.name == "Buch") cueProbe = "BX";
+        if (first.name == "Hut" && second.name == "Besen") cueProbe = "BY";
+        //cueProbe = first.name + second.name;
         currentFirst = first;
         currentSecond = second;
         SetTrialType();
@@ -454,8 +459,8 @@ public class AX_Test : MonoBehaviour
         }
         
     }
-    void WriteInDataSaver(int blockNumber,int trial, string cue, string probe, string cresp, string subResp, int trialType, float time, int accuracy)
+    void WriteInDataSaver(int blockNumber,int trial, string cue, string probe, string cresp, string subResp, string trialType, float time, int accuracy)
     {
-        AX_Data.MeasureTest(1, blockNumber, trial, cue, probe, cresp, subResp, trialType, time, accuracy);
+        AX_Data.MeasureTest(blockNumber, trial, cue, probe, cresp, subResp, trialType, time, accuracy);
     }
 }
