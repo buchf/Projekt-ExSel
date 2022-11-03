@@ -19,7 +19,7 @@ public class GoNoGo : MonoBehaviour
     GameObject shownAnimal;
     GameObject currentAnimal;
 
-    private int exit = 0;
+
 
     public static Stopwatch timer = new Stopwatch();
 
@@ -27,20 +27,24 @@ public class GoNoGo : MonoBehaviour
     public int counter = 0;
     public static int trial = 1;
 
-    
+
     public static int correctClick = 0;
     public static int incorrectClick = 0;
     public static int correctNoClick = 0;
     public static int incorrectNoClick = 0;
-
+    public static int trialNo = 1; // wievieltes Item (ohne Uebungsphase)
+    public static bool isFirst = false;
     //wird angepasst wenn das targettier geaendert werden soll
     public int sequenz = 0;
 
     public int checkAnimal;
 
+    private int exit = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        exit = 0;
         timer.Reset();
         //counter = 0;
         SelectCurrentAnimal(trial);
@@ -54,9 +58,8 @@ public class GoNoGo : MonoBehaviour
 
     private void Update()
     {
-        if (timer.ElapsedMilliseconds >= 500)
+        if (timer.Elapsed.TotalSeconds >= 0.5)
         {
-            timer.Stop();
             if (shownAnimal == currentAnimal)
             {
                 checkAnimal = 1;
@@ -67,18 +70,17 @@ public class GoNoGo : MonoBehaviour
                 checkAnimal = 0;
                 incorrectNoClick++;
             }
-            WriteInDatasaver(currentAnimal.name, shownAnimal.name, 0, checkAnimal, timer.Elapsed.TotalMilliseconds);
-            SelectNextAnimal();
+            WriteInDatasaver(currentAnimal.name, shownAnimal.name, 0, checkAnimal, timer.Elapsed.TotalMilliseconds, trialNo);
+            SelectNextAnimal(isFirst);
         }
 
-        if (counter == 21 && trial != 5)
+        if (counter == 21 && trial < 5)
         {
-            Debug.Log("Finish!!!");
             trial++;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-        if (counter == 21 && trial == 5)
+        if (counter == 21 && trial >= 5)
         {
             Debug.Log("Finish!!!");
             trial++;
@@ -88,25 +90,29 @@ public class GoNoGo : MonoBehaviour
         }
 
         //falls timer > 2 sekunden dann naechstes tier
-        
+
     }
 
     //wird benoetigt zur automatischen abfolge oder beim klicken des buttons
-    private void SelectNextAnimal()
+    private void SelectNextAnimal(bool firstItem)
     {
+        if (!firstItem)
+            trialNo++;
+        isFirst = false;
         counter++;
         selectAnimal(counter);
         button.enabled = false;
-        
+
     }
 
     public void StartSequenz()
     {
         //timer.Start();
-        SelectNextAnimal();
+        isFirst = true;
+        SelectNextAnimal(isFirst);
     }
 
-    void SelectCurrentAnimal(int trial)
+    void SelectCurrentAnimal(int trial) //falls sich das NoGo-Tier aendert
     {
         if (trial == 1) currentAnimal = cow;
         if (trial == 2) currentAnimal = cow;
@@ -117,7 +123,7 @@ public class GoNoGo : MonoBehaviour
 
     void selectAnimal(int counter)
     {
-       // if (counter == 0) StartCoroutine(showPig());
+        // if (counter == 0) StartCoroutine(showPig());
         if (counter == 1) StartCoroutine(showDonkey());
         if (counter == 2) StartCoroutine(showChicken());
         if (counter == 3) StartCoroutine(showPig());
@@ -165,19 +171,19 @@ public class GoNoGo : MonoBehaviour
             checkAnimal = 0;
             incorrectClick++;
         }
-        if(shownAnimal != currentAnimal)
+        if (shownAnimal != currentAnimal)
         {
             checkAnimal = 1;
             correctClick++;
         }
-        WriteInDatasaver(currentAnimal.name, shownAnimal.name, 1, checkAnimal, timer.Elapsed.TotalMilliseconds);
+        WriteInDatasaver(currentAnimal.name, shownAnimal.name, 1, checkAnimal, timer.Elapsed.TotalMilliseconds, trialNo);
         //aufrufen um nach betaetigen des buttons direkt zum naechsten tier zu gelangen
-        SelectNextAnimal();
+        SelectNextAnimal(isFirst);
     }
 
-    private void WriteInDatasaver(string current, string shown, int click, int CRESP, double reaction)
+    private void WriteInDatasaver(string current, string shown, int click, int CRESP, double reaction, int item)
     {
-        DataGoNoGO.MeasureSequenz(current,shown,click,CRESP,reaction);
+        DataGoNoGO.MeasureSequenz(current, shown, click, CRESP, reaction, item);
         timer.Reset();
     }
 
@@ -221,6 +227,7 @@ public class GoNoGo : MonoBehaviour
         button.enabled = true;
         timer.Start();
     }
+
     public void ExitButton()
     {
         exit++;

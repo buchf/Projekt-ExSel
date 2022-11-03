@@ -267,17 +267,7 @@ public class VSPractice : MonoBehaviour
         incorrect.SetActive(false);
         yield return new WaitForSeconds(1f);
        // currentTrial++;
-       if(buff == 0)
-        {
-            buff = 1;
-            StartTrial(currentTrial);
-        }
-        else
-        {
-            buff = 0;
-            currentTrial++;
-            StartTrial(currentTrial);
-        }
+       StartTrial(currentTrial);
     }
 
     public void ExitButton()

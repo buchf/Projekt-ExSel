@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
@@ -19,10 +20,11 @@ public class SceneSwitch : MonoBehaviour
 
     private void Start()
     {
-        reverseVS = false;
+
     }
     public void StartGame()
     {
+        
         DataSaver.z0.Clear();
         DataSaver.z1.Clear();
         DataSaver.z2.Clear();
@@ -30,6 +32,7 @@ public class SceneSwitch : MonoBehaviour
         DataSaver.z4.Clear();
         DataSaver.z5.Clear();
         DataSaver.z6.Clear();
+        DataSaver.count = 1;
         DataSaver.results.Clear();
         Randomizer.countFalseTask = 0;
         Randomizer.totalTasks = 0;
@@ -62,7 +65,8 @@ public class SceneSwitch : MonoBehaviour
 
     public void SetReverse()
     {
-        reverse = true;
+        
+        
     }
 
     public void StartGoNoGO()

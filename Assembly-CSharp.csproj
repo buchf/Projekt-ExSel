@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scenes\Inhibition\AX-CPT\Scripts\AX_Practice.cs" />
     <Compile Include="Assets\Backend\UI\PauseButton.cs" />
+    <Compile Include="Assets\TextFieldHandler.cs" />
     <Compile Include="Assets\Backend\IO\ExperimentConfig.cs" />
     <Compile Include="Assets\Backend\ControlFlow\Trial.cs" />
     <Compile Include="Assets\Backend\UI\Richtungssticker.cs" />
@@ -121,7 +122,7 @@
     <Compile Include="Assets\Scenes\Arbeitsgedaechtnis\Verbal Span\Scripts\VSPractice.cs" />
     <Compile Include="Assets\Scenes\Flexibility\STS\Scripts\CSPlay.cs" />
     <Compile Include="Assets\Scenes\Arbeitsgedaechtnis\Corsi\Scripts\Player.cs" />
-    <Compile Include="Assets\TextFieldHandler.cs" />
+    <Compile Include="Assets\ToggleScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scenes\Arbeitsgedaechtnis\TextMesh Pro\Shaders\TMPro.cginc" />
