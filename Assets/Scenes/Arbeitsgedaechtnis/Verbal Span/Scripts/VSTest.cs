@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
+
 public class VSTest : MonoBehaviour
 {
     [SerializeField] List<GameObject> startUI = new List<GameObject>();
@@ -31,10 +32,15 @@ public class VSTest : MonoBehaviour
     public static int wrongCounter = 0;
     public GameObject defaultObject;
     public static int accuracy = 0;
+    public static int presentedTasks = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        VSData.totalTime = 0.0d;
         exit = 0;
+        presentedTasks = 0;
         lines.SetActive(false);
         accuracy = 0;
         VSBackend.expPhase = 1;
@@ -83,6 +89,7 @@ public class VSTest : MonoBehaviour
     }
     private void StartTrial(int current)
     {
+        
         lines.SetActive(false);
         if (sequenzLength == 1)
         {
@@ -627,6 +634,7 @@ public class VSTest : MonoBehaviour
 
     void SpawnOnField(GameObject a)
     {
+        presentedTasks++;
         a.GetComponent<Button>().interactable = true;
         if(currentTrial == 1)
         {
@@ -656,6 +664,7 @@ public class VSTest : MonoBehaviour
     }
     void SpawnOnField(GameObject a, GameObject b)
     {
+        presentedTasks++;
         a.GetComponent<Button>().interactable = true;
         b.GetComponent<Button>().interactable = true;
 
@@ -693,6 +702,7 @@ public class VSTest : MonoBehaviour
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c)
     {
+        presentedTasks++;
         a.GetComponent<Button>().interactable = true;
         b.GetComponent<Button>().interactable = true;
         c.GetComponent<Button>().interactable = true;
@@ -737,6 +747,7 @@ public class VSTest : MonoBehaviour
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d)
     {
+        presentedTasks++;
         a.GetComponent<Button>().interactable = true;
         b.GetComponent<Button>().interactable = true;
         c.GetComponent<Button>().interactable = true;
@@ -789,6 +800,7 @@ public class VSTest : MonoBehaviour
 
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e)
     {
+        presentedTasks++;
         a.GetComponent<Button>().interactable = true;
         b.GetComponent<Button>().interactable = true;
         c.GetComponent<Button>().interactable = true;
@@ -847,6 +859,7 @@ public class VSTest : MonoBehaviour
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e, GameObject f)
     {
+        presentedTasks++;
         a.GetComponent<Button>().interactable = true;
         b.GetComponent<Button>().interactable = true;
         c.GetComponent<Button>().interactable = true;
@@ -913,7 +926,7 @@ public class VSTest : MonoBehaviour
 
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e, GameObject f, GameObject g)
     {
-        
+        presentedTasks++;
         a.GetComponent<Button>().interactable = true;
         b.GetComponent<Button>().interactable = true;
         c.GetComponent<Button>().interactable = true;
@@ -986,6 +999,7 @@ public class VSTest : MonoBehaviour
     }
     void SpawnOnField(GameObject a, GameObject b, GameObject c, GameObject d, GameObject e, GameObject f, GameObject g, GameObject h)
     {
+        presentedTasks++;
         a.GetComponent<Button>().interactable = true;
         b.GetComponent<Button>().interactable = true;
         c.GetComponent<Button>().interactable = true;
@@ -1102,6 +1116,7 @@ public class VSTest : MonoBehaviour
 
     public void OnMouseDown(GameObject gameObject)
     {
+        
         border.transform.position = gameObject.transform.position;
         Debug.Log(gameObject.name.ToString());
         StartCoroutine(ClickAnimation(gameObject));
@@ -1112,9 +1127,12 @@ public class VSTest : MonoBehaviour
         gameObject.GetComponent<Button>().interactable = false;
         border.SetActive(true);
         yield return new WaitForSeconds(.2f);
+        
         border.SetActive(false);
         gameObject.GetComponent<Button>().interactable = true;
+
         backend.clickedList.Add(gameObject);
+        if (clickedLength == 0) VSBackend.timer.Start();
         clickedLength++;
     }
 

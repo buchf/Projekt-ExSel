@@ -16,13 +16,11 @@ public class VSBackend : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        VSData.totalTime = 0.0d;
     }
 
     public void ClearLists()
     {
-
-
         if (SceneSwitch.reverseVS == true)
         {
             CompareListsReverse();
@@ -39,6 +37,8 @@ public class VSBackend : MonoBehaviour
 
     public void CompareLists()
     {
+        timer.Stop();
+        VSData.totalTime += timer.Elapsed.TotalMilliseconds;
         int trial;
         if (expPhase == 0)
         {
@@ -87,6 +87,8 @@ public class VSBackend : MonoBehaviour
 
     public void CompareListsReverse()
     {
+        timer.Stop();
+        VSData.totalTime += timer.Elapsed.TotalMilliseconds;
         int trial;
         if (expPhase == 0)
         {
@@ -139,19 +141,20 @@ public class VSBackend : MonoBehaviour
     {
         if (sequenzlenght == 1)
         {
-            if (phase == 0) VSData.MeasurePracticeSequenzOne(phase, trial, sequenzlenght, crespOne, respOne, accuracy);
-            if (phase == 1) VSData.MeasureSequenzOne(phase, trial, sequenzlenght, crespOne, respOne, accuracy);
+           // if (phase == 0) VSData.MeasurePracticeSequenzOne(phase, trial, sequenzlenght, crespOne, respOne, accuracy, timer.Elapsed.TotalMilliseconds);
+            if (phase == 1) VSData.MeasureSequenzOne(phase, trial, sequenzlenght, crespOne, respOne, accuracy, timer.Elapsed.TotalMilliseconds);
         }
         if (sequenzlenght == 2)
         {
-            if (phase == 0) VSData.MeasurePracticeSequenzTwo(phase, trial, sequenzlenght, crespOne, crespTwo, respOne, respTwo, accuracy);
-            if (phase == 1) VSData.MeasureSequenzTwo(phase, trial, sequenzlenght, crespOne, crespTwo, respOne, respTwo, accuracy);
+           // if (phase == 0) VSData.MeasurePracticeSequenzTwo(phase, trial, sequenzlenght, crespOne, crespTwo, respOne, respTwo, accuracy, timer.Elapsed.TotalMilliseconds);
+            if (phase == 1) VSData.MeasureSequenzTwo(phase, trial, sequenzlenght, crespOne, crespTwo, respOne, respTwo, accuracy, timer.Elapsed.TotalMilliseconds);
         }
-        if (sequenzlenght == 3) VSData.MeasureSequenzThree(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, respOne, respTwo, respThree, accuracy);
-        if (sequenzlenght == 4) VSData.MeasureSequenzFour(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, crespFour, respOne, respTwo, respThree, respFour, accuracy);
-        if (sequenzlenght == 5) VSData.MeasureSequenzFive(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, crespFour, crespFive, respOne, respTwo, respThree, respFour, respFive, accuracy);
-        if (sequenzlenght == 6) VSData.MeasureSequenzSix(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, crespFour, crespFive, crespSix, respOne, respTwo, respThree, respFour, respFive, respSix, accuracy);
-        if (sequenzlenght == 7) VSData.MeasureSequenzSeven(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, crespFour, crespFive, crespSix, crespSeven, respOne, respTwo, respThree, respFour, respFive, respSix, respSeven, accuracy);
-        if (sequenzlenght == 8) VSData.MeasureSequenzEight(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, crespFour, crespFive, crespSix, crespSeven, crespEight, respOne, respTwo, respThree, respFour, respFive, respSix, respSeven, respEight, accuracy);
+        if (sequenzlenght == 3) VSData.MeasureSequenzThree(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, respOne, respTwo, respThree, accuracy, timer.Elapsed.TotalMilliseconds);
+        if (sequenzlenght == 4) VSData.MeasureSequenzFour(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, crespFour, respOne, respTwo, respThree, respFour, accuracy, timer.Elapsed.TotalMilliseconds);
+        if (sequenzlenght == 5) VSData.MeasureSequenzFive(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, crespFour, crespFive, respOne, respTwo, respThree, respFour, respFive, accuracy, timer.Elapsed.TotalMilliseconds);
+        if (sequenzlenght == 6) VSData.MeasureSequenzSix(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, crespFour, crespFive, crespSix, respOne, respTwo, respThree, respFour, respFive, respSix, accuracy, timer.Elapsed.TotalMilliseconds);
+        if (sequenzlenght == 7) VSData.MeasureSequenzSeven(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, crespFour, crespFive, crespSix, crespSeven, respOne, respTwo, respThree, respFour, respFive, respSix, respSeven, accuracy, timer.Elapsed.TotalMilliseconds);
+        if (sequenzlenght == 8) VSData.MeasureSequenzEight(phase, trial, sequenzlenght, crespOne, crespTwo, crespThree, crespFour, crespFive, crespSix, crespSeven, crespEight, respOne, respTwo, respThree, respFour, respFive, respSix, respSeven, respEight, accuracy, timer.Elapsed.TotalMilliseconds);
+        timer.Reset();
     }
 }

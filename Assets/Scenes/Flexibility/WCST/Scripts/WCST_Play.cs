@@ -55,17 +55,23 @@ public class WCST_Play : MonoBehaviour
     public List<int> correctResponse = new List<int>();
     public int clickedResponse;
     int trialType = 0;
-    int accuracy = 0;
+    string accuracy = "0";
     int buff = 0;
 
+    public static int cresp = 0;
     public static int gesamtpunktzahl = 0;
+    public static int gesamtPreservation = 0;
+    public static int gesamtError = 0;
 
     public static Stopwatch timer = new Stopwatch();
 
     void Start()
     {
         exit = 0;
+        cresp = 0;
         gesamtpunktzahl = 0;
+        gesamtError = 0;
+        gesamtPreservation = 0;
         buff = 0;
         blockNumber = 1;
         block2Buff = 0;
@@ -80,7 +86,7 @@ public class WCST_Play : MonoBehaviour
         {
             timer.Stop();
             clickedResponse = 0;
-            accuracy = 0;
+            accuracy = "0";
             correctChain = 0;
 
             StartCoroutine(IncorrectAnimation());
@@ -138,13 +144,13 @@ public class WCST_Play : MonoBehaviour
     {
         if (clickedColor == currentColor)
         {
-            accuracy = 1;
+            accuracy = "1";
             StartCoroutine(CorrectAnimation());
             correctChain++;
         }
         else
         {
-            accuracy = 0;
+            accuracy = "0";
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
         }
@@ -154,13 +160,13 @@ public class WCST_Play : MonoBehaviour
     {
         if (clickedShape == currentShape)
         {
-            accuracy = 1;
+            accuracy = "1";
             StartCoroutine(CorrectAnimation());
             correctChain++;
         }
         else
         {
-            accuracy = 0;
+            accuracy = "0";
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
         }
@@ -170,13 +176,13 @@ public class WCST_Play : MonoBehaviour
     {
         if (clickedNum == currentNum)
         {
-            accuracy = 1;
+            accuracy = "1";
             StartCoroutine(CorrectAnimation());
             correctChain++;
         }
         else
         {
-            accuracy = 0;
+            accuracy = "0";
             StartCoroutine(IncorrectAnimation());
             correctChain = 0;
         }
@@ -190,6 +196,7 @@ public class WCST_Play : MonoBehaviour
             if (usedRules[i] == sortCategory)
             {
                 Debug.Log("PRESERVATION ERROR");
+                gesamtPreservation++;
                 preservationError = true;
             }
         }
@@ -225,13 +232,13 @@ public class WCST_Play : MonoBehaviour
 
                 if (checkList == true)
                 {
-                    accuracy = 2;
+                    accuracy = "pe";
                     sortCategory = 0;
                     StartCoroutine(IncorrectAnimation());
                 }
                 else
                 {
-                    accuracy = 1;
+                    accuracy = "1";
                     StartCoroutine(CorrectAnimation());
                 }
 
@@ -270,7 +277,7 @@ public class WCST_Play : MonoBehaviour
                 if (preservationError == true)
                 {
                     sortCategory = 0;
-                    accuracy = 2;
+                    accuracy = "pe";
                     StartCoroutine(IncorrectAnimation());
 
                 }
@@ -278,7 +285,7 @@ public class WCST_Play : MonoBehaviour
                 {
                     trialType = 2;
                     if (usedRules.Count == 0) trialType = 0;
-                    accuracy = 1;
+                    accuracy = "1";
                     StartCoroutine(CorrectAnimation());
                     correctChain++;
                 }
@@ -329,6 +336,7 @@ public class WCST_Play : MonoBehaviour
 
     IEnumerator CorrectAnimation()
     {
+        cresp++;
         WriteInDataSaver(blockNumber, trialType, sortCategory, current.name, correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, timer.ElapsedMilliseconds, accuracy);
         correctStar.SetActive(true);
         cardBorder.SetActive(false);
@@ -388,6 +396,7 @@ public class WCST_Play : MonoBehaviour
 
     IEnumerator IncorrectAnimation()
     {
+        gesamtError++;
         WriteInDataSaver(blockNumber, trialType, sortCategory, current.name, correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, timer.ElapsedMilliseconds, accuracy);
         incorrectStar.SetActive(true);
         cardBorder.SetActive(false);
@@ -545,10 +554,14 @@ public class WCST_Play : MonoBehaviour
 
         Debug.Log(correctResponse[0] + "," + correctResponse[1] + "," + correctResponse[2]);
     }
-    void WriteInDataSaver(int blockNum, int trialType, int sortCat, string WCST, int respOne, int respTwo, int respThree, int CRESP, float timer, int acc)
+    void WriteInDataSaver(int blockNum, int trialType, int sortCat, string WCST, int respOne, int respTwo, int respThree, int CRESP, float timer, string acc)
     {
-        //WCST_Data.MeasurePractice(0,1,position+1,trialType, sortCategory,current.name,correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, 123,trialType);
-        WCST_Data.MeasureTest(1, blockNumber +1, position + 1, trialType, sortCat, WCST, respOne, respTwo, respThree, CRESP, timer, acc);
+        string sortBuff = "";
+        if (sortCat == 1) sortBuff = "color";
+        if (sortCat == 2) sortBuff = "shape";
+        if (sortCat == 3) sortBuff = "number";
+          //WCST_Data.MeasurePractice(0,1,position+1,trialType, sortCategory,current.name,correctResponse[0], correctResponse[1], correctResponse[2], clickedResponse, 123,trialType);
+       WCST_Data.MeasureTest(1, blockNumber +1, position + 1, trialType, sortBuff, WCST, respOne, respTwo, respThree, CRESP, timer, acc);
     }
 
     public void ExitButton()

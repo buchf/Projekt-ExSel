@@ -95,6 +95,8 @@ public class SceneSwitch : MonoBehaviour
 
     public void StartWCST()
     {
+        WCST_Data.timePointsts.Clear();
+        WCST_Data.overall.Clear();
         WCST_Data.header.Clear();
         WCST_Data.practice.Clear();
         WCST_Data.test.Clear();
@@ -120,6 +122,8 @@ public class SceneSwitch : MonoBehaviour
     }
     public void StartVS()
     {
+        VSData.timePointsts.Clear();
+        VSData.overall.Clear();
         VSData.header.Clear();
         VSData.practiceOne.Clear();
         VSData.practiceTwo.Clear();
@@ -132,7 +136,7 @@ public class SceneSwitch : MonoBehaviour
         VSData.testSeven.Clear();
         VSData.testEigth.Clear();
         VSData.results.Clear();
-        VSData.totalTask.Clear();
+        ;
         VSData.VPN = inputVPN;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 24);
     }

@@ -55,10 +55,6 @@ public class AX_Data : MonoBehaviour
         File.WriteAllText(filePath, ListToString(results));
     }
 
-    public void Create()
-    {
-        Debug.Log("test");
-    }
     private string ListToString(List<StringBuilder> results)
     {
         string x = "";

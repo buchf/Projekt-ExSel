@@ -14,8 +14,13 @@ public class WCST_Data : MonoBehaviour
     static string fileName;
     public static string filePath;
 
+    int cresp = 0;
     int gesamtpunktzahl = 0;
+    int preservationErrors = 0;
+    int errors = 0;
 
+    public static StringBuilder timePointsts = new StringBuilder();
+    public static StringBuilder overall = new StringBuilder();
     public static StringBuilder header = new StringBuilder();
     public static StringBuilder practice = new StringBuilder();
     public static StringBuilder test = new StringBuilder();
@@ -23,16 +28,26 @@ public class WCST_Data : MonoBehaviour
 
     private void Start()
     {
+        cresp = WCST_Play.cresp;
         gesamtpunktzahl = WCST_Play.gesamtpunktzahl;
+        preservationErrors = WCST_Play.gesamtPreservation;
+        errors = WCST_Play.gesamtError;
+
         fileName = "VPN" + VPN + "_WCST.csv";
         fileName = checkFilename(fileName);
         filePath = Path.Combine(Application.persistentDataPath, fileName);
 
-        header.Append("Participant's ID," + "Date," + "Time" + "\n" + VPN + "," + System.DateTime.Now.ToString("dd/MM/yyyy") + "," + System.DateTime.Now.ToString("HH:mm:ss") + "\n\n");
-        header.Append("Experimental Phase,Block Number,Trial Number,Trial Type,Sorting Catergory,Stimulus presented,Correct Response1,Correct Response2,Correct Response3,Subject Response,Reaction Time,Reaction Accuracy\n");
+        timePointsts.Append(VPN + ",Total score:," + cresp.ToString() + ",Date:," + System.DateTime.Now.ToString("dd/MM/yyyy") + ",Time:," + System.DateTime.Now.ToString("HH:mm:ss") + "\n\n");
+
+        overall.Append("Task:,WCST\nTotal Score:," + cresp + "\nTotal errors:," + errors + "\nTotal perseveration errors:," + preservationErrors + "\nCategories completed:," + gesamtpunktzahl + "\n\n");
+
+        header.Append("VP_ID,Correct response,RT (in ms),Block,Trial,Experimental condition,Temporal block,Stimulus presented,Correct Target1,Correct Target2,Correct Target3,Subject response, Sorting Catergory,Trial Type\n");
+
+        results.Add(timePointsts);
+        results.Add(overall);
+
         results.Add(header);
         results.Add(practice);
-        test.Append("\n\nNumber of categories completed: " + gesamtpunktzahl);
         results.Add(test);
 
         File.WriteAllText(filePath, ListToString(results));
@@ -58,12 +73,12 @@ public class WCST_Data : MonoBehaviour
         return fileName;
     }
 
-    public static void MeasurePractice(int phase, int blockNum, int trialNum, int trialType, int sortingCategory, string stimulus,int corrResOne, int corrResTwo, int CorResThree, int subRes, float timer, int accuracy)
+    public static void MeasurePractice(int phase, int blockNum, int trialNum, int trialType, string sortingCategory, string stimulus,int corrResOne, int corrResTwo, int corrResThree, int subRes, float timer, string accuracy)
     {
-        practice.AppendFormat("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}\n", phase, blockNum, trialNum, trialType, sortingCategory, stimulus, corrResOne, corrResTwo, CorResThree, subRes, timer, accuracy);
+        practice.AppendFormat(VPN + ",{0},{1},{2},{3},Practice,{4},{5},{6},{7},{8},{9},{10},{11}\n", accuracy, timer, blockNum - 1, trialNum, blockNum, stimulus, corrResOne, corrResTwo, corrResThree, subRes, sortingCategory, trialType);
     }
-    public static void MeasureTest(int phase, int blockNum, int trialNum, int trialType, int sortingCategory, string stimulus, int corrResOne, int corrResTwo, int CorResThree, int subRes, float timer, int accuracy)
+    public static void MeasureTest(int phase, int blockNum, int trialNum, int trialType, string sortingCategory, string stimulus, int corrResOne, int corrResTwo, int corrResThree, int subRes, float timer, string accuracy)
     {
-        test.AppendFormat("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}\n", phase, blockNum, trialNum, trialType, sortingCategory, stimulus, corrResOne, corrResTwo, CorResThree, subRes, timer, accuracy);
+        test.AppendFormat(VPN + ",{0},{1},{2},{3},Test,{4},{5},{6},{7},{8},{9},{10},{11}\n", accuracy, timer, blockNum -1, trialNum, blockNum ,stimulus, corrResOne, corrResTwo, corrResThree, subRes, sortingCategory, trialType);
     }
 }
