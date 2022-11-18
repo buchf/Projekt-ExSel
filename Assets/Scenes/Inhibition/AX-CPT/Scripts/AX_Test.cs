@@ -61,7 +61,7 @@ public class AX_Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer.ElapsedMilliseconds >= 1500)
+        if (timer.ElapsedMilliseconds >= 1000)
         {
             Compare("0");
         }
