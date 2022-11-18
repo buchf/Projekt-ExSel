@@ -60,10 +60,11 @@ public class GoNoGo : MonoBehaviour
     {
         if(timer.Elapsed.TotalSeconds >= 0.5)
         {
-            currentAnimal.SetActive(false);
+            shownAnimal.SetActive(false);
         }
         if (timer.Elapsed.TotalSeconds >= 1)
         {
+            timer.Stop();
             if (shownAnimal == currentAnimal)
             {
                 checkAnimal = 1;

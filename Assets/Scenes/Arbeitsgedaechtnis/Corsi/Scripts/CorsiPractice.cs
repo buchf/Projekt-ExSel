@@ -16,6 +16,8 @@ public class CorsiPractice : MonoBehaviour
     public AudioSource corsi_02;
     public AudioSource corsi_02_back;
     public AudioSource corsiIncrease;
+    public AudioSource increaseBackwards;
+
     private int buff = 0;
 
     //UI Variable
@@ -65,7 +67,7 @@ public class CorsiPractice : MonoBehaviour
     void Update()
     {
 
-        if (!introAudio.isPlaying && buff == 0)
+        if (!introAudio.isPlaying && !increaseBackwards.isPlaying && buff == 0)
         {
             button.interactable = true;
             buff = 1;
@@ -171,7 +173,15 @@ public class CorsiPractice : MonoBehaviour
         disableField();
         button2.gameObject.SetActive(true);
         button2.interactable = false;
-        corsiIncrease.Play();
+
+        if (SceneSwitch.reverse)
+        {
+            increaseBackwards.Play();
+        }
+        else
+        {
+            corsiIncrease.Play();
+        }
         buff = 2;
         increaseText.gameObject.SetActive(true);
     }
