@@ -26,7 +26,10 @@ public class GoNoGo : MonoBehaviour
     //counter zum durchiterieren und trialcounter um ab 10 das targettier zu wechseln
     public int counter = 0;
     public static int trial = 1;
-
+    public static double presentationTime = 500;
+    public static double responseRegistration = 1000;
+    public static float interStim = 1000;
+    public string trialType = "";
 
     public static int correctClick = 0;
     public static int incorrectClick = 0;
@@ -48,7 +51,6 @@ public class GoNoGo : MonoBehaviour
         timer.Reset();
         //counter = 0;
         SelectCurrentAnimal(trial);
-        Debug.Log("trial: " + trial + "animal: " + currentAnimal.name.ToString());
         shownAnimal = donkey;
         // donkey.SetActive(true);
         //timer.Start();
@@ -58,24 +60,27 @@ public class GoNoGo : MonoBehaviour
 
     private void Update()
     {
-        if(timer.Elapsed.TotalSeconds >= 0.5)
+        if (timer.Elapsed.TotalMilliseconds >= presentationTime)
         {
-            shownAnimal.SetActive(false);
+            shownAnimal.SetActive(false); //
         }
-        if (timer.Elapsed.TotalSeconds >= 1)
+
+        if (timer.Elapsed.TotalMilliseconds >= responseRegistration)
         {
             timer.Stop();
             if (shownAnimal == currentAnimal)
             {
+                trialType = "NoGo";
                 checkAnimal = 1;
                 correctNoClick++;
             }
             else
             {
+                trialType = "Go";
                 checkAnimal = 0;
                 incorrectNoClick++;
             }
-            WriteInDatasaver(currentAnimal.name, shownAnimal.name, 0, checkAnimal, timer.Elapsed.TotalMilliseconds, trialNo);
+            WriteInDatasaver(currentAnimal.name, shownAnimal.name, 0, checkAnimal, timer.Elapsed.TotalMilliseconds, trialNo, trialType);
             SelectNextAnimal(isFirst);
         }
 
@@ -87,7 +92,6 @@ public class GoNoGo : MonoBehaviour
 
         if (counter == 21 && trial >= 5)
         {
-            Debug.Log("Finish!!!");
             trial++;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
             counter = 1;
@@ -173,22 +177,24 @@ public class GoNoGo : MonoBehaviour
     {
         if (shownAnimal == currentAnimal)
         {
+            trialType = "NoGo";
             checkAnimal = 0;
             incorrectClick++;
         }
         if (shownAnimal != currentAnimal)
         {
+            trialType = "Go";
             checkAnimal = 1;
             correctClick++;
         }
-        WriteInDatasaver(currentAnimal.name, shownAnimal.name, 1, checkAnimal, timer.Elapsed.TotalMilliseconds, trialNo);
+        WriteInDatasaver(currentAnimal.name, shownAnimal.name, 1, checkAnimal, timer.Elapsed.TotalMilliseconds, trialNo, trialType);
         //aufrufen um nach betaetigen des buttons direkt zum naechsten tier zu gelangen
         SelectNextAnimal(isFirst);
     }
 
-    private void WriteInDatasaver(string current, string shown, int click, int CRESP, double reaction, int item)
+    private void WriteInDatasaver(string current, string shown, int click, int CRESP, double reaction, int item, string trialtype)
     {
-        DataGoNoGO.MeasureSequenz(current, shown, click, CRESP, reaction, item);
+        DataGoNoGO.MeasureSequenz(current, shown, click, CRESP, reaction, item, trialtype);
         timer.Reset();
     }
 

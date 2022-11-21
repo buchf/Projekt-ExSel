@@ -49,6 +49,7 @@ public class AX_Practice : MonoBehaviour
     {
         if(timer.ElapsedMilliseconds >= 1000)
         {
+            timer.Stop();
             Compare("0");
         }
     }

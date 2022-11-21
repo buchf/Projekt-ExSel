@@ -63,6 +63,7 @@ public class AX_Test : MonoBehaviour
     {
         if (timer.ElapsedMilliseconds >= 1000)
         {
+            timer.Stop();
             Compare("0");
         }
     }
