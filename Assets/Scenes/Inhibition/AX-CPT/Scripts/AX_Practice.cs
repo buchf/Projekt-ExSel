@@ -36,9 +36,12 @@ public class AX_Practice : MonoBehaviour
     string cresp;
     bool enableTask;
 
+    public static int buff;
+
     public int wrongTask;
     private void Start()
     {
+        
         exit = 0;
         wrongTask = 0;
         enableTask = false;
@@ -150,10 +153,10 @@ public class AX_Practice : MonoBehaviour
         }
         if(trial == 21)
         {
-            if(wrongTask >=5 )
+            if(wrongTask >=5 && buff == 0)
             {
-                //clear practice Data and reload the practice scene
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                buff = 1;
             }
             else
             {

@@ -71,7 +71,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void StartGoNoGO()
     {
-        
+        DataGoNoGO.timePointnogo.Clear();
         DataGoNoGO.overall.Clear();
         DataGoNoGO.results.Clear();
         DataGoNoGO.header.Clear();
@@ -107,6 +107,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void StartAX_CPT()
     {
+        AX_Practice.buff = 0;
         AX_Data.timePointsts.Clear();
         AX_Data.header.Clear();
         AX_Data.test.Clear();
@@ -136,7 +137,6 @@ public class SceneSwitch : MonoBehaviour
         VSData.testSeven.Clear();
         VSData.testEigth.Clear();
         VSData.results.Clear();
-        ;
         VSData.VPN = inputVPN;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 24);
     }

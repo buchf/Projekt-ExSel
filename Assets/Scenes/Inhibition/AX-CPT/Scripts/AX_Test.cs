@@ -11,6 +11,7 @@ using Debug = UnityEngine.Debug;
 public class AX_Test : MonoBehaviour
 {
     [SerializeField] List<GameObject> introUI = new List<GameObject>();
+    public GameObject startButton;
     public GameObject continueButton;
     public GameObject correct;
     public GameObject incorrect;
@@ -440,6 +441,7 @@ public class AX_Test : MonoBehaviour
     }
     public void StartGame()
     {
+        startButton.SetActive(false);
         foreach (var i in introUI)
         {
             i.SetActive(false);
