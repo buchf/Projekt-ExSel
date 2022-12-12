@@ -130,12 +130,12 @@ public class GoNoGoPractice : MonoBehaviour
             //       buff = 2;
         }
 
-        if (timer.Elapsed.TotalSeconds >= 0.5)
+        if (timer.Elapsed.TotalMilliseconds >= 500)
         {
             shownAnimal.SetActive(false);
         }
 
-        if (timer.Elapsed.TotalSeconds >= 1.0 && counter != 11)
+        if (timer.Elapsed.TotalMilliseconds >= SceneSwitch.goNoGoSpeed && counter != 11)
         {
             timer.Reset();
             //if(counter == 11)

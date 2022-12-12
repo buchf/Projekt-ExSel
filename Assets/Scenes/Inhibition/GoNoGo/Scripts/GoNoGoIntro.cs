@@ -10,6 +10,7 @@ public class GoNoGoIntro : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(SceneSwitch.goNoGoSpeed);
         exit = 0;
     }
     // Update is called once per frame

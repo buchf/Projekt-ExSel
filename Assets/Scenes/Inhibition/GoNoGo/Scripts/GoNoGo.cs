@@ -47,6 +47,9 @@ public class GoNoGo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        interStim = SceneSwitch.goNoGoSpeed;
+        responseRegistration = SceneSwitch.goNoGoSpeed;
+
         exit = 0;
         timer.Reset();
         //counter = 0;
@@ -65,7 +68,7 @@ public class GoNoGo : MonoBehaviour
             shownAnimal.SetActive(false); //
         }
 
-        if (timer.Elapsed.TotalMilliseconds >= responseRegistration)
+        if (timer.Elapsed.TotalMilliseconds >= SceneSwitch.goNoGoSpeed)
         {
             timer.Stop();
             if (shownAnimal == currentAnimal)

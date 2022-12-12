@@ -6,12 +6,14 @@ public class ToggleScript : MonoBehaviour
 {
     public Toggle corsiTog;
     public Toggle verbalTog;
+    public Toggle goNoGoTog;
 
 
     private void Update()
     {
         ToggleCorsi();
         ToggleVerbalSpan();
+        ToggleGoNoGo();
     }
 
     public void ToggleCorsi()
@@ -35,6 +37,18 @@ public class ToggleScript : MonoBehaviour
         else
         {
             SceneSwitch.reverseVS = false;
+        }
+    }
+
+    public void ToggleGoNoGo()
+    {
+        if (goNoGoTog.isOn)
+        {
+            SceneSwitch.goNoGo = true;
+        }
+        else
+        {
+            SceneSwitch.goNoGo = false;
         }
     }
 }
