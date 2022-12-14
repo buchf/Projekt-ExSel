@@ -82,11 +82,11 @@ public class SceneSwitch : MonoBehaviour
 
         if(goNoGo == true)
         {
-            goNoGoSpeed = 1000f;
+            goNoGoSpeed = 500f;
         }
         else
         {
-            goNoGoSpeed = 500f;
+            goNoGoSpeed = 1000f;
         }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 11);
