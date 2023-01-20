@@ -259,13 +259,13 @@ public class CSPracticeTwo : MonoBehaviour
 
         if (cresp == 0 && test == 1)
         {
-            WriteInDataSaver(currentTrial, left.name.ToString(), middle.name.ToString(), right.name.ToString(), targetItem.name.ToString(), timer.ElapsedMilliseconds, cresp, targetDimension1, targetDimension2);
+            WriteInDataSaver(currentTrial, left.name.ToString(), middle.name.ToString(), right.name.ToString(), targetItem.name.ToString(), timer.ElapsedMilliseconds, cresp, clicked.name.ToString(), targetDimension1, targetDimension2);
         }
 
         if (cresp == 1 && test == 0)
         {
             test = 0;
-            WriteInDataSaver(currentTrial, left.name.ToString(), middle.name.ToString(), right.name.ToString(), targetItem.name.ToString(), timer.ElapsedMilliseconds, cresp, targetDimension1, targetDimension2);
+            WriteInDataSaver(currentTrial, left.name.ToString(), middle.name.ToString(), right.name.ToString(), targetItem.name.ToString(), timer.ElapsedMilliseconds, cresp, clicked.name.ToString(), targetDimension1, targetDimension2);
             currentTrial++;
             StartCoroutine(DespawnObject());
         }
@@ -300,10 +300,10 @@ public class CSPracticeTwo : MonoBehaviour
         EnableField();
     }
 
-    void WriteInDataSaver(int currentTrial, string left, string middle, string right, string targetItem, double reaction, int CRESP, string targetDimension1, string targetDimension2)
+    void WriteInDataSaver(int currentTrial, string left, string middle, string right, string targetItem, double reaction, int CRESP, string clickedItem, string targetDimension1, string targetDimension2)
     {
 
-        CSDataSaver.MeasurePracticeTwo(currentTrial, left, middle, right, targetItem, reaction, CRESP, targetDimension1, targetDimension2);
+        CSDataSaver.MeasurePracticeTwo(currentTrial, left, middle, right, targetItem, reaction, CRESP, clickedItem, targetDimension1, targetDimension2);
         timer.Stop();
         timer.Reset();
     }

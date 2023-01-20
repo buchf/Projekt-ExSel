@@ -367,7 +367,7 @@ public class CSPlay : MonoBehaviour
         {
             cresp = 0;
         }
-        WriteInDataSaver(currentTrial, left.name.ToString(), middle.name.ToString(), right.name.ToString(), targetItem.name.ToString(), timer.ElapsedMilliseconds, cresp, targetDimension1, targetDimension2);
+        WriteInDataSaver(currentTrial, left.name.ToString(), middle.name.ToString(), right.name.ToString(), targetItem.name.ToString(), timer.ElapsedMilliseconds, cresp,  clicked.name.ToString(), targetDimension1, targetDimension2);
 
         activateObject(right);
         currentTrial++;
@@ -396,10 +396,10 @@ public class CSPlay : MonoBehaviour
         middle.GetComponent<Button>().enabled = true;
     }
 
-    void WriteInDataSaver(int currentTrial, string left, string middle, string right, string targetItem, double reaction, int CRESP, string targetDimension1, string targetDimension2)
+    void WriteInDataSaver(int currentTrial, string left, string middle, string right, string targetItem, double reaction, int CRESP, string clickedItem, string targetDimension1, string targetDimension2)
     {
-        if (blockNummer == 3) CSDataSaver.MeasureTest(currentTrial, left, middle, right, targetItem, reaction, CRESP, targetDimension1, "0");
-        if (blockNummer == 4) CSDataSaver.MeasureTestTwo(currentTrial, left, middle, right, targetItem, reaction, CRESP, targetDimension1, targetDimension2);
+        if (blockNummer == 3) CSDataSaver.MeasureTest(currentTrial, left, middle, right, targetItem, reaction, CRESP, clickedItem, targetDimension1, "0");
+        if (blockNummer == 4) CSDataSaver.MeasureTestTwo(currentTrial, left, middle, right, targetItem, reaction, CRESP, clickedItem, targetDimension1, targetDimension2);
         timer.Reset();
     }
 

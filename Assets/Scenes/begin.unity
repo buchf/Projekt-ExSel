@@ -3146,7 +3146,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Grundschule
+  m_Text: T2 Grundschule
 --- !u!222 &1569266226
 CanvasRenderer:
   m_ObjectHideFlags: 0
