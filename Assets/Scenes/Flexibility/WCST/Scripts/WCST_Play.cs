@@ -227,7 +227,7 @@ public class WCST_Play : MonoBehaviour
                 }
                 for (int i = 0; i < usedRulesTwo.Count; i++)
                 {
-                    if (sortCategory == usedRules[i]) checkList = true;
+                    if (sortCategory == usedRulesTwo[i]) checkList = true;
                 }
 
                 if (checkList == true)
@@ -289,6 +289,7 @@ public class WCST_Play : MonoBehaviour
                     StartCoroutine(CorrectAnimation());
                     correctChain++;
                 }
+                usedRules.Add(sortCategory);
             }
             else
             {
@@ -371,13 +372,18 @@ public class WCST_Play : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
-            if (correctChain == 6 && blockNumber == 1 && position != 24 && usedRules.Count != 3)
+            if (correctChain == 6 && blockNumber == 1 && position != 24)
             {
                 
-                usedRules.Add(sortCategory);
+                //usedRules.Add(sortCategory);
                 if (usedRules.Count < 3)
                 {
                     StartCoroutine(WizardAnimation());
+                }
+
+                if (position == 24 || (usedRules.Count == 3 && blockNumber == 1))
+                {
+                    StartCoroutine(BlockSwitch());
                 }
             }
             else
@@ -387,10 +393,7 @@ public class WCST_Play : MonoBehaviour
             }
         }
         
-        if (position == 24 || (usedRules.Count == 3 && blockNumber == 1))
-        {
-            StartCoroutine(BlockSwitch());
-        }
+        
     }
 
 
