@@ -72,6 +72,8 @@ public class SceneSwitch : MonoBehaviour
 
     public void StartGoNoGO()
     {
+        GoNoGo.trial = 1;
+        GoNoGo.trialNo = 1;
         DataGoNoGO.timePointnogo.Clear();
         DataGoNoGO.overall.Clear();
         DataGoNoGO.results.Clear();
@@ -82,10 +84,12 @@ public class SceneSwitch : MonoBehaviour
 
         if(goNoGo == true)
         {
+            DataGoNoGO.fileNameEnding = "goNoGO_T2";
             goNoGoSpeed = 500f;
         }
         else
         {
+            DataGoNoGO.fileNameEnding = "goNoGo";
             goNoGoSpeed = 1000f;
         }
 
@@ -106,6 +110,7 @@ public class SceneSwitch : MonoBehaviour
 
     public void StartWCST()
     {
+        // WCST_Play.usedRulesTwo.Clear();
         WCST_Data.timePointsts.Clear();
         WCST_Data.overall.Clear();
         WCST_Data.header.Clear();

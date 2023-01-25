@@ -67,6 +67,8 @@ public class WCST_Play : MonoBehaviour
 
     void Start()
     {
+        usedRules.Clear();
+        usedRulesTwo.Clear();
         exit = 0;
         cresp = 0;
         gesamtpunktzahl = 0;
@@ -76,8 +78,12 @@ public class WCST_Play : MonoBehaviour
         blockNumber = 1;
         block2Buff = 0;
         position = 0;
+        trialType = 0;
+        accuracy = "0";
+        sortCategory = 0;
+        correctChain = 0;
         //spaeter wieder aktivieren nur um intro test dauer zu skippen
-        //StartCoroutine(IntroSequenz());
+        StartCoroutine(IntroSequenz());
     }
 
     private void Update()
@@ -289,7 +295,7 @@ public class WCST_Play : MonoBehaviour
                     StartCoroutine(CorrectAnimation());
                     correctChain++;
                 }
-                usedRules.Add(sortCategory);
+                //usedRules.Add(sortCategory);
             }
             else
             {
@@ -349,7 +355,10 @@ public class WCST_Play : MonoBehaviour
         position++;
         yield return new WaitForSeconds(1f);
 
-        if (correctChain == 6) gesamtpunktzahl++;
+        if (correctChain == 6) {
+            //usedRules.Add(sortCategory);
+            gesamtpunktzahl++;
+        } 
 
         if (blockNumber == 2 && correctChain == 6)
         {
@@ -375,7 +384,7 @@ public class WCST_Play : MonoBehaviour
             if (correctChain == 6 && blockNumber == 1 && position != 24)
             {
                 
-                //usedRules.Add(sortCategory);
+                usedRules.Add(sortCategory);
                 if (usedRules.Count < 3)
                 {
                     StartCoroutine(WizardAnimation());

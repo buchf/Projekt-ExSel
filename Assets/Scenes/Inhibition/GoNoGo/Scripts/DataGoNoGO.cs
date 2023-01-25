@@ -15,6 +15,7 @@ public class DataGoNoGO : MonoBehaviour
     public static string VPN;
     static string fileName;
     public static string filePath;
+    public static string fileNameEnding = "";
 
     int i = 1;
 
@@ -33,7 +34,7 @@ public class DataGoNoGO : MonoBehaviour
     {
 
         gesamtPunktzahl = GoNoGo.correctNoClick + GoNoGo.correctClick;
-        fileName = "VPN" + VPN + "_goNoGo.csv";
+        fileName = "VPN" + VPN + fileNameEnding + ".csv";
         fileName = checkFilename(fileName);
         filePath = Path.Combine(Application.persistentDataPath, fileName);
         timePointnogo.Append(VPN + ",Total score:," + gesamtPunktzahl + ",Date:," + System.DateTime.Now.ToString("dd/MM/yyyy") + ",Time:," + System.DateTime.Now.ToString("HH:mm:ss") + "\n\n"); //
@@ -55,7 +56,7 @@ public class DataGoNoGO : MonoBehaviour
     {
         while (File.Exists(Path.Combine(Application.persistentDataPath, fileName)))
         {
-            fileName = "VPN" + VPN + "_goNoGo" + "(" + i + ")" + ".csv";
+            fileName = "VPN" + VPN + fileNameEnding + "(" + i + ")" + ".csv";
             i++;
         }
         return fileName;
